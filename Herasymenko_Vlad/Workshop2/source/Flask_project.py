@@ -46,9 +46,9 @@ def page_not_found(error):
 @app.route('/api/<action>', methods = ['POST', 'GET'])
 def workshop(action):
 
-    if action == 'bank':
+    if action == bank_name:
         return render_template("vendor.html", vendor = vendor)
-    elif action == 'vendor':
+    elif action == vendor_name:
         return render_template("bank.html", bank = bank)
     
     elif action == 'all':
