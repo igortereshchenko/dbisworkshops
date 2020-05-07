@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Банк</title>
+
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'styles_reg.css') }}">
+
+
+</head>
+<body>
+
+
+
+
+<div>
+
+
+
+	<h1> Інформація про банк </h1>
+
+	<a href="{{ url_for('Home') }}">
+	<img id="BACK" src="{{ url_for('static', filename = 'back.png') }}" width = "5%" height="3%"></img>
+	</a>
+	
+	<form action = "http://127.0.0.1:5000/api/KYIV_CITY/submit" method = "post">
+		
+	  <h3 style="text-align: center;">Назва банку</h3>
+	  <input id="REG" type="text" name="name" value="{{ bank['Назва банку'] }}" required>
+	  <h3 style="text-align: center;">ЄДРПОУ</h3>
+	  <input id="REG" type="text" name="ed" value="{{ bank['ЄДРПОУ'] }}" required>
+	  <h3 style="text-align: center;">Розрахунковий рахунок</h3>
+	  <input id="REG" type="text" name="pass" value="{{ bank['Розрахунковий рахунок'] }}" required>
+	  <h3 style="text-align: center;">МФО</h3>
+	  <input id="REG" type="text" name="mfo" value="{{ bank['МФО'] }}" required>
+
+	  <input id="BUT_R" type="submit" value="Зберегти зміни    ">
+
+	</form>
+
+
+
+</div>
+
+</body>
+</html>

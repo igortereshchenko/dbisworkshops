@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Матеріали</title>
+
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'styles_main.css') }}">
+
+</head>
+<body>
+
+<div id="Main_Head">
+
+	<a href="{{ url_for('Home') }}" class="Headings">Триград</a>
+	<a href="{{ url_for('Materials') }}" class="Headings">Матеріали</a>
+	<a href="{{ url_for('Suppliers') }}" style="color: yellow;" class="Headings">Постачальники</a>
+	<a href="{{ url_for('Dynamic') }}" class="Headings">Динаміка цін</a>
+
+	{% if user_logged == False %}
+
+	<a href="{{ url_for('Log') }}" id="LogIn">Увійти</a>
+	<a href="{{ url_for('Register') }}" id="Reg">Зареєструватися</a>
+
+	{% elif user_logged == True %}
+
+	<a href="" id="LogIn"> Вхід виконано як {{user_name}} </a>
+	<a href="{{ url_for('Logout') }}" style="color: white;"> Вийти </a>
+
+	{% endif %}
+
+</div>
+
+
+<h1 id = "NonExistent"> Робота над цим розділом ще ведеться, тому на жаль, ніяких даних поки що немає.</h1>
+
+
+</body>
+</html>

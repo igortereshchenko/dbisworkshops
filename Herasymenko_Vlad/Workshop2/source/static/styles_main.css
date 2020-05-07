@@ -1,0 +1,141 @@
+	body {
+		background-color: rgb(191, 191, 191,0.5);
+	}
+
+	#Main_Head{
+		background-color: black;
+
+		width: 100%;
+        min-width: 2000px;
+		padding-top: 10px;
+		padding-right: 20px;
+		padding-bottom: 10px;
+		padding-left: 20px;
+
+
+		margin-bottom: 20px;
+	}
+
+
+	a.Headings:link, a.Headings:visited {
+  		background-color: black;
+  		color: white;
+
+		padding-right: 11%;
+		padding-left: 3%;
+		padding-top: 1.5%;
+		padding-bottom: 1.5%;
+
+		font-size: 17px;
+
+
+ 		text-align: center;
+ 		text-decoration: none;
+ 		display: inline-block;
+
+ 		font-family: Arial, Helvetica, sans-serif;
+	}
+
+
+	#LogIn:link, #LogIn:visited {
+  		background-color: black;
+  		color: white;
+
+		padding-right: 2%;
+		padding-left: 4%;
+
+
+
+		font-size: 17px;
+
+ 		text-align: center;
+ 		text-decoration: none;
+ 		display: inline-block;
+
+ 		font-family: Arial, Helvetica, sans-serif;
+	}
+
+
+	#Reg:link, #Reg:visited {
+  		background-color: black;
+  		color: white;
+
+
+		padding-right: 1%;
+		padding-left: 1%;
+		padding-top: 5px;
+		padding-bottom: 5px;
+
+
+		font-size: 17px;
+
+ 		text-align: center;
+ 		text-decoration: none;
+ 		display: inline-block;
+
+ 		font-family: Arial;
+
+
+	}
+
+
+	#Reg{
+		border-style:solid;
+		border-width: 2px;
+		border-color: yellow;
+		border-radius: 15px;
+	}
+
+	#Main_Head > a {
+		display: inline-block;
+	}
+
+	h1 {
+		text-align: center;
+
+		font-size: 18px;
+
+		font-family: Times New Roman;
+
+	}
+
+	#Descr {
+		text-align: justify;
+
+		text-indent: 25px;
+
+		line-height: 1.2;
+
+		font-size: 16px;
+
+		font-family: Times New Roman;
+
+		margin-left: 30%;
+		margin-right: 30%;
+	}
+
+	img.Side_Right {
+		float: right;
+		border-width: 25px;
+		border-color: black;
+		padding-top: 3%;
+	}
+
+	img.Side_Left {
+		float: left;
+		border-width: 25px;
+		border-color: black;
+		padding-top: 3%;
+
+	}
+
+
+	#NonExistent {
+		font-size: 24px;
+		margin-top: 10%;
+		margin-left: 30%;
+		margin-right: 30%; 
+	}
+
+
+
