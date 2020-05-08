@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}404 page{% endblock %}
+
+{% block content %}
+<div style="color: red;" align="center">
+    <p>
+        You're input incorrect data (action = {{ action_value }})
+    </p>
+    <p>
+        You can input: action = {{ photographers }}, action = {{ comments }} or action = {{ all }}
+    </p>
+</div>
+{% endblock %}
