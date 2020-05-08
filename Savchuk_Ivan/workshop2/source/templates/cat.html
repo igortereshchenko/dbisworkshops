@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <meta charset="UTF-8">
+    <title>cat</title>
+{% endblock%}
+
+{% block header %}
+
+{% endblock%}
+
+{% block content %}
+
+<h2>Enter information about cat</h2>
+<form action="" method="post">
+    <p>
+        {{ form.pet_name.label }} <br>
+        {{ form.pet_name(size=30) }}
+    </p>
+    <p>
+        {{ form.color.label }} <br>
+        {{ form.color(size=30) }}
+    </p>
+    <p>
+        {{ form.weight.label }} <br>
+        {{ form.weight(size=30) }}
+    </p>
+    <p>
+        {{ form.height.label }} <br>
+        {{ form.height(size=30) }}
+    </p>
+    <p>
+        {{ form.ability.label }} <br>
+        {{ form.ability(size=30) }}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% endblock %}
