@@ -1,1 +1,1 @@
-web: gunicorn Zelenyi_Dmytro.workshop2.source.main:app --log-file -
+web: gunicorn --chdir Zelenyi_Dmytro/workshop2/source main:app
