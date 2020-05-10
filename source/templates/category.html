@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action = "/api" method = "POST" id="form_category">
+         <p>Категорія<input type = "text" name = "name" value="{{category.category_name}}"/></p>
+         <p>Ліміт<input type = "text" name = "limit" value="{{category.limit}}" /></p>
+
+     </form>
+
+    <button type="submit" form="form_category" name="action" value="category_update">Submit</button>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <form action = "/api" method = "POST" id="form_waste">
+         <p>Name <input type = "text" name = "name" value="{{waste.category_name}}"/></p>
+         <p>Sum <input type = "text" name = "sum" value="{{waste.waste_sum}}" /></p>
+         <p>Time <input type = "text" name = "time" value="{{waste.waste_time}}" /></p>
+     </form>
+
+    <button type="submit" form="form_waste" name="action" value="waste_update">Submit</button>
+
+</body>
+</html>
