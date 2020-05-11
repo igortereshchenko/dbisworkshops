@@ -5,7 +5,7 @@ from wtforms import StringField, PasswordField, SubmitField
 
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = 'gay'
+app.config["SECRET_KEY"] = 'key'
 
 entity1 = {"name":"John","surname":"Cage","details":"programmer"}
 entity2 =  {"name":"Lina","surname":"Cage","details":"programmer"}
