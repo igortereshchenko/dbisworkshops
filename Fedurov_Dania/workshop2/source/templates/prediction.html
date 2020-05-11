@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prediction</title>
+</head>
+<body>
+
+
+    <form action = "/api/prediction/submit" method = "POST" id="form_prediction">
+         <p>Id <input type = "text" name = "pred_id" value="{{prediction.get('pred_id')}}"/></p>
+         <p>Prediction <input type = "text" name = "pred_name" value="{{prediction.get('prediction_name')}}" /></p>
+         <p>Date <input type = "text" name = "pred_date" value="{{prediction.get('date')}}" /></p>
+
+     </form>
+
+    <button type="submit" form="form_prediction" name="action" value="prediction_update">Submit</button>
+
+
+</body>
+</html>
