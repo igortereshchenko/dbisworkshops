@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>question</title>
+</head>
+<body>
+
+
+    <form action = "/api/question/submit" method = "POST" id="form_question">
+         <p>Question ID <input type = "text" name = "question_id" value="{{question.get('question_id')}}"/></p>
+         <p>Time <input type = "text" name = "question_time" value="{{question.get('question_time')}}" /></p>
+         <p>Content <input type = "text" name = "question_content" value="{{question.get('question_content')}}"/></p>
+     </form>
+
+    <button type="submit" form="form_question" name="action" value="question_update">Submit</button>
+
+</body>
+</html>
