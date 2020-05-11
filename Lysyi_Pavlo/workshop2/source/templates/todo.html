@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todo</title>
+</head>
+<body>
+
+
+    <form action = "/api/todo/submit" method = "POST" id="form_todo">
+         <p>Name <input type = "text" name = "todo_name" value="{{todo.get('todo_name')}}"/></p>
+         <p>Description <input type = "text" name = "description" value="{{todo.get('todo_description')}}" /></p>
+         <p>Start time <input type = "text" name = "time_start" value="{{todo.get('todo_start_time')}}" /></p>
+         <p>End time <input type = "text" name = "time_end" value="{{todo.get('todo_end_time')}}" /></p>
+
+     </form>
+
+    <button type="submit" form="form_todo" name="action" value="todo_update">Submit</button>
+
+
+</body>
+</html>
