@@ -1,0 +1,44 @@
+{% extends "main_site.html" %}
+
+{% block head %}
+    <title>All</title>
+{% endblock %}
+
+{% block header%}
+    <h1>All entities</h1>
+{% endblock %}
+
+{% block content %}
+    <div id='table_container' style="text-align:center;">
+        <div id='table1' style='border: 2px solid black; margin:10px; float:left; margin :10px;'>
+            <h3>Songs table</h3>
+            <table border='1'>
+                {% for key, value in songs.items() %}
+                <tr>
+                    <th>
+                        {{key}}
+                    </th>
+                    <td>
+                        {{value}}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div id='table2' style='border: 2px solid black; margin:10px; float:left; margin :10px;'>
+            <h3>Orders table</h3>
+            <table border='1' >
+                {% for key, value in orders.items() %}
+                <tr>
+                    <th>
+                        {{key}}
+                    </th>
+                    <td>
+                        {{value}}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}
