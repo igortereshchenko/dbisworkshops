@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block body %}
+	{% for d in data %}
+		<table border="1">
+			<thead>
+				<tr>
+					{% for key in d.keys() %}
+						<td>{{key}}</td>
+					{% endfor %}
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					{% for key in d.keys() %}
+						<td>{{d[key]}}</td>
+					{% endfor %}
+				</tr>
+			</tbody>
+		</table>
+		<br>
+	{% endfor %}
+{% endblock %}

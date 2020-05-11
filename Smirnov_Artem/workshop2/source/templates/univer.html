@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<form method='post' action='../api'>
+	<label>University name</label>
+	<input type="text" name="univer_name" value="{{data['univer_name']}}">
+	<label>University city</label>
+	<input type="text" name="univer_city" value="{{data['univer_city']}}">
+	<input type="submit" name="univer" value="Send">
+</form>
+{% endblock %}
