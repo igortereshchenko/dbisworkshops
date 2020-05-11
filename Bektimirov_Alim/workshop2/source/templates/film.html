@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>film</title>
+</head>
+<body>
+
+
+    <form action = "/api" method = "POST" id="form_user">
+         <p>Title <input type = "text" name = "title" value="{{film.get('film_title')}}"/></p>
+         <p>Genre <input type = "text" name = "genre" value="{{film.get('film_genre')}}" /></p>
+         <p>Year <input type = "text" name = "year" value="{{film.get('film_year')}}" /></p>
+     </form>
+
+    <button type="submit" form="form_user" name="action" value="film_update">Submit</button>
+
+
+</body>
+</html>
