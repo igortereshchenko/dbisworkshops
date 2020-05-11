@@ -1,5 +1,9 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for
 from form import UserForm, DashboardForm
+
+
+PORT = int(os.environ.get("PORT", 5000))
 
 
 app = Flask(__name__)
@@ -58,4 +62,4 @@ def api_dashboard():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, host='0.0.0.0', port=PORT)
