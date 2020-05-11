@@ -6,6 +6,20 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'very_secret_key'
 
 
+user_dict = {
+    'id': 'uuid',
+    'firstName': 'Super',
+    'lastName': 'User',
+    'email': 'super.user@gmail.com',
+    'passwordHash': 'jdhiuhkjhqwidhksjhaiudhqwd'
+}
+dashboard_dict = {
+    'id': 'dashboard_uuid',
+    'name': 'Great project 1',
+    'userId': 'uuid',
+}
+
+
 @app.route('/api/<action>', methods=['GET'])
 def get_template(action):
     if action == 'user':
@@ -44,17 +58,4 @@ def api_dashboard():
 
 
 if __name__ == '__main__':
-    user_dict = {
-        'id': 'uuid',
-        'firstName': 'Super',
-        'lastName': 'User',
-        'email': 'super.user@gmail.com',
-        'passwordHash': 'jdhiuhkjhqwidhksjhaiudhqwd'
-    }
-    dashboard_dict = {
-        'id': 'dashboard_uuid',
-        'name': 'Great project 1',
-        'userId': 'uuid',
-    }
-
     app.run()
