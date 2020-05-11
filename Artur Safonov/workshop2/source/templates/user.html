@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+<form action="" method="post">
+    <p>
+        {{form.name.label}} <br>
+        {{form.name(size=30)}}
+    </p>
+    <p>
+        {{form.surname.label}} <br>
+        {{form.surname(size=30)}}
+    </p>
+    <p>
+        {{form.middle_name.label}} <br>
+        {{form.middle_name(size=30)}}
+    </p>
+    <p>
+        {{form.phone.label}} <br>
+        {{form.phone(size=30)}}
+    </p>
+    <p>
+        {{form.email.label}} <br>
+        {{form.email(size=30)}}
+    </p>
+    <p>
+        {{form.submit()}}
+    </p>
+</form>
+</body>
+</html>
