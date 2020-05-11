@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>all</title>
+    <style>
+        table {
+            width: 300px;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding:10px;
+            align="center";
+        }
+
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <th>vendor_name</th>
+        <th>vendor_email</th>
+    </tr>
+    <tr>
+        <td>{{vendor.get('vendor_name')}}</td>
+        <td>{{vendor.get('vendor_email')}}</td>
+    </tr>
+</table>
+
+<br/>
+
+<table>
+    <tr>
+        <th>event_id</th>
+        <th>event_name</th>
+        <th>event_category</th>
+    </tr>
+    <tr>
+        <td>{{event.get('event_id')}}</td>
+        <td>{{event.get('event_name')}}</td>
+        <td>{{event.get('event_category')}}</td>
+    </tr>
+</table>
+
+</body>
+</html>
