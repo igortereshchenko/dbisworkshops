@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>404 page</title>
-</head>
-<body>
-    <h2>Not correct action value: {{action_value}}</h2>
-</body>
-</html>
+{%extends 'main.html'%}
+
+{% block title%}
+404
+{% endblock %}
+
+{% block body%}
+
+   <caption>Wrong action</caption>
+ <h1>You have searched api/{{action}}</h1>
+<p>Try one more time with:</p>
+    /api/book OR /api/student OR /api/all
+
+{% endblock %}
