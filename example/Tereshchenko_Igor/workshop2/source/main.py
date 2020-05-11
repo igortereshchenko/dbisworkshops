@@ -1,52 +1,58 @@
-from flask import Flask, render_template, request, redirect, url_for
-
+from flask import Flask, render_template, request, abort,  redirect, url_for
 app = Flask(__name__)
 
 
-
-@app.route('/api/<action>', methods = [ 'GET'])
+@app.route('/api/<action>', methods = ['GET'])
 def apiget(action):
+    if action == "student":
 
-   if action == "user":
-      return render_template("user.html",user=user_dictionary)
+        return render_template("student.html", student=student)
 
-   elif action == "car":
-      return render_template("car.html", car=car_dictionary)
+    elif action == "book":
+        return render_template("book.html", book=book)
 
-   elif action == "all":
-      return render_template("all.html", user=user_dictionary, car=car_dictionary)
+    elif action == "all":
+        return render_template("all.html", student=student, book=book)
 
-   else:
-      return render_template("404.html", action_value=action)
+    else:
+        return render_template("404.html", action=action, student=student, book=book)
+
 
 
 @app.route('/api', methods=['POST'])
-def apipost():
+def update():
 
+   if request.form["action"] == "student_update":
 
-   # <button type="submit" form="form_user" name="action" value="user_update">Submit</button>
-   # send name="action" and value="user_update" to POST
-
-   if request.form["action"] == "user_update":
-
-      user_dictionary["user_name"] = request.form["first_name"]
-      user_dictionary["user_age"] = request.form["age"]
+      student["username"] = request.form["username"]
+      student["id"] = request.form["id"]
 
       return redirect(url_for('apiget', action="all"))
+
+   if request.form["action"] == "book_update":
+
+      book["title"] = request.form["title"]
+      book["dish_name"] = request.form["author"]
+      book["year"] = request.form["year"]
+
+      return redirect(url_for("apiget", action="all"))
+
 
 
 
 if __name__ == '__main__':
+    book = {
+        "title": "title_1",
+        "author": "author_1",
+        "year": 1994
 
-   user_dictionary = {
-            "user_name":"Bob",
-            "user_age": 20,
-          }
+    }
+    student = {
+        "username": "Bob",
+        "id": "1"
 
-   car_dictionary = {
-           "car_brand": "Ford",
-           "car_model": "Mustang",
-           "car_year": 1964
-         }
+    }
 
-   app.run()
+    app.run(debug=True)
+
+
