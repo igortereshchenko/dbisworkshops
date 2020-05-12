@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Patient</title>
+</head>
+
+<body>
+    <form action = "/api/patient/submit" method = "POST" id="form_patient">
+        <p>ID<input type = "text" name = "patient_id" value="{{patient.get('patient_id')}}"/></p>
+        <p>First Name<input type = "text" name = "first_name" value="{{patient.get('first_name')}}" /></p>
+        <p>Last Name<input type = "text" name = "last_name" value="{{patient.get('last_name')}}"/></p>
+        <p>Street<input type = "text" name = "street" value="{{patient.get('street')}}" /></p>
+        <p>Year of birth<input type = "text" name = "year_birth" value="{{patient.get('year_birth')}}" /></p>
+    </form>
+
+    <button type="submit" form="form_patient" name="action">Submit</button>
+</body>
+</html>
