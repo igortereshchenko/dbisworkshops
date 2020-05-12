@@ -1,1 +1,1 @@
-web: gunicorn --chdir Sadchenko_Mykyta/workshop2/source main:app
+web: gunicorn --chdir Sadchenko_Mykyta/workshop2/source run:app
