@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meal</title>
+</head>
+<body>
+
+
+    <form action = "/api" method = "POST" id="form_meal">
+         <p>Name <input type = "text" name = "name" value="{{meal.get('name')}}"/></p>
+         <p>Price <input type = number name = "price" value="{{meal.get('price')}}" /></p>
+    </form>
+
+    <button type="submit" form="form_meal" name="action" value="meal_update">Submit</button>
+
+
+</body>
+</html>
