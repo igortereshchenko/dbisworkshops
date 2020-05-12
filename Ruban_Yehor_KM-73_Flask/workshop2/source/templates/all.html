@@ -1,0 +1,45 @@
+{% extends "main.html" %}
+
+{% block head %} 
+    <meta charset="UTF-8">
+    <title>all</title>
+{% endblock %}
+
+{% block header%}
+    <h1>All tables</h1>
+{% endblock %}
+
+{% block content%}
+<div id='table' style="text-align:center;">
+    <div id='t_1' style='border: 2px solid black; margin:10px; float:left; margin :10px;'>
+        <h3>Clients</h3>
+        <table border='1'>
+            {% for key, value in client.items() %}
+            <tr>
+                <th>
+                    {{key}}
+                </th>
+                <td>
+                    {{value}}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div id='t_2' style='border: 2px solid black; margin:10px; float:left; margin :10px;'>
+        <h3>Restaurants</h3>
+        <table border='1' >
+            {% for key, value in restaurant.items() %}
+            <tr>
+                <th>
+                    {{key}}
+                </th>
+                <td>
+                    {{value}}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}
