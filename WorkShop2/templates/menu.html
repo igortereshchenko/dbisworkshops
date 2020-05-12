@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>all</title>
+</head>
+<body>
+
+
+
+    <form action = "/api" method = "POST" id="form_menu">
+         <p>Name <input type = "text" name = "name" value="{{menu.get('name')}}"/></p>
+         <p>What does it include? <input type = text name = "content" value="{{menu.get('content')}}" /></p>
+     </form>
+
+    <button type="submit" form="form_menu" name="action" value="menu_update">Submit</button>
+
+
+</body>
+</html>
