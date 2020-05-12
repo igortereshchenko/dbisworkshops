@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Membership</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/membership.css') }}"/>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/user.css') }}"/>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="{{url_for('static', filename='membership.js')}}"></script>
+</head>
+
+
+<body class = "body"  id = 'pagebody'>
+    <div class="container">
+      <div>
+
+        <div >
+
+
+          <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Абонемент користувача: </h3>
+                <h3 class="panel-title">  {{membership["user_name"]}}</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img  width="100%" alt="QR-Code" src = {{membership["qr_code"]}} class="img-circle img-responsive"> </div>
+
+                <div class=" col-md-9 col-lg-9 ">
+                  <table class="table table-user-information" id="visualtb">
+                    <tbody>
+                      <tr>
+                        <td>Дата та час замовлення абонементу:</td>
+                        <td>{{membership["time"]}}</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+                 <div class="panel-footer">
+                     <div align="right">
+                         <a data-original-title="Edit this membership" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" onClick="popup_content('show')" ><i class="glyphicon glyphicon-edit" >Змінити</i></a>
+                         <form id="remove_membership" action = "{{membership.get('membership_link')}}" method="POST" enctype="multipart/form-data" >
+                            <button data-original-title="Remove this membership" data-toggle="tooltip" type="submit" form="remove_membership" class="btn btn-sm btn-danger" name="check_update" value="membership_delete" >Видалити</button>
+                         </form>
+                     </div>
+                 </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <center class="container" id="show_edit_bar" style='display:none'>
+    <div class="container" id="popup_content_wrap" >
+        <div id="popup_content" class="panel-body">
+          <div class="row" >
+            <form id="tab" action = "{{membership.get('membership_link')}}" method="POST" enctype="multipart/form-data">
+                <table class="table table-user-information">
+                    <tbody align="center">
+                        <tr>
+                            <td><label>Дата та час замовлення абонементу:</label></td>
+                            <td><input name = "time" type="text" value="{{membership.get('time')}}" ></td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </form>
+              <button type="submit" form="tab" name="check_update" class="btn btn-primary" value="membership_update">Оновити</button>
+              <button  name="cancel" class="btn btn-primary" onClick="popup_content('hide')" >Відмінити</button>
+          </div>
+
+      </div>
+    </div>
+    </center>
+
+
+
+</body>
+</html>
