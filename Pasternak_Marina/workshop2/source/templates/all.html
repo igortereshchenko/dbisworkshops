@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>all</title>
+</head>
+    <body>
+    <h3>All about order</h3>
+        <table border="1">
+
+            <tr>
+                <td >First Name and Last Name</td>
+                <td>{{order.get('order_name')}}</td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>{{order.get('order_date')}}</td>
+            </tr>
+            <tr>
+                <td>Time</td>
+                <td>{{order.get('order_time')}}</td>
+            </tr>
+            <tr>
+                <td>Number of Person</td>
+                <td>{{order.get('num_person')}}</td>
+            </tr>
+        </table>
+
+        <h3>All about user</h3>
+        <table border="1">
+            <tr>
+                <td>First Name and Last Name</td>
+                <td>{{user.get('user_name')}}</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>{{user.get('user_email')}}</td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td>{{user.get('user_password')}}</td>
+            </tr>
+        </table>
+
+    </body>
+</html>
