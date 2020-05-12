@@ -1,0 +1,1 @@
+web: gunicorn Ruban_Yehor_KM-73_Flask.app:main.py --log-file -
