@@ -1,0 +1,17 @@
+{% extends "main.html" %}
+
+{% block head %}
+    <meta charset="UTF-8">
+    <title>404</title>
+{% endblock %}
+
+{% block header%}
+    <h1> Error 404: Not Found</h1>
+{% endblock %}
+
+{% block content%}
+
+    <h3>Non-correct value: {{action}}.</h3>
+    <h3>List of correct values: client, restaurant, all.</h3>
+
+{% endblock %}

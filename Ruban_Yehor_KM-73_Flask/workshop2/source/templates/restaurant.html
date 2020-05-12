@@ -1,0 +1,23 @@
+{%extends 'main.html'%}
+
+{% block head %} 
+    <meta charset="UTF-8">
+    <title>restaurant</title>
+{% endblock %}
+
+{% block header%}
+    <h2>Restaurant information</h2>
+{% endblock %}
+
+{% block content%}
+
+    <form action = "/api" method = "POST" id="f_rest">
+         <p>title<br><input type = "text" name = "title" value="{{restaurant.get('title')}}"/></p>
+         <p>address<br><input type = "text" name = "address" value="{{restaurant.get('address')}}" /></p>
+         <p>phone<br><input type = "text" name = "re_phone" value="{{restaurant.get('re_phone')}}" /><br></p>
+
+     </form>
+
+    <button type="submit" form= "f_rest" name="action" value="restaurant_update">Submit</button>
+
+{% endblock %}
