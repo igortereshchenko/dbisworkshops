@@ -2,16 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-cafe_dictionary = {
-                "title": "McDonald's",
-                "rank": 1
-                }
-
-   dish_dictionary = {
-           "name": "burger",
-       "description": "the tastiest burburger",
-       "price": 12
-       }
 
 @app.route('/', methods=['GET'])
 def start():
@@ -54,6 +44,14 @@ def apipost():
 
 
 if __name__ == '__main__':
-   
+    cafe_dictionary = {
+        "title": "McDonald's",
+        "rank": 1
+    }
 
-app.run()
+    dish_dictionary = {
+        "name": "burger",
+        "description": "the tastiest burburger",
+        "price": 12
+    }
+    app.run()
