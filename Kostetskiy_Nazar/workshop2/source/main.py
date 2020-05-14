@@ -1,6 +1,8 @@
-from flask import Flask, render_template, session, redirect, url_for, jsonify
+from flask import Flask, render_template, session, redirect, url_for, jsonify, request
 
 from Kostetskiy_Nazar.workshop2.source.config import SECRET_KEY
+from Kostetskiy_Nazar.workshop2.source.forms.set_review_form import SetReviewForm
+from Kostetskiy_Nazar.workshop2.source.forms.set_user_post_form import SetUserPostForm
 from Kostetskiy_Nazar.workshop2.source.models import Posts, Reviews
 from Kostetskiy_Nazar.workshop2.source.models.user import User
 
@@ -15,7 +17,9 @@ reviews = Reviews()
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    post_form = SetUserPostForm()
+    rating_form = SetReviewForm()
+    return render_template("index.html", post_form=post_form, rating_form=rating_form)
 
 
 @app.route("/sign_in")
@@ -34,16 +38,26 @@ def sign_out():
 
 
 @app.route("/api/review/submit", methods=['POST'])
-def comment_submit():
-    # if request.form["review_action"] == "review_update":
-    posts.set_data()
+def submit_review():
+    text = request.form.get('text')
+    rate = request.form.get('rate')
+
+    if rate:
+        reviews.set_data(rate=int(rate))
+
+    if text:
+        reviews.set_data(text=text)
 
     return redirect(url_for('api_get', action="all"))
 
 
 @app.route("/api/user_posts/submit", methods=['POST'])
-def photographer_submit():
-    # if request.form["user_posts_action"] == "user_posts_update":
+def submit_user_posts():
+    text = request.form.get('text')
+
+    if text:
+        posts.set_data(text=text)
+
     return redirect(url_for('api_get', action="all"))
 
 

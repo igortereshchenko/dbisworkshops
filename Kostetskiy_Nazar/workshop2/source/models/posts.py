@@ -17,9 +17,10 @@ class Posts:
             return UserPost1
 
     def set_data(self, **data):
-        for k, v in data:
+        for k, v in data.items():
             if k in self.data:
                 self.data[k] = v
+        self.save(self.data)
         return self.data
 
     @staticmethod

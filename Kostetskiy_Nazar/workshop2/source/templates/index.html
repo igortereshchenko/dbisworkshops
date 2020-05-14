@@ -3,6 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {% block rating %}
+    <h2>modify rating</h2>
+    <form action="{{ url_for('submit_review') }}" method="post" novalidate>
+        <p>
+            {{ rating_form.text.label }}<br>
+            {{ rating_form.text(size=32) }}
+        </p>
+        <p>
+            {{ rating_form.rate.label }}<br>
+            {{ rating_form.rate(size=32) }}
+        </p>
+        <p>{{ rating_form.submit() }}</p>
+    </form>
+    {% endblock %}
+
+    {% block review %}
+    <h2>modify post</h2>
+    <form action="{{ url_for('submit_user_posts') }}" method="post" novalidate>
+        <p>
+            {{ post_form.text.label }}<br>
+            {{ post_form.text(size=32) }}
+        </p>
+        <p>{{ post_form.submit() }}</p>
+    </form>
+    {% endblock %}
 </head>
 <body>
 
