@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, render_template, session, redirect, url_for, jsonify, request
 
 from Kostetskiy_Nazar.workshop2.source.config import SECRET_KEY
@@ -77,4 +79,5 @@ def api_get(action):
 
 
 if __name__ == "__main__":
-    app.run('127.0.0.1', 5555, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run('0.0.0.0', port, debug=True)
