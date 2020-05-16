@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block body %}
+	<form method='post' action='../api'>
+		<label>Disease name</label>
+		<input type="text" name="disease_name" value="{{data['disease_name']}}">
+		<input type="submit" name="diseases" value="Send">
+	</form>
+{% endblock %}

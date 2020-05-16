@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body %}
+	<form method='post' action='../api'>
+		<label>Gender</label>
+		<input type="text" name="gender" value="{{data['gender']}}">
+		
+		<label>Age</label>
+		<input type="text" name="age" value="{{data['age']}}">
+		
+		<label>Current smoker</label>
+		<input type="text" name="current_smoker" value="{{data['current_smoker']}}">
+		
+		<label>Glucose</label>
+		<input type="text" name="glucose" value="{{data['glucose']}}">
+		<input type="submit" name="health_indicators" value="Send">
+	</form>
+{% endblock %}
