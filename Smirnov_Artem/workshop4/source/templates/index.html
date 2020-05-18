@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action = "/" method = post>
+		{{ form.hidden_tag() }}
+		{{ form.csrf_token }}
+		<p>	
+			{{form.student_name.label}}
+			{{form.student_name}}
+		</p>
+		<p>
+			{% for subfield in form.student_sex %}
+			    <tr>
+			        <td>{{ subfield }}</td>
+			        <td>{{ subfield.label }}</td>
+			    </tr>
+			{% endfor %}
+		</p>
+		<p>
+			{% for subfield in form.student_abitur %}
+			    <tr>
+			        <td>{{ subfield }}</td>
+			        <td>{{ subfield.label }}</td>
+			    </tr>
+			{% endfor %}
+		</p>
+		<p>
+			
+			{{form.submit}}
+		</p>
+	</form>
+</body>
+</html>
