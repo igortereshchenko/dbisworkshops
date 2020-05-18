@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Реєстрація</title>
+
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'styles_reg.css') }}">
+
+
+</head>
+<body>
+
+
+
+
+<div>
+
+
+
+	<h1> Зареєструватися </h1>
+
+	<a href="{{ url_for('Home') }}">
+	<img id="BACK" src="{{ url_for('static', filename = 'back.png') }}" width = "5%" height="3%"></img>
+	</a>
+
+	<img ID= "Av" src="{{ url_for('static', filename = 'icon.png') }}" width="15%" height="12%"></img>
+
+
+	<form action = "http://127.0.0.1:5000/registration/submit" method = "post">
+		
+
+	  <input id="REG" type="email" name="Email" placeholder="Е-mail" required>
+	  <input id="REG" type="text" name="name" placeholder="Ім'я користувача" required>
+	  <input id="REG" type="password" name="pass" placeholder="Пароль" required>
+	  <input id="REG" type="password" name="pass_val" placeholder="Повторіть пароль" required>
+	  <input id="BUT_R" type="submit" value="Зареєструватися">
+
+	</form>
+
+
+	<a id="A_REG" href="{{ url_for('Log') }}"> Уже зареєстровані ? </a>
+
+
+
+</div>
+
+</body>
+</html>
