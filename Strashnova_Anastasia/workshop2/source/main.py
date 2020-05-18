@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 
 @app.route('/api/<action>', methods = ['GET'])
-def apiget(action):
+def actinfo(action):
     if action == "student":
 
         return render_template("student.html", student=student)
@@ -35,7 +35,7 @@ def update():
       book["dish_name"] = request.form["author"]
       book["year"] = request.form["year"]
 
-      return redirect(url_for("apiget", action="all"))
+      return redirect(url_for("actinfo", action="all"))
 
 
 
@@ -54,5 +54,4 @@ if __name__ == '__main__':
     }
 
     app.run(debug=True)
-
 
