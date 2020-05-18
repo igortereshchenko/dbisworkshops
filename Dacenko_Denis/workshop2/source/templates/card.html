@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>card</title>
+</head>
+<body>
+
+
+    <form action = "/api" method = "POST" id="form_card">
+         <p>Name <input type = "text" name = "name" value="{{card.get('card_name')}}"/></p>
+         <p>Set <input type = "text" name = "set" value="{{card.get('card_set')}}" /></p>
+         <p>Price <input type = "text" name = "price" value="{{card.get('card_price')}}" /></p>
+     </form>
+
+    <button type="submit" form="form_card" name="action" value="card_update">Submit</button>
+
+
+</body>
+</html>
