@@ -2,6 +2,7 @@
     font-weight: bold;
 }
 
-.container #users li {
+li {
+    display: block;
     margin-bottom: 10px;
 }

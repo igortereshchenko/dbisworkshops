@@ -1,0 +1,25 @@
+{% extends "layout.jinja2" %}
+
+{% block content %}
+    <div class="container">
+        <h1>Workshop 4(Groups)</h1>
+        <ul id="groups">
+            {% for group in groups %}
+                <li>
+                    <span class="field-name">Group name:</span>
+                    <span class="field-value">{{ group.name }}</span>
+                    <br/>
+                    <span class="field-name">Created:</span>
+                    <span class="field-value">{{ group.created }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+            <form action="" method="post">
+                <p>
+                    {{ form.name.label }} <br>
+                    {{ form.name(size=30) }}
+                </p>
+                <p>{{ form.submit() }}</p>
+            </form>
+    </div>
+{% endblock %}
