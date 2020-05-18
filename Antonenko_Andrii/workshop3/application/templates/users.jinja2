@@ -1,0 +1,39 @@
+{% extends "layout.jinja2" %}
+
+{% block content %}
+    <div class="container">
+        <h1>Workshop 4</h1>
+        <ul id="users">
+            {% for user in users %}
+                <li>
+                    <span class="field-name">User first name:</span>
+                    <span class="field-value">{{ user.first_name }}</span>
+                    <br/>
+                    <span class="field-name">User last name:</span>
+                    <span class="field-value">{{ user.last_name }}</span>
+                    <br/>
+                    <span class="field-name">User email:</span>
+                    <span class="field-value">{{ user.email }}</span>
+                    <br/>
+                    <span class="field-name">Created:</span>
+                    <span class="field-value">{{ user.created }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+            <form action="" method="post">
+                <p>
+                    {{ form.first_name.label }} <br>
+                    {{ form.first_name(size=30) }}
+                </p>
+                <p>
+                    {{ form.last_name.label }} <br>
+                    {{ form.last_name(size=30) }}
+                </p>
+                <p>
+                    {{ form.email.label }} <br>
+                    {{ form.email(size=30) }}
+                </p>
+                <p>{{ form.submit() }}</p>
+            </form>
+    </div>
+{% endblock %}
