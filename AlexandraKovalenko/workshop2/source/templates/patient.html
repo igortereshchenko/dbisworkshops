@@ -1,0 +1,15 @@
+<{%extends 'main.html'%}
+
+{% block title%}
+Patient
+{% endblock %}
+
+{% block body%}
+    <form action = "/api" method = "POST" id="form_patient">
+         <p>username <input type = "text" name = "username" value="{{patient.get('username')}}"/></p>
+         <p>id <input type = "text" name = "id" value="{{patient.get('id')}}" /></p>
+     </form>
+
+    <button type="submit" form="form_patient" name="action" value="patient_update">Submit</button>
+
+{% endblock %}
