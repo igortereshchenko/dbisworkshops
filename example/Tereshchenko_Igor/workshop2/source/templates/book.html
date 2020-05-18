@@ -1,0 +1,20 @@
+{%extends 'main.html'%}
+
+{% block title%}
+Book
+{% endblock %}
+
+{% block body%}
+
+
+    <form action = "/api" method = "POST" id="form_book">
+         <p>title<input type = "text" name = "title" value="{{book.get('title')}}"/></p>
+         <p>author <input type = "text" name = "author" value="{{book.get('author')}}" /></p>
+         <p>year <input type = "text" name = "year" value="{{book.get('year')}}" /></p>
+
+     </form>
+
+    <button type="submit" form= "form_book" name="action" value="book_update">Submit</button>
+
+{% endblock %}
+
