@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GamesUtorent</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/main.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/sidenav.css')}}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src = "{{url_for('static', filename = 'js/hello.js')}}"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" id = "main" style="background-color:lightskyblue;text-align:center">
+        <a class="navbar-brand" href= {{url_for('index')}}>
+            <img src="{{url_for('static', filename = 'logo.png')}}" width="300" height="80" alt="">
+         </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav p-2">
+
+            <li class="nav-item">
+                <h3><a class="nav-link" href=" {{url_for('sign_in')}}">Sign in</a></h3>
+            </li>
+            <li class="nav-item">
+                <h3><a class="nav-link" href="{{url_for('sign_up')}}">Sign up</a></h3>
+            </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0 mr-auto">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+
+            <a href="#menu-toggle" id="menu-toggle" class="navbar-brand"><span class="navbar-toggler-icon"></span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02"
+                    aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span> </button>
+        </div>
+    </nav>
+    <div id="wrapper" class="toggled">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                       <li class="sidebar-brand"> <a href="#"> GamesUtorent </a> </li>
+                    <li> <a href="#">MOBA</a> </li>
+                    <li> <a href="#">Online</a> </li>
+                    <li> <a href="#">Strategic</a> </li>
+                    <li> <a href="#">Shooters</a> </li>
+                    <li> <a href="#">Arcade</a> </li>
+                </ul>
+            </div> <!-- /#sidebar-wrapper -->
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <h3> Top downloadable games</h3>
+                <div class="row">
+                    <div class="col-md-2 mr-5 ml-5">
+                        <div class="thumbnail">
+                            <a href="{{url_for('static', filename = 'Dota2.png')}}">
+                                <img src="{{url_for('static', filename = 'Dota2.png')}}" alt="Dota2" style="width:100%">
+                                <div class="caption">
+                                    <p>Dota2</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-2 mr-5">
+                        <div class="thumbnail">
+                            <a href="{{url_for('static', filename = 'Csgo.png')}}">
+                                <img src="{{url_for('static', filename = 'Csgo.png')}}" alt="Csgo" style="width:100%">
+                                <div class="caption">
+                                    <p>CSgo</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-2 mr-5">
+                        <div class="thumbnail">
+                            <a href="{{url_for('static', filename = 'wow.png')}}">
+                                <img src="{{url_for('static', filename = 'wow.png')}}" alt="Wow" style="width:100%">
+                                <div class="caption">
+                                    <p>WOW</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+
+                <div style="text-align: center;"><div class="border border-light p-3 mb-4 text-center">
+                     <h3 >Laboratory work №3</h3>
+                <h3 >To take a look at all the data</h3>
+                  <div class="text-center ">
+                    <button  onclick="location.href='http://127.0.0.1:5000/api/all'" type="button"
+                             class="btn btn-outline-dark mr-2">
+                        Get Data Structures
+                    </button>
+                  </div>
+                </div></div> <!-- /#page-content-wrapper -->
+        </div> <!-- /#wrapper -->
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script> <!-- Menu Toggle Script -->
+    </div>
+</body>
+</html>

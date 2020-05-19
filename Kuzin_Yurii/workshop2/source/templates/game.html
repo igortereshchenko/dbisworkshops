@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GamesUtorent</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/main.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/sidenav.css')}}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" id = "main" style="background-color:lightskyblue;text-align:center">
+        <a class="navbar-brand" href= {{url_for('index')}}>
+            <img src="{{url_for('static', filename = 'logo.png')}}" width="300" height="80" alt="">
+         </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav p-2">
+
+            <li class="nav-item">
+                <h3><a class="nav-link" href=" {{url_for('sign_in')}}">Sign in</a></h3>
+            </li>
+            <li class="nav-item">
+                <h3><a class="nav-link" href="{{url_for('sign_up')}}">Sign up</a></h3>
+            </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0 mr-auto">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+
+        </div>
+    </nav>
+    <div id="wrapper" class="toggled">
+
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <form action = "http://127.0.0.1:5000/api/Dota2/submit" method = "post">
+                    <div class="form-group">
+                        <label>Name</label>
+                    <input type="text" name = "title" class="form-control" value="{{ game['Title'] }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Genre</label>
+                    <input type="text" name = "genre" class="form-control" value="{{ game['Genre'] }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Price</label>
+                    <input type="text" name = "version" class="form-control" value="{{ game['Version'] }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Short description</label>
+                    <input type="text" name = "descr" class="form-control" value="{{ game['Description'] }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Number of purchases</label>
+                    <input type="text" name = "number" class="form-control" value="{{ game['Number of downloads'] }}">
+                    </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div> <!-- /#page-content-wrapper -->
+        </div> <!-- /#wrapper -->
+</body>
+</html>
