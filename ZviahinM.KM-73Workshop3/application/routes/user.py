@@ -8,7 +8,6 @@ from ..forms import UserForm
 
 @app.route('/user', methods=['POST'])
 def create_user():
-    """Create a user via query string parameters."""
     first_name = request.form['first_name']
     last_name = request.form['last_name']
     email = request.form['email']
