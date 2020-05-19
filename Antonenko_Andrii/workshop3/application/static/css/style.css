@@ -6,3 +6,7 @@ li {
     display: block;
     margin-bottom: 10px;
 }
+
+select {
+    max-height: 100px;
+}

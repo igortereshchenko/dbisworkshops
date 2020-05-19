@@ -11,13 +11,22 @@
                     <br/>
                     <span class="field-name">Created:</span>
                     <span class="field-value">{{ group.created }}</span>
+                    <span class="field-name">Users:</span>
+                    <br/>
+                    <ol>
+                        {% for user in group.users %}
+                            <li>
+                                <span class="field-name">{{ user.email }}</span>
+                            </li>
+                        {% endfor %}
+                    </ol>
                 </li>
             {% endfor %}
         </ul>
             <form action="" method="post">
                 <p>
                     {{ form.name.label }} <br>
-                    {{ form.name(size=30) }}
+                    {{ form.name(size=32) }}
                 </p>
                 <p>{{ form.submit() }}</p>
             </form>
