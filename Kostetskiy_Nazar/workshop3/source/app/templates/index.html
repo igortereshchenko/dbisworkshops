@@ -1,0 +1,208 @@
+<html>
+<head>
+    <title>Hello</title>
+    <script type = "module">
+            function select_tab(id) {
+                // remove selected class from all buttons
+                document.querySelectorAll(".route").forEach(item => item.classList.remove('selected'));
+                // select clicked element (visually)
+                document.querySelectorAll("#" + id).forEach(item => item.classList.add('selected'));
+            }
+            function load_content(id) {
+                console.log("Loading content for {" + id + "}");
+                document.querySelector("#content").innerHTML = 'Content loading for /' + id + '...';
+
+                if(id==='login'){
+                    document.querySelector("#content").innerHTML = '<form name="Sign in" class="login-form" method="post" action={{url_for("login")}}>\n' +
+                        '    <p>Email:\n' +
+                        '        <label>\n' +
+                        '            <input maxlength="25" size="40" type="email" name="email">\n' +
+                        '        </label></p>\n' +
+                        '   <p>Password\n' +
+                        '       <label>\n' +
+                        '           <input type="password" maxlength="25" size="40" name="password">\n' +
+                        '       </label>\n' +
+                        '   </p>\n' +
+                        '    <p class="submit">\n' +
+                        '         <button type="button" name="submit" value="submit"  onclick="login_req()">submit</button></p>\n' +
+                        '</form>'
+                }
+                else if(id==='register'){
+                    document.querySelector("#content").innerHTML = '<form name="Sign up" method="post"  class="register-form" action={{url_for('register')}}>\n'+
+'                                                                    <p>Login\n'+
+'                                                                        <label>\n'+
+'                                                                        <input maxlength="25" size="40" name="username" placeholder="username">\n'+
+'                                                                        </label></p>\n'+
+'                                                                    <p>Email\n'+
+'                                                                        <label>\n'+
+'                                                                        <input type="email" maxlength="25" size="40" name="email" placeholder="email">\n'+
+'                                                                    </label></p>\n'+
+'                                                                    <p>Password<label>\n'+
+'                                                                        <input type="password" maxlength="25" size="40" name="password" placeholder="password">\n'+
+'                                                                    </label></p>\n'+
+'                                                                         <p class="submit">\n'+
+'                                                                         <button type="button" name="submit" value="submit"  onclick="register_req()">submit</button>\n'+
+'                                                                         </p>\n'+
+'                                                                </form>'
+
+                }
+                else if(id==='logout'){
+                    console.log('logout...')
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('get', "{{ url_for('logout') }}", true);
+                    xhr.send();
+                }
+                // Update text "Content loading for {id}..."
+                // Of course, here you would do you content loading magic
+                // Perhaps run Fetch API to update resources
+
+            }
+            function push(event) {
+                // Get id attribute of the box or button or link clicked
+                let id = event.target.id;
+                // Visually select the clicked button/tab/box
+                select_tab(id);
+                // Update Title in Window's Tab
+                document.title = id;
+                // Load content for this tab/page
+                load_content(id);
+                // Finally push state change to the address bar
+                window.history.pushState({id}, `${id}`, `/${id}`);
+            }
+            window.onload = event => {
+                // Add history push() event when boxes are clicked
+                window["home"].addEventListener("click", event => push(event))
+                window["about"].addEventListener("click", event => push(event))
+                window["gallery"].addEventListener("click", event => push(event))
+                window["contact"].addEventListener("click", event => push(event))
+                try {
+                    window["register"].addEventListener("click", event => push(event))
+                    window["login"].addEventListener("click", event => push(event))
+                }
+                catch (e) {
+                    
+                }
+                try {
+                window["logout"].addEventListener("click", event => push(event))
+                }
+                catch (e) {
+                    
+                }
+            }
+            // Listen for PopStateEvent (Back or Forward buttons are clicked)
+            window.addEventListener("popstate", event => {
+                // Grab the history state id
+                let stateId = event.state.id;
+                // Show clicked id in console (just for fun)
+                console.log("stateId = ", stateId);
+                // Visually select the clicked button/tab/box
+                select_tab(stateId);
+                // Load content for this tab/page
+                load_content(stateId);
+            });
+        </script>
+    <style>
+            * { /* global font */
+                font-family: Verdana;
+                font-size: 18px;
+            }
+            #root { display: flex; flex-direction: row; }
+            #content { display: flex;
+                display: block;
+                width: 800px;
+                height: 1000px;
+                /* vertically centered text */
+                line-height: 250px;
+                border: 2px solid #555;
+                margin: 32px;
+                text-align: center;
+            }
+            .route {
+                cursor: pointer;
+                justify-content: center;
+                width: 150px;
+                height: 50px;
+                /* vertically centered text */
+                line-height: 50px;
+                position: relative;
+                border: 2px solid #555;
+                background: white;
+                text-align: center;
+                margin: 16px;
+            }
+            .route.selected { background: yellow; }
+        </style>
+</head>
+
+<body>
+<script>
+             function serialize(form) {
+
+            // Setup our serialized data
+            var serialized = {};
+
+            // Loop through each field in the form
+            for (var i = 0; i < form.elements.length; i++) {
+
+                var field = form.elements[i];
+
+                // Don't serialize fields without a name, submits, buttons, file and reset inputs, and disabled fields
+                if (!field.name || field.disabled || field.type === 'file' || field.type === 'reset' || field.type === 'submit' || field.type === 'button') continue;
+
+                // If a multi-select, get all selections
+                if (field.type === 'select-multiple') {
+                    for (var n = 0; n < field.options.length; n++) {
+                        if (!field.options[n].selected) continue;
+                        serialized[field.name] = field.options[n].value;
+                    }
+                }
+
+                // Convert field data to key: value
+                else if ((field.type !== 'checkbox' && field.type !== 'radio') || field.checked) {
+                    serialized[field.name] = field.value;
+                }
+            }
+
+            return serialized
+
+        }
+            function register_req() {
+                let form = document.getElementsByClassName('register-form')[0];
+                // Todo: validate
+                const formData = serialize(form);
+                var xhr = new XMLHttpRequest();
+                xhr.open('post', "{{ url_for('register') }}", true);
+                xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+                xhr.send(JSON.stringify(formData));
+            }
+            function login_req() {
+                let form = document.getElementsByClassName('login-form')[0];
+                console.log('form:', form);
+                // Todo: validate
+                const formData = serialize(form);
+                var xhr = new XMLHttpRequest();
+                xhr.open('post', "{{ url_for('login') }}", true);
+                xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+                xhr.send(JSON.stringify(formData));
+            }</script>
+<section id = "root">
+    <section class = "route" id = "home">/home</section>
+    <section class = "route" id = "about">/about</section>
+    <section class = "route" id = "gallery">/gallery</section>
+    <section class = "route" id = "contact">/contact</section>
+    <section class = "route" id = "help">/help</section>
+    {% if current_user.is_anonymous %}
+    <section class = "route" id = "login">/login</section>
+    <section class = "route" id = "register">/register</section>
+    {% else %}
+    <div class="logout">
+        <section class = "route" id = "logout">/logout</section>
+    </div>
+    {% endif %}
+</section>
+
+<main id = "content">Content loading...</main>
+
+</body>
+
+</html>
