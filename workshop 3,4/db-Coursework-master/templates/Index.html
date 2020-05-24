@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First page</title>
+</head>
+<body>
+    <h1>Welcome,
+        {%if nickname %}
+            {{nickname}}
+        {% else %}
+            guest
+        {% endif%}!
+    </h1>
+    {%if not nickname %}
+        <div>
+            <a href="/login" >{{form.auth}}</a>
+            <br><br>
+            <a href="/registration">{{form.reg}}</a>
+            <br>
+        </div>
+    {% endif %}
+
+    {%if nickname %}
+            <div> <a href="/logout">{{form.logout}}</a>
+                 <br><br>
+                <a href="/showUser">{{form.show_user}}</a>
+                <br><br>
+                <a href="/showTheme">{{form.show_theme}}</a>
+                <br><br>
+                <a href="/showResourse">{{form.show_resourse}}</a>
+                <br><br>
+                <a href="/showInfo">{{form.show_info}}</a>
+                <br><br>
+                <a href="/showStat">{{form.show_stat}}</a>
+
+            </div>
+    {% endif %}
+</body>
+</html>
