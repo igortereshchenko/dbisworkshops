@@ -33,31 +33,31 @@ def hello():
 def signup():
 	form = SignUpForm()
 	if form.is_submitted():
-		#try:
-		oracle_connection_string = 'oracle+cx_oracle://{username}:{password}@{host}:{port}/{sid}'
+		try:
+			oracle_connection_string = 'oracle+cx_oracle://{username}:{password}@{host}:{port}/{sid}'
 
-		engine = create_engine( oracle_connection_string.format(
+			engine = create_engine( oracle_connection_string.format(
 
-		username="SYSTEM",
-		password="oracle",
-		sid="XE",
-		host="localhost",
-		port="1521",
-		database="PROJECT",
-		), echo=True)
+			username="SYSTEM",
+			password="oracle",
+			sid="XE",
+			host="localhost",
+			port="1521",
+			database="PROJECT",
+			), echo=True)
 
-		Session = sessionmaker(bind=engine)
-		session = Session()
+			Session = sessionmaker(bind=engine)
+			session = Session()
 
-		result = request.form
-		adddata = user_database(result['user_name'], result['user_mail'], result['user_age'], result['login'], result['user_pass'])
-		session.add(adddata)
-		session.commit()
-		return render_template('confirmIsOkey.html', result = result)
+			result = request.form
+			adddata = user_database(result['user_name'], result['user_mail'], result['user_age'], result['login'], result['user_pass'])
+			session.add(adddata)
+			session.commit()
+			return render_template('confirmIsOkey.html', result = result)
 
-		#except:
-		#	result = request.form
-		#	return render_template('confirmIsNotOkey.html', result = result)
+		except:
+			result = request.form
+			return render_template('confirmIsNotOkey.html', result = result)
 		
 	return render_template('signup.html', form = form)
 
@@ -66,30 +66,30 @@ def signup():
 def todotask():
 	form = CreateTask()
 	if form.is_submitted():
-		#try:
-		oracle_connection_string = 'oracle+cx_oracle://{username}:{password}@{host}:{port}/{sid}'
-		engine = create_engine( oracle_connection_string.format(
+		try:
+			oracle_connection_string = 'oracle+cx_oracle://{username}:{password}@{host}:{port}/{sid}'
+			engine = create_engine( oracle_connection_string.format(
 
-		username="SYSTEM",
-		password="oracle",
-		sid="XE",
-		host="localhost",
-		port="1521",
-		database="PROJECT"),
-		echo=True)
+			username="SYSTEM",
+			password="oracle",
+			sid="XE",
+			host="localhost",
+			port="1521",
+			database="PROJECT"),
+			echo=True)
 
-		Session = sessionmaker(bind=engine)
-		session = Session()
+			Session = sessionmaker(bind=engine)
+			session = Session()
 
-		result = request.form
-		adddata = todolist(result['user_id'], result['todolist_name'], result['description_of_todo'], result['time_creating'], 1)
-		session.add(adddata)
-		session.commit()
-		return render_template('confirmIsOkey.html', result = result)
+			result = request.form
+			adddata = todolist(result['user_id'], result['todolist_name'], result['description_of_todo'], result['time_creating'], 1)
+			session.add(adddata)
+			session.commit()
+			return render_template('confirmIsOkey.html', result = result)
 
-		#except:
-		#	result = request.form
-		#	return render_template('confirmIsNotOkey.html', result = result)
+		except:
+			result = request.form
+			return render_template('confirmIsNotOkey.html', result = result)
 		
 	return render_template('todo.html', form = form)
 
