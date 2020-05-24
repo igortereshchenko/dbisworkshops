@@ -14,7 +14,6 @@ from forms.forms import SignUpForm, CreateTask
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'pasha'
 
-
 @app.route("/", methods = ['GET'])
 def hello():
   return (
