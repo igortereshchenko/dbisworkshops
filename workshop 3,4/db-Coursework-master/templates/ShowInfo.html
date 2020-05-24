@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+<a href="/">{{myform.back}} </a>
+
+<form action = "http://localhost:5000/showInfo" method = post>
+    {{ myform.hidden_tag() }}
+    <div>
+    {{myform.info.label}} {{myform.info}}
+    </div>
+        <div>
+            <table>
+                <tr>{{myform.info_list.label}}</tr>
+                {% for current in myform.info_list %}
+                <tr>
+                    <td>{{current}}</td> <td>{{current.label}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+    <div>
+        {{result}}
+    </div>
+    {{myform.delete}} {{myform.add}} <br><br>
+    {{myform.info.label}} {{myform.filter_n}}<br>
+    {{myform.info.label}} {{myform.filter_T}}<br>
+    {{myform.filtering}}
+</form>
+</body>
+</html>

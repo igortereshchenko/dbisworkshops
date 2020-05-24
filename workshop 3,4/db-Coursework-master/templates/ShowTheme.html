@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+<a href="/">{{myform.back}} </a>
+
+<form action = "http://localhost:5000/showTheme" method = post>
+    {{ myform.hidden_tag() }}
+    <div>
+    {{myform.theme.label}} {{myform.theme}}
+    </div>
+        <div>
+            <table>
+
+                    <tr>{{myform.theme_list.label}}</tr>
+                {% for current in myform.theme_list %}
+                <tr>
+                    <td>{{current}}</td> <td>{{current.label}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+    <div>
+        {{result}}
+    </div>
+    {{myform.delete}} {{myform.add}} {{myform.choose}} {{myform.update}}  {{myform.filtering}}
+</form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+   <body>
+
+      <h2 style = "text-align: center;">Login Form</h2>
+
+
+      <form action = "http://localhost:5000/" method = post>
+         <fieldset>
+            <legend>Login Form</legend>
+             {{ myform.hidden_tag() }}
+            <div>
+                {{ myform.username.label }}      {{ myform.username }} <br>
+                {% for message in myform.username.errors %}
+                         <div>{{ message }}</div>
+                {% endfor %}
+
+                {{ myform.password.label }}      {{ myform.password }}<br>
+
+
+                {% for message in myform.password.errors %}
+                         <div>{{ message }}</div>
+                {% endfor %}
+               {{ myform.submit }}
+            </div>
+             {{result}}
+         </fieldset>
+      </form>
+
+   </body>
+</html>
