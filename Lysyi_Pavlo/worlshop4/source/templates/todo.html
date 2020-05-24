@@ -1,0 +1,24 @@
+{% block content %}
+
+<h2> To do form </h2>
+<form action ="" method ="post">
+  <p>
+    {{form.user_id.label}}<br>
+    {{form.user_id(size=30)}}
+  </p>
+  <p>
+    {{form.todolist_name.label}}<br>
+    {{form.todolist_name(size=30)}}
+  </p>
+  <p>
+    {{form.description_of_todo.label}}<br>
+    {{form.description_of_todo(size=60)}}
+  </p>
+  <p>
+    {{form.time_creating.label}}<br>
+    {{form.time_creating(size=30)}}
+  </p>
+  <p>{{form.submit()}}</p>
+</form>
+
+{%endblock %}
