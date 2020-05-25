@@ -13,7 +13,7 @@ class Users(Base):
     username = Column(String, unique=True)
     password = Column(String, nullable=False)
     country_id = Column(Integer, ForeignKey('Country.id'))
-    user = relationship("Note", back_populates="Users")
+    user = relationship("Note", backref="Users")
     
     @classmethod
     def add_user(self,u_username, u_password, u_country_name):
@@ -34,9 +34,9 @@ class Country(Base):
     __tablename__ = 'Country'
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
-    user = relationship("Users", back_populates="Country")
-    numbersAid = relationship("NumbersAid", back_populates="Country")
-    hospital = relationship("Hospital", back_populates="Country")
+    user = relationship("Users", backref="Country")
+    numbersAid = relationship("NumbersAid", backref="Country")
+    hospital = relationship("Hospital", backref="Country")
     
     @classmethod
     def add_country(self,u_name):
