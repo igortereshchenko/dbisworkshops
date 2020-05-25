@@ -11,20 +11,17 @@ session = Session()
 def check_user_exist(username):
 
     try:
-        q = session.query(Clients).filter_by(Clients.id == '1')
-
-        if session.query(Clients.id).filter_by(q.exists()).scalar() != 'None':
+        if bool(session.query(Clients.id).filter_by(id = '1').first()) is False:
 
             row = Clients(id = '1',client_username = username)
             session.add(row)
             session.commit()
-            search_query = (session.query(Clients).filter_by(id == '1').one()).client_username
+            search_query = (session.query(Clients).filter_by(id = '1').one()).client_username
 
             print('Hello,', search_query)
 
         else:
-            exsist = session.query(Clients).filter_by(Clients.client_username == username)
-            if session.query(Clients.client_username).filter(exsist.exists()).scalar() != 'None':
+            if bool(session.query(Clients.client_username).filter_by(client_username = username).first()) is True:
                 print('User already exist')
 
             else:
@@ -48,12 +45,11 @@ def check_mark_value(id,mark,values,id_client,dish_id,text):
         session.commit()
 
 def check_is_dish_exist(dish_name):
-    exsist = session.query(Dishes).filter(Dishes.dish_name == dish_name)
-    if session.query(Dishes.dish_name).filter(exsist.exists()).scalar() == None:
+    if bool(session.query(Dishes.dish_name).filter_by(dish_name = dish_name).first()) is False:
         print('This dish is not exist in our database')
     else:
-        result = session.query(Dishes).filter(Dishes.dish_name == dish_name)
-        print("Recipe:", result.text_recipe)
+        result = session.query(Dishes).filter(Dishes.dish_name == dish_name).one()).text_recipe
+        print("Recipe:", result)
 
 
 
