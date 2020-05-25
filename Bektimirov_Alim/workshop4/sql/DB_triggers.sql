@@ -79,3 +79,21 @@ BEGIN
         raise_application_error(-20002,'The year of release of the film cannot be earlier than 1960.');
     END IF;
 END;
+
+CREATE OR REPLACE TRIGGER round_rating
+BEFORE INSERT ON liked_film_list
+FOR EACH ROW
+DECLARE
+    new integer := :new.rating;
+BEGIN
+    :new.rating := round(new,2);
+END;
+
+CREATE OR REPLACE TRIGGER round_rating1
+BEFORE INSERT ON expected_film_list
+FOR EACH ROW
+DECLARE
+    new integer := :new.rating;
+BEGIN
+    :new.rating := round(new,2);
+END;
