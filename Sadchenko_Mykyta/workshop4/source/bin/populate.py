@@ -2,7 +2,7 @@ import datetime
 from Sadchenko_Mykyta.workshop4.source.models import (
 		User, Note, UserNoteParams, PrivateAccess
 	)
-from Sadchenko_Mykyta.workshop4.source.OracleDb import OracleDb
+from Sadchenko_Mykyta.workshop4.source.dao.OracleDb import OracleDb
 
 db = OracleDb()
 
