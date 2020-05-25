@@ -1,0 +1,12 @@
+{% block content %}
+
+<h2> prediction form </h2>
+<form action ="" method ="post">
+  <p>
+    {{form.prediction_description.label}}<br>
+    {{form.prediction_description(size=120)}}
+  </p>
+  <p>{{form.submit()}}</p>
+</form>
+
+{%endblock %}
