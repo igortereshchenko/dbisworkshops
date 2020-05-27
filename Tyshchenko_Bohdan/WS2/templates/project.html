@@ -1,0 +1,24 @@
+<html>{% extends "main.html" %}
+
+{% block content %}
+
+<title>Project</title>
+<h1> Project</h1>
+
+{% if dictionary %}
+	<p>Name: {{dictionary["name"]}}</p>
+	<p>Date added: {{dictionary["date_added"]}}</p>
+	<p>Document: {{dictionary["document"]}}</p>
+	<p>Author: {{dictionary["author"]}}</p>
+	<p>Deadline: {{dictionary["deadline"]}}</p>
+{% endif %}
+
+<form action = "http://localhost:5000/api/all" method = "POST">
+         <p>Name <input type = "text" name = "name" /></p>
+         <p>Date added <input type = "text" name = "date_added" /></p>
+         <p>Document<input type = "text" name = "document" /></p>
+         <p>Author <input type ="text" name = "author" /></p>
+		 <p>Deadline<input type ="text" name = "deadline" /></p>
+         <p><input type = "submit" value = "submit" /></p>
+</form>
+{% endblock %}
