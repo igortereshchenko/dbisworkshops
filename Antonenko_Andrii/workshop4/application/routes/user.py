@@ -1,7 +1,7 @@
-from flask import request, render_template, redirect, abort
+from flask import request, render_template, redirect, abort, jsonify
 from datetime import datetime as dt
 from flask import current_app as app
-from ..models import User
+from ..models import User, User_Group
 from .. import db
 from ..forms import UserForm
 
@@ -33,3 +33,13 @@ def get_all_users():
     users = db.session.query(User)
     form = UserForm()
     return render_template('users.jinja2', users=users, form=form)
+
+
+@app.route('/user/<user_id>', methods=['DELETE'])
+def delete_user(user_id):
+    # We need to add CASCADE deleting instead of
+    db.session.query(User_Group).filter(User_Group.user_id == int(user_id)).delete()
+    db.session.query(User).filter(User.id == int(user_id)).delete()
+    db.session.commit()
+
+    return jsonify(redirect=request.host + '/user'), 201

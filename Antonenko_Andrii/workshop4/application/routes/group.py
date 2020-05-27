@@ -1,4 +1,4 @@
-from flask import request, render_template, redirect, abort
+from flask import request, render_template, redirect, abort, jsonify
 from datetime import datetime as dt
 from flask import current_app as app
 from ..models import Group, User, User_Group
@@ -57,3 +57,33 @@ def add_user_to_group():
         db.session.commit()
     return redirect('/group')
 
+
+@app.route('/group/<group_id>', methods=['DELETE'])
+def delete_group(group_id):
+    # We need to add CASCADE deleting instead of
+    db.session.query(User_Group).filter(User_Group.group_id == int(group_id)).delete()
+    db.session.query(Group).filter(Group.id == int(group_id)).delete()
+    db.session.commit()
+
+    return jsonify(redirect=request.host + '/group'), 201
+
+#
+# @app.route('/group/<group_id>', methods=['PUT'])
+# def update_group(group_id):
+#     name = request.form['name']
+#     if group_id:
+#         db.session.query(Group).filter(Group.id == int(group_id)).update({name: name})
+#         db.session.commit()
+#     return jsonify(redirect=request.host + '/group'), 201
+#
+#
+# @app.route('/group_update/<group_id>', methods=['GET'])
+# def group_update_page(group_id):
+#     form = GroupForm()
+#     group = Group.query.get(group_id)
+#     form.name.data = group.name
+#     return render_template(
+#         'update_group.jinja2',
+#         form=form,
+#         update_url='http://' + request.host + '/group/' + str(group_id)
+#     )

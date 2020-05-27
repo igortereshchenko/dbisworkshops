@@ -3,6 +3,10 @@
 {% block content %}
     <div class="container">
         <h1>Workshop 4(User)</h1>
+        <nav>
+            <a href="http://localhost:5000/group">Groups</a>
+            <a href="http://localhost:5000/group/add-user">Add users to group</a>
+        </nav>
         <h4>Create user</h4>
         <form action="" method="post">
             <p>
@@ -46,8 +50,8 @@
                             <span class="field-value">{{ user.created }}</span>
                         </td>
                         <td>
-                            <button class="delete-btn" data-id={{ user.id }}>Delete</button>
-                            <button class="update-btn" data-id={{ user.id }}>Update</button>
+                            <button class="delete-user-btn" data-id={{ user.id }}>Delete</button>
+                            <button class="update-user-btn" data-id={{ user.id }}>Update</button>
                         </td>
                     </tr>
                 {% endfor %}
