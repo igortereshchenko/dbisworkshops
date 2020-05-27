@@ -1,0 +1,11 @@
+<html>
+<p>main</p>
+<li>
+	<a href={{ url_for('welcome')}}> Hi</a>
+	<a href={{ url_for('action', action='project')}}> Project</a>
+	<a href={{ url_for('action', action='deputee')}}> Deputee</a>
+	<a href={{ url_for('action', action='all')}}> All</a>
+</li>
+{% block content %}
+
+{% endblock %}
