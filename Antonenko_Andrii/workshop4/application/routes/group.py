@@ -66,24 +66,3 @@ def delete_group(group_id):
     db.session.commit()
 
     return jsonify(redirect=request.host + '/group'), 201
-
-#
-# @app.route('/group/<group_id>', methods=['PUT'])
-# def update_group(group_id):
-#     name = request.form['name']
-#     if group_id:
-#         db.session.query(Group).filter(Group.id == int(group_id)).update({name: name})
-#         db.session.commit()
-#     return jsonify(redirect=request.host + '/group'), 201
-#
-#
-# @app.route('/group_update/<group_id>', methods=['GET'])
-# def group_update_page(group_id):
-#     form = GroupForm()
-#     group = Group.query.get(group_id)
-#     form.name.data = group.name
-#     return render_template(
-#         'update_group.jinja2',
-#         form=form,
-#         update_url='http://' + request.host + '/group/' + str(group_id)
-#     )
