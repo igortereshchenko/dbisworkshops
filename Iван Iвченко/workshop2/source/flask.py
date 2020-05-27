@@ -22,7 +22,6 @@ def apiget(action):
 @app.route('/api', methods=['POST'])
 def apipost():
 
-
    if request.form["action"] == "vendor_update":
 
       vendor_dictionary["vendor_name"] = request.form["name"]
