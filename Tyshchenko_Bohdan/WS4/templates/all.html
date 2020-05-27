@@ -1,0 +1,36 @@
+<html>{% extends "main.html" %}
+
+{% block content %}
+
+<title>All</title>
+<h1> All</h1>	
+{% if dictDep %}
+<table border='1'>
+            {% for key, value in dictDep.items() %}
+            <tr>
+                <th>
+                    {{key}}
+                </th>
+                <td>
+                    {{value}}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+{% endif %}
+
+{% if dictProj %}
+	<table border='1'>
+            {% for key, value in dictProj.items() %}
+            <tr>
+                <th>
+                    {{key}}
+                </th>
+                <td>
+                    {{value}}
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+{% endif %}
+{% endblock %}

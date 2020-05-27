@@ -1,0 +1,29 @@
+<html>
+{% extends "main.html" %}
+
+{% block content %}
+
+
+<title>Deputee</title>
+<h1> Deputee</h1>
+
+{% if dictionary %}
+	<p>Name: {{dictionary["name"]}}</p>
+	<p>Fraction: {{dictionary["fraction"]}}</p>
+	<p>Face: {{dictionary["face"]}}</p>
+	<p>Password: {{dictionary["password"]}}</p>
+	<p>Head: {{dictionary["head"]}}</p>
+	<p>Mobile: {{dictionary["mobile"]}}</p>
+	{% endif %}
+	
+	<form action = "http://localhost:5000/api/all" method = "POST">
+         <p>Name <input type = "text" name = "name" /></p>
+         <p>fraction <input type = "text" name = "fraction" /></p>
+         <p>face <input type = "text" name = "face" /></p>
+         <p>password <input type ="text" name = "password" /></p>
+		 <p>head <input type ="text" name = "head" /></p>
+		 <p>mobile <input type ="text" name = "mobile" /></p>
+         <p><input type = "submit" value = "submit" /></p>
+      </form>
+	
+{% endblock %}
