@@ -1,0 +1,54 @@
+{% extends "layout.jinja2" %}
+
+{% block content %}
+    <div class="container">
+        <h1>Workshop 4(Groups)</h1>
+        <nav>
+            <a href="http://localhost:5000/user">Users</a>
+            <a href="http://localhost:5000/group/add-user">Add users to group</a>
+        </nav>
+        <h4>Create groups</h4>
+        <form action="" method="post">
+            <p>
+                {{ form.name.label }} <br>
+                {{ form.name(size=32) }}
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+        <h4>List of groups</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Created Date</th>
+                    <th>Users</th>
+                    <th>Control panel</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for group in groups %}
+                    <tr>
+                        <td>
+                            <span class="field-value">{{ group.name }}</span>
+                        </td>
+                        <td>
+                            <span class="field-value">{{ group.created }}</span>
+                        </td>
+                        <td>
+                            <ol>
+                                {% for user in group.users %}
+                                    <li>
+                                        <span class="field-value">{{ user.email }}</span>
+                                    </li>
+                                {% endfor %}
+                            </ol>
+                        </td>
+                        <td>
+                            <button class="delete-group-btn" data-id={{ group.id }}>Delete</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

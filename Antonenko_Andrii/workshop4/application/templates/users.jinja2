@@ -1,0 +1,60 @@
+{% extends "layout.jinja2" %}
+
+{% block content %}
+    <div class="container">
+        <h1>Workshop 4(User)</h1>
+        <nav>
+            <a href="http://localhost:5000/group">Groups</a>
+            <a href="http://localhost:5000/group/add-user">Add users to group</a>
+        </nav>
+        <h4>Create user</h4>
+        <form action="" method="post">
+            <p>
+                {{ form.first_name.label }} <br>
+                {{ form.first_name(size=30) }}
+            </p>
+            <p>
+                {{ form.last_name.label }} <br>
+                {{ form.last_name(size=30) }}
+            </p>
+            <p>
+                {{ form.email.label }} <br>
+                {{ form.email(size=30) }}
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+        <h4>List of users</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Created Date</th>
+                    <th>Control panel</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>
+                            <span class="field-value">{{ user.first_name }}</span>
+                        </td>
+                        <td>
+                            <span class="field-value">{{ user.last_name }}</span>
+                        </td>
+                        <td>
+                            <span class="field-value">{{ user.email }}</span>
+                        </td>
+                        <td>
+                            <span class="field-value">{{ user.created }}</span>
+                        </td>
+                        <td>
+                            <button class="delete-user-btn" data-id={{ user.id }}>Delete</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
