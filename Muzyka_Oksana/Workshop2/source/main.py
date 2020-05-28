@@ -7,11 +7,11 @@ app = Flask(__name__)
 @app.route('/api/<action>', methods = ['GET', 'POST'])
 def apiget(action):
 	if action == 'group':
-		return render_template('group.html', edition = groups)
+		return render_template('group.html', group = groups)
 	elif action == 'customer':
 		return render_template('customer.html', customer = customers)
 	elif action == 'all':
-		return render_template('all.html', edition = groups, customer = customers)
+		return render_template('all.html', group = groups, customer = customers)
 	else:
 		return render_template('404.html')
 
