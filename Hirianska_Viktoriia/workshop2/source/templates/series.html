@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>series</title>
+</head>
+<body>
+
+	<form action = "/api" method = "POST" id="form_info">
+		<p>Title <input type = "text" name = "title" value="{{series.get('series_title')}}"/></p>
+		<p>Genre <input type = "text" name = "genre" value="{{series.get('series_genre')}}" /></p>
+		<p>Year <input type = "text" name = "year" value="{{series.get('series_year')}}" /></p>
+		<p>Country <input type = "text" name = "country" value="{{series.get('series_country')}}" /></p>
+	</form>
+
+    <button type="submit" form="form_series" name="action" value="series_update">Submit</button>
+	
+</body>
+</html>
