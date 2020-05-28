@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+	<body>
+		<form action = '/api' method = 'POST' id = 'group'>
+			<p>Шифр групи <input type = 'text' name = 'Name' value = "{{group.get('Name')}}"/></p>
+			<p>Рівень <input type = 'text' name = 'Level' value = "{{group.get('Level')}}"/></p>
+			<p>Розклад <input type = 'text' name = 'Timetable' value = "{{group.get('Timetable')}}"/></p>
+			<p>Викладачі <input type = 'text' name = 'Teachers' value = "{{group.get('Teachers')}}"/></p>
+			<p>Вартість <input type = 'text' name = 'Price' value = "{{group.get('Price')}}"/></p>
+			
+		</form>
+		<button type = 'submit' form='group' name="action" value='submit'>Submit</button>
+
+	</body>
+</html>
