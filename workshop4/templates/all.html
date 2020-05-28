@@ -1,0 +1,28 @@
+{% extends "basis.html" %}
+
+{% block head %} 
+    <meta charset="UTF-8">
+    <title>all</title>
+{% endblock %}
+
+{% block content%}
+<div style="text-align:left">
+    <div>
+        <h3>Hike table</h3>
+        {% for row in select %}
+            <table border='1'>
+                {% for key, value in row[1:] %}
+                    <tr>
+                        <th>
+                            {{key}}
+                        </th>
+                        <td>
+                            {{value}}
+                        </td>
+                    </tr>
+                    {% endfor %}
+            </table>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %} 
