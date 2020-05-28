@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>404 page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <br>
+        <h2>Not correct action value: {{action_value}}</h2>
+        <p>Correct values -
+            {%for i in range(0, correct_pages_len)%}
+                {% if i == correct_pages_len-1 %}
+                    {{correct_pages[i]}}
+                {% else %}
+                    {{correct_pages[i]}} ,
+                {% endif %}
+            {%endfor%}
+        </p>
+    </div>
+</body>
+</html>
