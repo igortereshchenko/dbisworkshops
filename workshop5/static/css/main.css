@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css?family=Buenard&display=swap');
+
+p {
+	font-family: 'Buenard', serif;
+	font-size: 16pt;
+}
+
+.block_1 h1 {
+	font-size: 46pt;
+	font-family: 'Jockey One', sans-serif;
+	margin: 70px 0px 10px 5px;
+}
+
+.blockquote {
+	font-size: 23pt;
+	margin: 120px -165px 0px 20px;
+}
+
+.name {
+	margin: 0px -115px 0px 20px;
+}
+
+#logo {
+	height: 150px;
+}
+
+
+.right_corner {
+	position: relative;
+}
+
+.right_corner div{
+	width: 0; 
+	height: 0;
+	border-top: 410px solid #E8E8E8;
+	border-left: 555px solid transparent;
+}
+
+.right_corner img {
+	height: 400px;
+	top: 0px;
+	right: 0px;
+	position: absolute;
+}
+
+
+
+/*block_2*/
+
+.block_2 {
+	height: 450px;
+}
+
+.tx {
+	margin-top: 120px; 
+}
+
+
+.segment {
+	position: relative;
+}
+
+
+.segment div {
+	top: 59px;
+	left: 17px;
+	width: 0; 
+	height: 0;
+	border-left: 250px solid transparent;
+	border-right: 250px solid transparent;
+	border-top: 350px solid #83A7C9;
+	border-radius: 50%;
+	position: absolute;
+}
+
+.segment img {
+	top: 50px;
+	left: 25px;
+	height: 425px;
+	position: absolute;
+}
+
+
+/*block_3*/
+
+.block_3 p {
+	margin-top: 50px;
+	padding: 65px 20px 35px 20px; 
+}
+
+.block_3 {
+	height: 400px;
+}
+
+
+.get_data {
+	margin-left: 115px; 
+}
+
+.circle {
+	position: relative;
+}
+
+
+.circle div{
+	right: 115px;
+	top: 170px;
+	width: 360px; 
+	height: 360px;
+	position: absolute;
+	background: #83A7C9;
+	border-radius: 50%;
+
+}
+
+.circle img {
+	right: 100px;
+	top: 200px;
+	height: 360px;
+	position: absolute;
+}
+
+.circles {
+	position: relative;
+}
+
+.circles div {
+	width: 280px; 
+	height: 280px;
+	background: #83A7C9;
+	position: absolute;
+	border-radius: 50%;
+
+}
+
+#circle1 {
+	top: 850px;
+	right: 160px; 
+}
+
+#circle2 {
+	top: 1020px;
+	right: 0;
+}
+
+#circle3 {
+	top: 1050px;
+	right: 240px; 
+}
+
+.circles img {
+	top: 940px;
+	right: 95px;
+	z-index: 2;
+	height: 420px;
+	position: absolute;
+}
+
+/*block_4*/
+
+.block_4 {
+	height: 410px;
+}
+
+
+.block_4 form {
+	margin: 100px 70px 0px 100px;
+}
+
+
+/*block_5*/
+
+.block_5 {
+	height: 400px;
+}
+
+.left_corner {
+	position: relative;
+}
+
+.left_corner div {
+	width: 0; 
+	height: 0; 
+	position: absolute;
+	border-bottom: 400px solid #E8E8E8;
+	border-right: 800px solid transparent;
+}
+
+.left_corner img {
+	top: 60px;
+	left: -60px;
+	height: 400px;
+	position: absolute;
+}
+
+.bt_corner img {
+	height: 460px;
+	margin: 100px 0px 0px 210px;
+} 

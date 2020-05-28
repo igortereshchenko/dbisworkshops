@@ -1,0 +1,37 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block title %}
+Health parameters
+{% endblock %}
+
+
+{% block content %}
+
+	<div class="container">
+
+		<form method="POST" action="/form">
+			<h2 class="form-heading">Please Enter Your Data</h2>
+			
+			{{ form.hidden_tag() }}
+			{{ wtf.form_field(form.gender)}}
+			{{ wtf.form_field(form.education)}}
+			{{ wtf.form_field(form.smoker)}}
+			{{ wtf.form_field(form.sigs_per_day)}}
+			{{ wtf.form_field(form.blood_pressure)}}
+			{{ wtf.form_field(form.prevalent_stroke)}}
+			{{ wtf.form_field(form.prevalent_hyp)}}
+			{{ wtf.form_field(form.diabetes)}}
+			{{ wtf.form_field(form.tot_chol) }}
+			{{ wtf.form_field(form.sys_bp) }}
+			{{ wtf.form_field(form.dia_bp) }}
+			{{ wtf.form_field(form.body_index) }}
+			{{ wtf.form_field(form.heart_rate) }}
+			{{ wtf.form_field(form.glucose) }}
+			<button class="btn btn-primary btn-block" type="submit">Ok</button>
+		</form>
+		
+	</div>
+
+{% endblock %}
