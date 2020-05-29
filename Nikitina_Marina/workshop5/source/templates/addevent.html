@@ -1,0 +1,25 @@
+{% block content %}
+
+<h2> Add event </h2>
+<form action ="" method ="post">
+  <p>{{ form.event_id.label }}</p>
+  <p>{{ form.event_id(size=30) }}</p>
+  <p>{{ form.event_name.label }}</p>
+  <p>{{ form.event_name(size=30) }}</p>
+  <p>{{ form.event_tag.label }}</p>
+  <p>{{ form.event_tag(size=30) }}</p>
+  <p>{{ form.reg_date_start.label }}</p>
+  <p>{{ form.reg_date_start(size=30) }}</p>
+  <p>{{ form.reg_date_finish.label }}</p>
+  <p>{{ form.reg_date_finish(size=30) }}</p>
+  <p>{{ form.tickets_left.label }}</p>
+  <p>{{ form.tickets_left(size=30) }}</p>
+  <p>{{ form.event_time.label }}</p>
+  <p>{{ form.event_time(size=30) }}</p>
+  <p>{{ form.price.label }}</p>
+  <p>{{ form.price(size=30) }}</p>
+
+  <p>{{ form.submit() }}</p>
+</form>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% block content %}
+
+<h2> Log In </h2>
+<form action ="" method ="post">
+  <p>
+    {{form.nickname.label}}<br>
+    {{form.nickname(size=30)}}
+  </p>
+  <p>
+    {{form.password.label}}<br>
+    {{form.password(size=30)}}
+  </p>
+  <p>{{form.submit()}}</p>
+    <br><br><br>
+    <p>{{form.signin()}}</p>
+</form>
+
+{% endblock %}
