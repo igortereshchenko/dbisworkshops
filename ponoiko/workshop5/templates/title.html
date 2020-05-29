@@ -1,0 +1,60 @@
+<html>
+<head>
+	<meta charset="utf-8"/>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/black.css') }}">
+<script src = '/static/main.js'>
+</script>
+<title>
+	Campus
+</title>
+</head>
+<div class = header>
+	<h1>
+	{% if current_user.nickname %}
+	Welcome, {{ current_user }}!
+	{% else %}
+	Hello newbie!
+	{% endif %}
+	That's your department
+	</h1>
+</div>
+<body>
+<div class = nav>
+	{% if current_user.nickname %}
+	<a href = '{{url_for('index')}}'> Главная </a>
+	<a href = '{{url_for('post')}}'> Создать пост </a>
+	<a href = '{{url_for('login')}}'> Войти в аккаунт </a>
+	{% endif %}
+</div>
+
+<div class = main>
+<div class = aside>
+	Графіки!
+	<p> </p>
+<iframe src="https://jobs.dou.ua/salaries/"> </iframe>
+</div>
+
+<div class = news>
+	{% for post in posts %}
+		<p>
+			{{post.body}}
+			 | author:
+			{{post.user_id}}
+	{% endfor %}
+
+	{% if current_user %}
+	<p>
+	<a href = '{{url_for("post")}}'> Write your post </a>
+	{% endif %}
+</div>
+</div>
+<div class = footer>
+	<h6>
+	©
+	<p>
+	Ponoiko Vladyslav
+	</p>
+	</h6>
+</div>
+</body>
+</html>
