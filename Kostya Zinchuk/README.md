@@ -1,1 +1,0 @@
-teresh like
