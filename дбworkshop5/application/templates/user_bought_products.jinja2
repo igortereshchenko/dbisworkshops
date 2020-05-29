@@ -1,0 +1,22 @@
+{% extends "layout.jinja2" %}
+
+{% block content %}
+    <div class="container">
+        <h1>User bought products</h1>
+        <ul id="ubproducts">
+            {% for ubproduct in ubproducts %}
+                <li>
+                    <span class="field-name">Product name:</span>
+                    <span class="field-value">{{ ubproduct.product_name }}</span>
+                    <br/>
+		    <span class="field-name">User first name:</span>
+                    <span class="field-value">{{ ubproduct.first_name }}</span>
+		    <br/>
+                    <span class="field-name">User last name:</span>
+                    <span class="field-value">{{ ubproduct.last_name  }}</span>
+                  
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
