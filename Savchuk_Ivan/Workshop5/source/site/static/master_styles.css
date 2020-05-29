@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+.fixed-footer{
+    width: 100%;
+    position: fixed;        
+    background: repeating-linear-gradient(
+        45deg,
+        #FFEF00,
+        #FFEF00 40px,
+        #723dbe 40px,
+        #723dbe 80px
+    );
+    padding: 10px 0;
+    color: #000000;
+    bottom: 0;
+}
+
+.body{
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+nav .navbar-nav li a{
+    color: white !important;
+    }

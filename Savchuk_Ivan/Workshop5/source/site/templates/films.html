@@ -1,0 +1,216 @@
+{% extends 'base_inside.html' %}
+
+{% block content %}
+
+<div class="jumbotron p-3" style="font-family: 'Poppins', sans-serif;">
+    <div class="well text-center">
+        <h2>CRUD Operations About Films Here</h2>
+    </div>
+</div>
+
+<div class="container" style="font-family: 'Poppins', sans-serif;">
+    <div class="row">
+        <div class="col md-12">
+            <div class="jumbotron p-3">
+                <h2>Manage <b>Films</b> <button type="button" class="btn btn-success float-right"
+                    data-toggle='modal' data-target='#mymodal'>Add new film</button></h2>
+                
+                    {% with messages = get_flashed_messages() %}
+
+                    {% if messages %}
+    
+                    {% for message in messages %}
+    
+                    <div class="alert alert-success alert-dismissable" role="alert">
+    
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+    
+                            <span aria-hidden="true">x</span>
+    
+                        </button>
+    
+    
+                    {{message}}
+    
+    
+                    </div>
+    
+    
+                    {% endfor %}
+    
+                    {% endif %}
+                    {% endwith %}
+
+
+                <table class="table table-bordered table-striped table-hover">
+
+                    <tr>
+                        <th>Film Name</th>
+                        <th>Age limit</th>
+                        <th>Procedure</th>
+                    </tr>
+                    {% for row in films %}
+                    <tr>
+                        <td>{{ row.film_name }}</td>
+                        <td>{{ row.age_limit }}</td>
+
+                        <td>
+                            <a href="/update1/{{row.film_id}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.film_id}}">Edit</a>
+                            <a href="/delete1/{{row.film_id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you shure to delete?')">Delete</a>
+                        </td>
+                    </tr>
+                
+                
+                <!-- Modal Edit Film-->
+<div id="modaledit{{row.film_id}}" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+
+
+      <div class="modal-content">
+
+
+         <div class="modal-header">
+
+
+            <h4 class="modal-title">Update Information</h4>
+
+
+         </div>
+
+
+         <div class="modal-body">
+
+
+            <form action="{{url_for('update1')}}" method="POST" autocomplete="off">
+
+
+               <div class="form-group">
+
+
+                  <label>Film Name:</label>
+                  <input type="hidden"  name="film_id" value="{{row.film_id}}">
+
+                  <input type="text" class="form-control" name="film_name" value="{{row.film_name}}">
+
+
+               </div>
+
+
+
+               <div class="form-group">
+
+
+                  <label>Age limit:</label>
+
+                  <input type="number" class="form-control" name="age_lim" value="{{row.age_limit}}">
+
+
+               </div>
+
+               <div class="form-group">
+
+
+                  <button class="btn btn-primary btn-lg btn-block float-right" type="submit">Update</button>
+
+
+               </div>
+
+
+            </form>
+
+
+         </div>
+
+
+         <div class="modal-footer">
+
+
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+
+
+         </div>
+
+
+      </div>
+
+
+   </div>
+
+</div>
+                     {% endfor %}
+
+                </table>
+            </div>
+
+             <!-- Modal Add Film-->
+
+
+<div id="mymodal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+       <div class="modal-content">
+          <div class="modal-header">
+ 
+             <h4 class="modal-title  justify-content-center">Film</h4>
+          </div>
+          <div class="modal-body">
+ 
+             <form action="{{url_for('insert1')}}" method="POST" autocomplete="off">
+ 
+ 
+                <div class="form-group">
+ 
+                   <label>Film name:</label>
+                   <input type="text" class="form-control" name="film_name" required="1">
+ 
+ 
+                </div>
+ 
+ 
+                <div class="form-group">
+ 
+ 
+                   <label>Age limit:</label>
+                   <input type="number" class="form-control" name="age_lim" required="1">
+ 
+ 
+                </div>
+ 
+ 
+                <div class="form-group">
+ 
+ 
+                   <button class="btn btn-primary btn-lg btn-block float-right" type="submit">Add Film</button>
+ 
+ 
+                </div>
+ 
+ 
+             </form>
+ 
+ 
+          </div>
+ 
+ 
+          <div class="modal-footer">
+ 
+ 
+             <button type="button" class="btn btn-outline-secondary float-left" data-dismiss="modal">Close</button>
+ 
+ 
+          </div>
+ 
+ 
+       </div>
+ 
+ 
+    </div>
+ 
+ 
+ </div>
+ 
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

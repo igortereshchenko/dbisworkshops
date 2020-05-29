@@ -1,0 +1,262 @@
+{% extends 'base_inside.html' %}
+
+{% block content %}
+
+<div class="jumbotron p-3" style="font-family: 'Poppins', sans-serif;">
+    <div class="well text-center">
+        <h2>CRUD Operations About Snacks Here</h2>
+    </div>
+</div>
+
+<div class="container" style="font-family: 'Poppins', sans-serif;"> 
+    <div class="row">
+        <div class="col md-12">
+            <div class="jumbotron p-3">
+                <h2>Manage <b>Snacks</b> <button type="button" class="btn btn-success float-right"
+                    data-toggle='modal' data-target='#mymodal'>Add new snack</button></h2>
+                
+                    {% with messages = get_flashed_messages() %}
+
+                    {% if messages %}
+    
+                    {% for message in messages %}
+    
+                    <div class="alert alert-success alert-dismissable" role="alert">
+    
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+    
+                            <span aria-hidden="true">x</span>
+    
+                        </button>
+    
+    
+                    {{message}}
+    
+    
+                    </div>
+    
+    
+                    {% endfor %}
+    
+                    {% endif %}
+                    {% endwith %}
+
+
+                <table class="table table-bordered table-striped table-hover">
+
+                    <tr>
+                        <th>Snack Name</th>
+                        <th>Age limit</th>
+                        <th>Price</th>
+                        <th>Number of orders</th>
+                        <th>Procedure</th>
+                    </tr>
+                    {% for row in snacks %}
+                    <tr>
+                        <td>{{ row.snack_name }}</td>
+                        <td>{{ row.age_limit }}</td>
+                        <td>{{ row.price }}</td>
+                        <td>{{ row.orders_num }}</td>
+
+                        <td>
+                            <a href="/update/{{row.snack_id}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.snack_id}}">Edit</a>
+                            <a href="/delete/{{row.snack_id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you shure to delete?')">Delete</a>
+                        </td>
+                    </tr>
+                
+                
+                <!-- Modal Edit Snack-->
+<div id="modaledit{{row.snack_id}}" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+
+
+      <div class="modal-content">
+
+
+         <div class="modal-header">
+
+
+            <h4 class="modal-title">Update Information</h4>
+
+
+         </div>
+
+
+         <div class="modal-body">
+
+
+            <form action="{{url_for('update')}}" method="POST" autocomplete="off">
+
+
+               <div class="form-group">
+
+
+                  <label>Snack Name:</label>
+                  <input type="hidden"  name="snack_id" value="{{row.snack_id}}">
+
+                  <input type="text" class="form-control" name="snack_name" value="{{row.snack_name}}">
+
+
+               </div>
+
+
+
+               <div class="form-group">
+
+
+                  <label>Age limit:</label>
+
+                  <input type="number" class="form-control" name="age_lim" value="{{row.age_limit}}">
+
+
+               </div>
+
+
+               <div class="form-group">
+
+
+                  <label>Price:</label>
+
+                  <input type="number" class="form-control" name="price" value="{{row.price}}">
+
+
+               </div>
+
+               <div class="form-group">
+
+
+                <label>Number of orders:</label>
+
+                <input type="number" class="form-control" name="order_num" value="{{row.orders_num}}">
+
+
+             </div>
+
+
+               <div class="form-group">
+
+
+                  <button class="btn btn-primary btn-lg btn-block float-right" type="submit">Update</button>
+
+
+               </div>
+
+
+            </form>
+
+
+         </div>
+
+
+         <div class="modal-footer">
+
+
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+
+
+         </div>
+
+
+      </div>
+
+
+   </div>
+
+</div>
+                     {% endfor %}
+
+                </table>
+            </div>
+
+             <!-- Modal Add Snack-->
+
+
+<div id="mymodal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+       <div class="modal-content">
+          <div class="modal-header">
+ 
+             <h4 class="modal-title  justify-content-center">Snack</h4>
+          </div>
+          <div class="modal-body">
+ 
+             <form action="{{url_for('insert')}}" method="POST" autocomplete="off">
+ 
+ 
+                <div class="form-group">
+ 
+                   <label>Snack name:</label>
+                   <input type="text" class="form-control" name="snack_name" required="1">
+ 
+ 
+                </div>
+ 
+ 
+                <div class="form-group">
+ 
+ 
+                   <label>Age limit:</label>
+                   <input type="number" class="form-control" name="age_lim" required="1">
+ 
+ 
+                </div>
+ 
+ 
+                <div class="form-group">
+ 
+ 
+                   <label>Price:</label>
+                   <input type="number" class="form-control" name="price" required="1">
+ 
+ 
+                </div>
+
+                <div class="form-group">
+ 
+ 
+                    <label>Number of orders:</label>
+                    <input type="number" class="form-control" name="order_num" required="1">
+  
+  
+                 </div>
+ 
+ 
+ 
+                <div class="form-group">
+ 
+ 
+                   <button class="btn btn-primary btn-lg btn-block float-right" type="submit">Add Snack</button>
+ 
+ 
+                </div>
+ 
+ 
+             </form>
+ 
+ 
+          </div>
+ 
+ 
+          <div class="modal-footer">
+ 
+ 
+             <button type="button" class="btn btn-outline-secondary float-left" data-dismiss="modal">Close</button>
+ 
+ 
+          </div>
+ 
+ 
+       </div>
+ 
+ 
+    </div>
+ 
+ 
+ </div>
+ 
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
