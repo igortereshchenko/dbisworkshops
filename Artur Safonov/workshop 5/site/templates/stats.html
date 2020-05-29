@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    <title>Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+</head>
+<body>
+
+{% include 'header.html' %}
+
+<main>
+
+		<div class="rib">
+
+		</div>
+
+		<div class="paper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="chart" id="bargraph">
+                            <script>
+                                    var graphs = {{plot | safe}};
+                                    Plotly.plot('bargraph',graphs,{'barmode':'group', 'title':'<b>Сплата по дням</b>'});
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="pie" style="margin: center; text-align: center;">
+              <script>
+                var data = {{ graph_values|safe }};
+                layout = {{ layout|safe }};
+                Plotly.newPlot('pie', data, layout);
+              </script>
+            </div>
+        </div>
+
+
+</main>
+
+
+{% include 'footer.html' %}
+</body>
+</html>

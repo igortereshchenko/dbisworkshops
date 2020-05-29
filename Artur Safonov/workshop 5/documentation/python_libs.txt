@@ -1,0 +1,9 @@
+Список усіх бібліотек python, використаних при розробці:
+pyTelegramBotAPI (telebot)
+sqlalchemy
+re
+flask
+flask_wtf, wtforms
+plotly
+pandas
+json
