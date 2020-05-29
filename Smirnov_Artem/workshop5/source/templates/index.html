@@ -1,0 +1,131 @@
+{% import "bootstrap/wtf.html" as wtf %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+</head>
+<body>
+	
+	
+	{% if result_search %}
+	<table border=1>
+		<thead>
+			<tr>
+				{% for key in result_search[0].keys() %}
+					<td>{{key}}</td>
+				{% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for row in result_search %}
+				<tr>
+					{% for key in row.keys() %}
+						<td>{{row[key]}}</td>
+					{% endfor %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<div class="container" id="bar">
+          <script>
+            var graphs = {{plot | safe}}  ;
+            Plotly.plot('bar', graphs, {});
+          </script>
+    </div>
+	{% endif %}
+
+
+	<form action = "/" method = post>
+
+
+		{{ form_student.hidden_tag() }}
+		{{ form_student.csrf_token }}
+		<p>	
+			{{wtf.form_field(form_student.student_name)}}
+		
+		</p>
+		<p>
+			
+			{{ wtf.form_field(form_student.student_sex) }}
+			        
+			    
+		</p>
+		<p>
+			{{ wtf.form_field(form_student.student_abitur) }}
+		<p>
+			
+			{{wtf.form_field(form_student.submit_student)}}
+		</p>
+	</form>
+
+	<form action = "/" method="post">
+		{{ form_student.hidden_tag() }}
+		{{ form_student.csrf_token }}
+		<p>
+			{{ wtf.form_field(form_score.score_name) }}
+			
+		</p>
+		<p>
+		
+			{{ wtf.form_field(form_score.score_value) }}
+		</p>
+		<p>
+			{{ wtf.form_field(form_score.submit_score) }}
+		</p>
+	</form>
+
+	<br>
+
+	<form action = "/" method="post">
+		{{ form_student.hidden_tag() }}
+		{{ form_student.csrf_token }}
+		<p>
+			{{ wtf.form_field(form_atestat.atestat_value) }}
+			
+		</p>
+		<p>
+			{{ wtf.form_field(form_atestat.submit_atestat) }}
+		</p>
+	</form>
+
+	<br>
+	{% if student_scores %}
+		<table border=1>
+			<thead>
+				<tr>
+					<td>Subject name</td>
+					<td>Subject value</td>
+				</tr>
+			</thead>
+			<tbody>
+				{% for row in student_scores %}
+					<tr>
+						<td>{{row.zno_score_name}}</td>
+						<td>{{row.zno_score_value}}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% endif %}
+
+	<br>
+	<form action = "/" method="post">
+		{{ form_student.hidden_tag() }}
+		{{ form_student.csrf_token }}
+		<p>
+			{{ wtf.form_field(form_search.search_region) }}
+			
+		</p>
+		<p>
+			{{ wtf.form_field(form_search.search_specialty) }}
+			
+		</p>
+		<p>
+			{{ wtf.form_field(form_search.submit_search) }}
+		</p>
+	</form>
+</body>
+</html>
