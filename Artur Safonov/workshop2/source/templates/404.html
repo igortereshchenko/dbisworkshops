@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>404</title>
+</head>
+<body>
+    <p style="position:fixed; top:30%; left:50%; transform: translate(-50%, -50%); font-size:100px"> 404</p>
+    <h1 style="position:fixed; top:45%; left:50%; transform: translate(-50%, -50%);">PAGE NOT FOUND</h1>
+    {% if entity %}
+        <h2 style="position:fixed; top:50%; left:50%; transform: translate(-50%, -50%);">Введена назва сутності: {{ entity }}</h2>
+        <h3 style="position:fixed; top:54%; left:50%; transform: translate(-50%, -50%);">Доступні сутності:</h3>
+        <h4 style="position:fixed; top:57%; left:50%; transform: translate(-50%, -50%);">user (http://server/api/user)
+        <br>card (http://server/api/card)</h4>
+
+    {% endif %}
+</body>
+</html>

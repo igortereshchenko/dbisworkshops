@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All</title>
+</head>
+<body>
+    <p>User Entity</p>
+    <table border="1">
+        <tr>
+            <th>Ім'я</th>
+            <th>Прізвище</th>
+            <th>По-батькові</th>
+            <th>Номер телефона</th>
+            <th>Email адреса</th>
+        </tr>
+            <tr>{% for key, value in users.items() %}
+                <td>
+                    {{value}}
+                </td>{% endfor %}
+            </tr>
+    </table>
+    <p>Card Entity</p>
+    <table border="1">
+        <tr>
+            <th>Номер карти</th>
+            <th>Ім'я на карті</th>
+            <th>Дата на карті</th>
+            <th>CVV</th>
+        </tr>
+            <tr>
+            {% for key, value in cards.items() %}
+                    <td>
+                        {{value}}
+                    </td>
+            {% endfor %}
+            </tr>
+    </table>
+</body>
+</html>

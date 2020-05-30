@@ -1,0 +1,1 @@
+{"user": [{"name": "Bob","surname": "Bobenko","middle_name": "Bobovich","phone": "+380501234567","email": "bob.bobenko@gmail.com"}], "card": [{"number": "5160123456789010", "name": "Bob Bobenko", "date": "11.05.2024", "cvv": "123"}]}
