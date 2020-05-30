@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Safario Travel - Contact</title>
+
+
+  <link rel="icon" href="{{ url_for ('static', filename= 'Fevicon.png')}}" >
+  <link rel="stylesheet" href="{{ url_for ('static', filename= 'bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{ url_for ('static', filename= 'all.min.css')}}">
+  <link rel="stylesheet" href="{{ url_for ('static', filename= 'themify-icons.css')}}">
+  <link rel="stylesheet" href="{{ url_for ('static', filename= 'style.css')}}">
+  <link rel="stylesheet" href="{{ url_for ('static', filename= 'owl.theme.default.min.css')}}">
+  <link rel="stylesheet" href="{{ url_for ('static', filename= 'owl.carousel.min.css')}}">
+  <link rel="stylesheet" href="{{ url_for ('static', filename= 'magnific-popup.css')}}">
+  <link rel="stylesheet" href="{{ url_for ('static', filename= 'flaticon.css')}}">
+  <link rel="stylesheet" href="{{ url_for ('static', filename= 'nice-select.css')}}">
+  <link rel="stylesheet" href="{{ url_for ('static', filename= 'style.css')}}">
+
+</head>
+<body>
+
+   <!--================ Header Menu Area start =================-->
+  <header class="header_area">
+    <div class="main_menu">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container box_1620">
+          <a class="navbar-brand logo_h" href="{{ url_for ('index')}}"><img src="{{ url_for ('static', filename= 'logo.png')}}" alt=""></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <ul class="nav navbar-nav menu_nav justify-content-end">
+              <li class="nav-item active"><a class="nav-link" href="{{ url_for ('index')}}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for ('package')}}">Your tour</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for ('contact')}}">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/feedback/">Feedback</a></li>
+                 <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/analyse/">See piechart</a></li>
+            </ul>
+
+          </div> 
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!--================Header Menu Area =================-->
+
+
+  <!--================Hero Banner SM Area Start =================-->
+  <section class="hero-banner-sm magic-ball magic-ball-banner" id="parallax-1" data-anchor-target="#parallax-1" data-300-top="background-position: 0px -80px" data-top-bottom="background-position: 0 100px">
+    <div class="container">
+      <div class="hero-banner-sm-content">
+        <h1>Contact Us</h1>
+        <p> Feel free to book tour here</p>
+      </div>
+    </div>
+  </section>
+  <!--================Hero Banner SM Area End =================-->
+
+
+
+  <!-- ================ contact section start ================= -->
+  <section class="section-margin">
+    <div class="container">
+      <div class="d-none d-sm-block mb-5 pb-4">
+        <div id="map" style="height: 480px;"></div>
+        <script>
+          function initMap() {
+            var uluru = {lat: -25.363, lng: 131.044};
+            var grayStyles = [
+              {
+                featureType: "all",
+                stylers: [
+                  { saturation: -90 },
+                  { lightness: 50 }
+                ]
+              },
+              {elementType: 'labels.text.fill', stylers: [{color: '#A3A3A3'}]}
+            ];
+            var map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: -31.197, lng: 150.744},
+              zoom: 9,
+              styles: grayStyles,
+              scrollwheel:  false
+            });
+          }
+
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap"></script>
+
+      </div>
+
+      <div class="row">
+              <div class="col-12">
+                <h2 class="contact-title">Get in Touch</h2>
+              </div>
+              <div class="col-lg-8">
+                <form class="form-contact contact_form" action="" method="post" id="contactForm" novalidate="novalidate">
+                  <div class="row">
+
+                    <div class="col-12">
+                      <div class="form-group">
+                          <p> {{form.message.label}} <br>
+                              {{form.message(size=100)}}
+                          </p>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                          <p> {{form.customer_name.label}} <br>
+                              {{form.customer_name(size=30)}}
+                         </p>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                          <p> {{form.age.label}} <br>
+                              {{form.age(size=30)}}
+                         </p>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <p> {{form.email.label}} <br>
+                            {{form.email(size=30)}}
+                        </p>
+                      </div>
+                    </div>
+
+                     <div class="col-sm-6">
+                      <div class="form-group">
+                        <p> {{form.tour_name.label}} <br>
+                            {{form.tour_name(size=30)}}
+                        </p>
+                      </div>
+                    </div>
+
+
+                  </div>
+                  <div class="form-group mt-3">
+                    <p>{{form.submit()}}</p>
+                  </div>
+                  <div class="media contact-info">
+                  </div>
+                </form>      <span class="contact-info__icon"><i class="ti-home"></i></span>
+
+      </div>
+
+
+      </div>
+          <div class="media contact-info">
+            <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+            <div class="media-body">
+              <h3><a href="tel:454545654">(044) 345 45 12</a></h3>
+              <p>Mon to Fri 9am to 6pm</p>
+            </div>
+          </div>
+          <div class="media contact-info">
+            <span class="contact-info__icon"><i class="ti-email"></i></span>
+            <div class="media-body">
+              <h3><a href="mailto:support@colorlib.com">support@gmail.com</a></h3>
+              <p>Send us your query anytime!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+	<!-- ================ contact section end ================= -->
+
+
+
+
+
+ <!-- ================ start footer Area ================= -->
+  <footer class="footer-area">
+    <div class="container">
+
+
+      <div class="footer-bottom">
+        <div class="row align-items-center">
+          <p class="col-lg-8 col-sm-12 footer-text m-0 text-center text-lg-left"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This site is made with love by <a href="https://colorlib.com" target="_blank">Liliia Skaletska</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- ================ End footer Area ================= -->
+
+<script src="{{ url_for ('static', filename= 'jquery-3.2.1.min.js')}}"></script>
+  <script src="{{ url_for ('static', filename= 'bootstrap.bundle.min.js')}}"></script>
+  <script src="{{ url_for ('static', filename= 'owl.carousel.min.js')}}"></script>
+  <script src="{{ url_for ('static', filename= 'jquery.magnific-popup.min.js')}}"></script>
+  <script src="{{ url_for ('static', filename= 'jquery.nice-select.min.js')}}"></script>
+  <script src="{{ url_for ('static', filename= 'jquery.ajaxchimp.min.js')}}"></script>
+  <script src="{{ url_for ('static', filename= 'skrollr.min.js')}}"></script>
+  <!-- <script src="js/countdown.js"></script> -->
+  <script src="{{ url_for ('static', filename= 'jquery.magnific-popup.min.js')}}"></script>
+  <script src="{{ url_for ('static', filename= 'main.js')}}"></script>
+  <script src="{{ url_for ('static', filename= 'jquery.form.js')}}"></script>
+  <script src="{{ url_for ('static', filename= 'jquery.validate.min.js')}}"></script>
+
+
+
+</body>
+</html>
