@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		    <meta charset="UTF-8">
+		    <meta name="viewpoint" content="width=device-width, initial-scale = 1">
+		    <title>IDoctor</title>
+
+		    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.min.css') }}"/>
+
+		    <script type = "text/javascript"  src = "{{ url_for('static', filename = 'js/bootstrap.min.js') }}" >
+	   		</script>
+
+	   		<link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}"/>
+
+			<link href="https://fonts.googleapis.com/css?family=Jockey+One&display=swap" rel="stylesheet">
+
+	</head>
+	<body>	
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+		<div class="container block_1">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-3">
+						<a href="index.html"><img id="logo" src="static\img\logo.png"></a>
+					</div>
+					<div class="col-md-9">
+						<h1>IDoctor</h1>
+					</div>
+				</div>
+
+				{% block content_quote %}
+					
+				{% endblock %}	
+
+			</div>
+			<div class="col-md-6 right_corner">
+				<div></div>
+				<img src="static\img\virus_PNG20.png">
+			</div>
+		</div>
+	</div>
+	{% block content%}
+
+	{% endblock %}
+	
+	</body>
+</html>

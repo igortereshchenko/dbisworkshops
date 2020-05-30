@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+{% block content_quote %}
+	<div class="row">
+		<p class="text-center blockquote">Ймовірність того, що протягом 10 років у Вас виникне серцево-судинне захворювання рівне {{ result }}</p>
+		<p class="text-right name">IDoctor</p>
+	</div>
+{% endblock %}
+
+
+{% block content%}
+	
+	<div class="container">
+		
+		<div class="row">
+			<div class="container">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+
+					<h3 class="text-center">Нище наведено співвідношення кількості людей, що мають кращі та гірші результати відносно Вашого</h3>
+
+				</div>
+				<div class="col-md-2"></div>
+
+			
+			</div>
+			
+			<div class="container" id="pie">
+		    	<script>
+		    		var graphs = {{ plot | safe }};
+		    		Plotly.plot('pie', graphs, {});
+		    	</script>
+		    </div>
+
+
+			<div class="container bt_corner">
+				
+				<img src="static/img/bacteria_PNG52.png">
+			
+			</div>
+
+		</div>
+
+	</div>
+	
+
+{% endblock %}
+
+
+

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block content_quote %}
+	<div class="row">
+		<p class="text-center blockquote">Здоров’я - такий  же  унікум,  як  картина  Рафаеля.  Знищити  його  легко, відновити неможливо.</p>
+		<p class="text-right name">(І.Бородін)</p>
+	</div>
+{% endblock %}
+
+
+{% block content%}
+
+	
+	<div class="container block_2">
+		<div class="row">
+			<div class="col-md-5 segment">
+				<div></div>
+				<img src="static/img/virus_PNG39.png">
+			</div>
+			<div class="col-md-7 tx">
+				<p class="text-justify">Для правильної діагностики захворювань потрібні роки медичної підготовки. Діагностика часто є важким, трудомістким процесом. У багатьох сферах попит на експертів значно перевищує наявну пропозицію. Це створює навантаження на лікарів і часто затримує життєво-важливу діагностику пацієнтів.</p>
+				<p class="text-justify">Сервіс IDoctor здатний визначати ймовірність появи захворюваннь серцево-судинної системи у Вас на протязі 10 років. Таким чином Ви можете скоректувати свій спосіб життя, щоб уникнути даного захворювання. Для проведення аналізу необхідно заповнити форму нище</p>
+			</div>
+		</div>
+	</div>
+	<div class="container block_3">
+		<div class="row">
+			<div class="col-md-8">
+				<p class="text-center">
+					Будь ласка заповність всі показники для проведення подальшого аналізу.
+				</p>
+				<div class="col-md-8 get_data">	
+					<form method="POST" action="/">
+						<!-- <h2 class="form-heading">Please Enter Your Data</h2> -->
+						
+						{{ form.hidden_tag() }}
+						{{ wtf.form_field(form.gender)}}
+						{{ wtf.form_field(form.age)}}
+						{{ wtf.form_field(form.education)}}
+						{{ wtf.form_field(form.smoker)}}
+						{{ wtf.form_field(form.sigs_per_day)}}
+						{{ wtf.form_field(form.blood_pressure)}}
+						{{ wtf.form_field(form.prevalent_stroke)}}
+						{{ wtf.form_field(form.prevalent_hyp)}}
+						{{ wtf.form_field(form.diabetes)}}
+						{{ wtf.form_field(form.tot_chol) }}
+						{{ wtf.form_field(form.sys_bp) }}
+						{{ wtf.form_field(form.dia_bp) }}
+						{{ wtf.form_field(form.body_index) }}
+						{{ wtf.form_field(form.heart_rate) }}
+						{{ wtf.form_field(form.glucose) }}
+						<button class="btn btn-primary btn-block" type="submit">Ok</button>
+					</form>	
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="row">				
+					<div class="circle">
+						<div></div>
+						<img src="static/img/bacteria_PNG30.png">
+					</div>
+			
+					<div class="circles">
+						<div id="circle1"></div>
+						<div id="circle2"></div>
+						<div id="circle3"></div>
+						<img src="static/img/bacteria_PNG29.png">
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="container block_5">
+		<div class="row">
+			<div class="col-md-5 left_corner">
+				<div></div>
+				<img src="static/img/virus_PNG1.png">
+			</div>
+			<div class="col-md-7 bt_corner">
+				<!-- <img src="static/img/bacteria_PNG52.png"> -->
+			</div>
+		</div>
+	</div>
+
+	
+{% endblock %}
