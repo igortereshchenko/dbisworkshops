@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>event</title>
+</head>
+<body>
+
+
+    <form action = "/api/nutrition/submit" method = "POST" id="form_nutrition">
+         <p>Title <input type = "text" name = "title" value="{{nutrition.get('nutr_title')}}"/></p>
+         <p>Brand <input type = "text" name = "brand" value="{{nutrition.get('nutr_brand')}}" /></p>
+         <p>Ingredient  <input type = "text" name = "ingredient" value="{{nutrition.get('nutr_ingredient')}}" /></p>
+         <p>Weight <input type = "text" name = "weight" value="{{nutrition.get('nutr_weight')}}"/></p>
+         <p>Price <input type = "text" name = "price" value="{{nutrition.get('nutr_price')}}" /></p>
+         <p>Description <input type = "text" name = "descr" value="{{nutrition.get('nutr_description')}}"/></p>
+         
+     
+     </form>
+
+    <button type="submit" form="form_nutrition" name="action" value="nutriton_update">Submit</button>
+
+
+</body>
+</html>
