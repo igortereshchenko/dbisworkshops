@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% block css_links %} {% endblock %}
+</head>
+<body>
+<!--    HEADER      -->
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="{{ url_for('home') }}">
+            <img src="../static/img/global_logo.jpg" width="150" height="50">
+        </a>
+
+        {% if 'username' in session %}
+            <div class="mx-auto order-0">
+                <p class="navbar-brand mx-auto" href="#">Welcome, {{ session['username'] }}</p>
+            </div>
+        {% endif %}
+
+        {% if 'user_type' in session %}
+            {% if session['user_type'] == 'Photographer' %}
+            <div>
+                <button type="button" class="btn btn-dark">Profile</button>
+            </div>
+            {% elif session['user_type'] == 'Customer' %}
+            <div>
+                <button type="button" class="btn btn-dark">History</button>
+            </div>
+            {% endif %}
+
+            <div>
+                <button onclick="window.location.href='{{ url_for('logout') }}'" type="button" class="btn btn-dark">Logout</button>
+            </div>
+        {% else %}
+            <div>
+                <button onclick="window.location.href='{{ url_for('login') }}'" type="button" class="btn btn-dark">Login</button>
+                <button type="button" class="btn btn-dark">Registration</button>
+            </div>
+        {% endif %}
+    </nav>
+<!--    END HEADER      -->
+
+    {% block content %} {% endblock %}
+
+<!--    FOOTER      -->
+    <nav class="navbar navbar-dark bg-dark bottom">
+        <div>
+            <p class="text-success">Contacts:</p>
+            <p class="text-success"><b>Email:</b> zelenyid446@gmail.com</p>
+        </div>
+
+
+            <div class="mx-auto order-0">
+                <p class="navbar-brand mx-auto">© 2020 Dmytro Zelenyi. All Rights Reserved</p>
+            </div>
+
+
+        <div>
+            <a href="https://www.instagram.com/dzeleniy/" target="_blank"><img src="../static/img/instagram_logo.jpg" width="50" height="50" style="margin-right: 30px"></a>
+            <a href="https://t.me/dzelenyi" target="_blank"><img src="../static/img/telegram_logo.jpg" width="50" height="50"></a>
+        </div>
+    </nav>
+<!--    END FOOTER      -->
+
+</body>
+</html>

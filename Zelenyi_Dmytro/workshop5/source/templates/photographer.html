@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Photographer{% endblock %}
+
+{% block content %}
+
+<form action="/api/photographer/submit" method="post" style="padding: 15px">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Username:</label>
+    <input type="text" class="form-control" name="username" id="exampleFormControlInput1" placeholder="Login" value="{{ photographer['username'] }}">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput2">Rating:</label>
+    <input type="number" step="0.1" min="0" max="5" class="form-control" name="rating" id="exampleFormControlInput2" value="{{ photographer['rating'] }}">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput4">Password:</label>
+    <input type="password" class="form-control" name="password" id="exampleFormControlInput4" value="{{ photographer['password'] }}">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput3">Name:</label>
+    <input type="text" class="form-control" name="name" id="exampleFormControlInput3" value="{{ photographer['name'] }}">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput5">Surname:</label>
+    <input type="text" class="form-control" name="surname" id="exampleFormControlInput5" value="{{ photographer['surname'] }}">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail6">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail6" name="email" placeholder="Enter email" value="{{ photographer['email'] }}">
+  </div>
+
+    <div class="form-group">
+      <p>Gender:</p>
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="Male" checked>
+          <label class="form-check-label" for="exampleRadios1">
+                Male
+          </label>
+      </div>
+
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" id="exampleRadios2" value="Female">
+          <label class="form-check-label" for="exampleRadios2">
+                Female
+          </label>
+      </div>
+
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender"  id="exampleRadios3" value="Neither" checked>
+          <label class="form-check-label" for="exampleRadios3">
+                Neither
+          </label>
+      </div>
+    </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">About you:</label>
+    <textarea class="form-control" name="about" id="exampleFormControlTextarea1" value="{{ photographer['about'] }}" rows="3"></textarea>
+  </div>
+
+    <div class="form-group">
+    <label for="exampleFormControlInput7">Experience:</label>
+    <input type="number" step="1" min="0" class="form-control" name="experience" id="exampleFormControlInput7" value="{{ photographer['experience'] }}">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput8">Region:</label>
+    <input type="text" class="form-control" name="region" id="exampleFormControlInput8" value="{{ photographer['region'] }}">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput9">Ciry:</label>
+    <input type="text" class="form-control" name="city" id="exampleFormControlInput9" value="{{ photographer['city'] }}">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput10">Instagram:</label>
+    <input type="text" class="form-control" name="instagram" id="exampleFormControlInput10" value="{{ photographer['instagram'] }}">
+  </div>
+
+    <button type="submit" id="photographer_form" name="photographer_action" value="photographer_update" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}

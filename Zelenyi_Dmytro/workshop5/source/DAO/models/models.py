@@ -1,7 +1,7 @@
 from sqlalchemy import Integer, String, Text, Column, MetaData, Float, DateTime, ForeignKey, CheckConstraint
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy_utils import EmailType
-from Zelenyi_Dmytro.workshop4.source.database_connection import engine
+from Zelenyi_Dmytro.Project.source.database_connection import engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import relationship
 import re
@@ -32,15 +32,15 @@ class photographers(Base):
     @classmethod
     def add(cls, email, user_password, photographer_name, gender, about_photographer,
             experience, region, city, is_premium, birthday=None, photographer_surname=None):
-        if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-            return -1
-        elif not photographer_name.isalpha() or not photographer_surname.isalpha() or not region.isalpha() \
-                or not city.isalpha():
-            return -1
-        elif gender != "Male" or gender != "Famale":
-            return -1
-        elif is_premium != "N" or is_premium != "Y":
-            return -1
+        # if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
+        #     return -1
+        # elif not photographer_name.isalpha() or not photographer_surname.isalpha() or not region.isalpha() \
+        #         or not city.isalpha():
+        #     return -1
+        # elif gender != "Male" or gender != "Famale":
+        #     return -1
+        # elif is_premium != "N" or is_premium != "Y":
+        #     return -1
 
         Session = sessionmaker(bind=engine)
         session = Session()
