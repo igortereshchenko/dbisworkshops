@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <style>
+a:link, a:visited {
+  background-color: #b0d8ea;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: #96ada5;
+}
+</style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+             <a  href="http://127.0.0.1:5000/card"  target="_blank">Create a card</a>
+             <a  href="http://127.0.0.1:5000/monitor"  target="_blank">Monitor expenditure</a>
+             <a href="http://127.0.0.1:5000/index"  target="_blank">Create expenditire</a>
+             <a href="http://127.0.0.1:5000/analyse"  target="_blank">See graphic</a>
+
+</div>
+<h1 align="center"> Create card form </h1>
+<div align="center">
+<form  action ="" method ="post">
+  <p>
+    {{form.card_number.label}}<br>
+    {{form.card_number(size=30)}}
+  </p>
+  <p>
+    {{form.money_amount.label}}<br>
+    {{form.money_amount(size=30)}}
+  </p>
+  <p>{{form.submit()}}</p>
+</form>
+</div>
+</body>
+</html>
