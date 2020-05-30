@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tour</title>
+</head>
+<body>
+
+
+    <form action = "/api/tour/submit" method = "POST" id="form_tour">
+         <p>Country <input type = "text" name = "country" value="{{tour.get('tour_country')}}"/></p>
+         <p>Price <input type = "text" name = "price" value="{{tour.get('tour_price')}}" /></p>
+     </form>
+
+    <button type="submit" form="form_tour" name="action" value="tour_update">Submit</button>
+
+
+</body>
+</html>
