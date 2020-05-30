@@ -60,7 +60,7 @@ def token_table():
 def usertoken_table():
     result = db.sqlalchemy_session.query(ormUserToken).all()
     return render_template('usertoken.html', usertokens=result)
-"""
+
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     form = SearchToken()
@@ -76,7 +76,7 @@ def search():
         else:
             flash('Search Unsuccessful. Please check token and password', 'danger')
     return render_template('search.html')
-"""
+
 @app.route('/dashboard', methods=['GET', 'POST'])
 def graph():
     # SELECT count(user_id), end_date
