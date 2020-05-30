@@ -1,0 +1,34 @@
+{% extends "basis.html" %}
+
+{% block head %}
+    <meta charset="UTF-8">
+    <title>Product</title>
+{% endblock%}
+
+{% block header %}
+{% endblock%}
+
+{% block content %}
+<h2>Product form</h2>
+<form action="" method="post">
+    <p>
+        {{ form.product_name.label }} <br>
+        {{ form.product_name(size=30) }}
+    </p>
+    <p>
+        {{ form.type.label }} <br>
+        {{ form.type(size=30) }}
+    </p>
+    <p>
+        {{ form.vendor.label }} <br>
+        {{ form.vendor(size=30) }}
+    </p>
+    <p>
+        {{ form.cost.label }} <br>
+        {{ form.cost(size=30) }}
+    </p>
+
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% endblock %}
