@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>all</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>user_id</th>
+        <th>user_name</th>
+        <th>user_email</th>
+    </tr>
+    <tr>
+        <td>{{user.get("user_id")}}</td>
+        <td>{{user.get("user_name")}}</td>
+        <td>{{user.get("user_email")}}</td>
+    </tr>
+</table>
+<br/>
+<table>
+    <tr>
+        <th>studio_id</th>
+        <th>studio_name</th>
+        <th>studio_email</th>
+        <th>studio_number</th>
+        <th>studio_address</th>
+    </tr>
+    <tr>
+        <td>{{studio.get("studio_id")}}</td>
+        <td>{{studio.get("studio_name")}}</td>
+        <td>{{studio.get("studio_email")}}</td>
+        <td>{{studio.get("studio_number")}}</td>
+        <td>{{studio.get("studio_address")}}</td>
+    </tr>
+</table>
+</body>
+</html>

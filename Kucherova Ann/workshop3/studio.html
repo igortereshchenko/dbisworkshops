@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>studio</title>
+</head>
+<body>
+     <form action="/api" method="Post" id="studioform">
+         <p>Studio name: <input type = "text" name = "name" value="{{studio.get('studio_name')}}"/> </p>
+         <p>Studio email: <input type = "text" name = "email" value="{{studio.get('studio_email')}}"/> </p>
+         <p>Studio number: <input type = "text" name = "number" value="{{studio.get('studio_number')}}"/> </p>
+         <p>Studio address: <input type = "text" name = "address" value="{{studio.get('studio_address')}}"/> </p>
+     </form>
+     <button type="submit" form="studioform" name="action" value="user_update">Submit</button>
+</body>
+</html>

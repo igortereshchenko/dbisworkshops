@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user</title>
+</head>
+<body>
+     <form action="/api" method="Post" id="userform">
+         <p>Name: <input type = "text" name = "name" value="{{user.get('user_name')}}"/> </p>
+         <p>Email: <input type = "text" name = "email" value="{{user.get('user_email')}}"/> </p>
+     </form>
+     <button type="submit" form="userform" name="action" value="user_update">Submit</button>
+</body>
+</html>
