@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>all</title>
+</head>
+<body>
+
+<table border='2'>
+    <caption>Events</caption>
+
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Start
+            </th>
+            <th>
+                End
+            </th>
+
+        </tr>
+        
+        
+    {% for row in elist %}
+        <tr>
+            <td>
+                {{row[1]}}
+            </td>
+            <td>
+                {{row[2]}}
+            </td>
+            <td>
+                {{row[3]}}
+            </td>
+            <td>
+                {{row[4]}}
+            </td>                                    
+        </tr>      
+    {% endfor %}    
+    
+</table>
+
+
+
+<table border='2'>
+    <caption>User</caption>
+    {% for key, value in user.items() %}
+        <tr>
+            <th>
+                {{key}}
+            </th>
+            <td>
+                {{value}}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+<h4>
+Events per day
+</h4>
+
+<img src="/plot.png" alt="my plot">
+
+<form>
+    <input type="button" value="Add event" onclick="window.location.href='event'" />
+</form>
+
+<form>
+    <input type="button" value="Add user" onclick="window.location.href='user'" />
+</form>
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html> 
