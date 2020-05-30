@@ -35,7 +35,7 @@ class menu(Base):
         self.price = price
 
 
-class meal(Base):
+class Meal(Base):
     __tablename__ = 'meal'
 
     id = Column(Integer, Sequence('id_seq'), primary_key=True)

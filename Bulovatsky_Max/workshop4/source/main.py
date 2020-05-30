@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, request, jsonify, redirect, url_for, render_template
 from sqlalchemy.orm import sessionmaker
 import cx_Oracle
 from sqlalchemy import create_engine
-from tables_db import menu, meal, menu_meal, risk, meal_risk
+from tables_db import menu, Meal, menu_meal, risk, meal_risk
 from forms import *
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
@@ -18,34 +19,45 @@ menu_example = {
     "content": ["MilkShake", "Ice-cream", "French fries"]
 }
 
+db = SQLAlchemy(app)
 
-@app.route('/')
-def index():
 
-    oracle_connection_string = 'oracle+cx_oracle://{username}:{password}@{host}:{port}/{sid}'
+@app.route("/",  methods=['GET', 'POST'])
+def hello():
+    return render_template('index.html')
 
-    engine = create_engine(oracle_connection_string.format(
 
-        username="SYS as sysdba",
-        password="dbpass",
-        sid="XE",
-        host="laptop",
-        port="1521",
-        database="workshopDB"
-    ), echo=True)
 
-    Session = sessionmaker(bind=engine)
+@app.route('/meal', methods=['GET', 'POST'])
+def meal():
+    meal_form = MealForm(request.form)
 
-    return render_template("meal.html", form=DishForm())
+    if request.method == 'POST':
+
+        meal_id = request.form['meal_id']
+        name = request.form['name']
+        price = request.form['price']
+        taste = request.form['taste']
+        risk_name = request.form['risk_name']
+
+        try:
+            meal = Meal(meal_id, name, price, taste, risk_name)
+            db.session.add(meal)
+            db.session.commit()
+
+            return "Dish added {}".format(meal.meal_id)
+
+        except Exception as e:
+            return str(e)
+
+    return render_template('meal.html', form=meal_form)
+
 
 
 @app.route('/api/<action>', methods=['GET'])
 def apiget(action):
 
-   if action == "meal":
-      return render_template("meal.html", meal=meal_example)
-
-   elif action == "menu":
+   if action == "menu":
       return render_template("menu.html", menu=menu_example)
 
    elif action == "all":

@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import SelectField, StringField, SubmitField, IntegerField, DecimalField, TextAreaField
 
 
-class DishForm(FlaskForm):
+class MealForm(FlaskForm):
     name = StringField("Название: ")
     price = DecimalField("Цена (за порцию): ")
     taste = SelectField("Вкус: ", choices=[("1", "Сладкое"), ("2", "Соленое"), ("3", "Кислое"), ("4", "Другое")])
