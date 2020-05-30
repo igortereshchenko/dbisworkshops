@@ -62,9 +62,9 @@ def check_liked_id(movie_id):
 df_of_param = pd.DataFrame([[1,2,3,4]],columns=['id','genre','year','rating'])
 
 
-bot = telebot.TeleBot('1240479598:AAFa87oq_hfSjcxFrJ2XvXuYLh5DUAvA0p8')
+bot = telebot.TeleBot('token')
 
-secret = '1240479598:AAFa87oq_hfSjcxFrJ2XvXuYLh5DUAvA0p8'
+secret = 'token'
 # bot.remove_webhook()
 # time.sleep(1)
 # bot.set_webhook(url="mycinematelegrambot.herokuapp.com/{}".format(secret))
