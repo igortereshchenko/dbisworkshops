@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>director</title>
+</head>
+<body>
+
+
+    <form action = "/api" method = "POST" id="form_user">
+         <p>Name <input type = "text" name = "first_name" value="{{director.get('director_name')}}"/></p>
+         <p>Age <input type = "text" name = "age" value="{{director.get('director_age')}}" /></p>
+     </form>
+
+    <button type="submit" form="form_user" name="action" value="director_update">Submit</button>
+
+
+</body>
+</html>
