@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <style>
+a:link, a:visited {
+  background-color: #b0d8ea;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: #96ada5;
+}
+</style>
+
+    <style>
+    div {
+  width: 800px;
+  padding: 10px;
+  border: 5px solid gray;
+  margin-left: 500px;
+}
+</style>
+
+    <meta charset="UTF-8">
+    <title>See your expenditure</title>
+</head>
+<body>
+<div align="center">
+             <a  href="http://127.0.0.1:5000/card"  target="_blank">Create a card</a>
+             <a  href="http://127.0.0.1:5000/monitor"  target="_blank">Monitor expenditure</a>
+             <a href="http://127.0.0.1:5000/index"  target="_blank">Create expenditire</a>
+   <a href="http://127.0.0.1:5000/analyse"  target="_blank">See graphic</a>
+</div>
+<div>
+<h1 align="center">This day you payed:</h1>
+
+{% for name in results %}
+  {{ name }}
+  {% endfor %}
+    </div>
+</body>
+</html>

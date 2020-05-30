@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2> Create card form </h2>
+<form action ="" method ="post">
+  <p>
+    {{form.card_number.label}}<br>
+    {{form.card_number(size=30)}}
+  </p>
+  <p>
+    {{form.money_amount.label}}<br>
+    {{form.money_amount(size=30)}}
+  </p>
+  <p>{{form.submit()}}</p>
+</form>
+</body>
+</html>

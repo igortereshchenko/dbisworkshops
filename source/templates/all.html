@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h3> Витрати </h3>
+{%  for thing in waste %}
+    <p> Категорія : {{thing.category_name}}</p>
+    <p> Сума витрати :{{thing.waste_sum}} </p>
+    <p> Час витрати : {{thing.waste_time}}</p>
+{% endfor %}
+ <h3>Категорії</h3>
+{% for line in category %}
+    <p> {{line.category_name}} </p>
+    <p> {{line.limit}} </p>
+{% endfor %}
+</body>
+</body>
+</html>
