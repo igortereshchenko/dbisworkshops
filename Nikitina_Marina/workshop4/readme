@@ -1,0 +1,13 @@
+Нікітіна Марина КМ-71 WorkShop4 install:
+1. setup.py
+2. constraint.sql
+3. add_data_events.sql
+4. project.py 
+
+для подключения:
+username="SYSTEM",
+password="bars",
+sid="XE",
+host="localhost",
+port="1521",
+database="XE",

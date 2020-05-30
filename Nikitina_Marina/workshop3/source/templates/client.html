@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>client</title>
+</head>
+<body>
+
+
+    <form action = "/api/client/submit" method = "POST" id="form_client">
+         <p>Name <input type = "text" name = "first_name" value="{{client.get('client_name')}}"/></p>
+         <p>Number <input type = "text" name = "number" value="{{client.get('client_number')}}" /></p>
+     </form>
+
+    <button type="submit" form="form_client" name="action" value="client_update">Submit</button>
+
+
+</body>
+</html>

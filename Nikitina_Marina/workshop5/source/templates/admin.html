@@ -1,0 +1,39 @@
+{% block content %}
+
+<h2> Admin </h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Events</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>Event's name</td>
+          <td>Tickets left</td>
+          <td>Event's time</td>
+          <td>Event's price</td>
+      </tr>
+      {% for event in form.events %}
+      <tr>
+        <td>{{ event.name }}</td>
+        <td>{{ event.tickets_left }}</td>
+        <td>{{ event.time }}</td>
+        <td>{{ event.price }}</td>
+        <td><a href='/delete/{{event.name}}'>Delete</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+<form action ="" method ="post">
+  <p>
+    {{ form.submit() }}
+  </p>
+  <p>{{ form.stats1() }}</p>
+  <p>{{ form.stats2() }}</p>
+  <p>{{ form.notify() }}</p>
+</form>
+
+{% endblock %}
