@@ -11,6 +11,10 @@ from flask import request
 from flask import jsonify
 from flask_sqlalchemy import SQLAlchemy
 import os
+import plotly.express as px
+import matplotlib.pyplot as plt
+from sqlalchemy import func
+
 
 app = Flask(__name__)
 
@@ -28,6 +32,10 @@ db = SQLAlchemy(app)
 
 
 import models
+
+
+
+
 
 
 def search(film_features,page=1):
@@ -62,9 +70,9 @@ def check_liked_id(movie_id):
 df_of_param = pd.DataFrame([[1,2,3,4]],columns=['id','genre','year','rating'])
 
 
-bot = telebot.TeleBot('token')
+bot = telebot.TeleBot('1240479598:AAFa87oq_hfSjcxFrJ2XvXuYLh5DUAvA0p8')
 
-secret = 'token'
+secret = '1240479598:AAFa87oq_hfSjcxFrJ2XvXuYLh5DUAvA0p8'
 # bot.remove_webhook()
 # time.sleep(1)
 # bot.set_webhook(url="mycinematelegrambot.herokuapp.com/{}".format(secret))
@@ -79,6 +87,7 @@ top_10 = [(title,id) for title,id in zip(list(top_10['title']),list(top_10['id']
 keyboard_start = telebot.types.ReplyKeyboardMarkup(True,None,True)
 keyboard_start.row('Топ 10 популярных фильмов', 'Поиск фильма')
 keyboard_start.row('Посмотреть список понравившихся фильмов')
+keyboard_start.row('Показать диаграмму по популярности жанров')
 keyboard_film_param = telebot.types.ReplyKeyboardMarkup(True, None, True)
 keyboard_film_param.row('Жанр', 'Год выпуска', 'Рейтинг')
 keyboard_film_param.row('Назад','Найти фильм')
@@ -96,6 +105,7 @@ ratings = [f'{i}-{i+1}' for i in range(10)]
 genres = requests.get('https://api.themoviedb.org/3/genre/movie/list?api_key=2385b872601af4eade33aeaf2d44a9cb&language=RU')
 genres = json.loads(genres.text)
 genres = json_normalize(genres['genres'])
+print(list(genres))
 iterr = 0
 @bot.message_handler(commands=['start'])
 def start_message(message):
@@ -132,7 +142,6 @@ def send_text(message):
             if (int(message.text)>1960 and int(message.text)<now.year):
                 user_year = int(message.text)
                 df_of_param['year'][df_of_param['id'] == message.from_user.id] = user_year
-                print(pd.isna(df_of_param[df_of_param['id']==message.from_user.id]['genre'])[0])
                 if (pd.isna(df_of_param[df_of_param['id']==message.from_user.id]['genre'])[0]) or (pd.isna(df_of_param[df_of_param['id']==message.from_user.id]['year'])[0]) or (pd.isna(df_of_param[df_of_param['id']==message.from_user.id]['rating'])[0]):
                     bot.send_message(message.from_user.id, text='Окей, {}, записали. Укажите оставшиеся параметры.'.format(user_year),reply_markup=keyboard_film_param)
                 else:
@@ -184,6 +193,31 @@ def send_text(message):
         db.session.delete(delete)
         db.session.commit()
         bot.send_message(message.chat.id, 'Готово!', reply_markup=keyboard_start)
+    elif message.text.lower() == 'показать диаграмму по популярности жанров':
+        list_of_all_films = db.session.query(models.Liked_film_list, models.Liked_users).join(
+            models.Liked_film_list).all()
+        for i in range(len(list_of_all_films)):
+            list_of_all_films[i]  = list_of_all_films[i][0].genre
+        print(list_of_all_films)
+        genres_name = []
+        genres_count = []
+        no_null = []
+        for genre in range(len(list(genres['id']))):
+            count = list_of_all_films.count(list(genres['id'])[genre])
+            if count == 0:
+                pass
+            else:
+                no_null.append(genre)
+                genres_count.append(count)
+        for name in range(len(list(genres['name']))):
+            if name in no_null:
+                genres_name.append(list(genres['name'])[name])
+        plt.pie(genres_count, labels=genres_name, autopct='%1.2f%%')
+        plt.savefig("figname.png")
+        img = open("figname.png",'rb')
+        bot.send_photo(message.chat.id, img, reply_markup=keyboard_start)
+        plt.show()
+
     else:
         bot.send_message(message.chat.id, 'Команда не была распознана.', reply_markup=keyboard_start)
 @bot.callback_query_handler(func=lambda call: call.data in list(genres['name']))
