@@ -1,0 +1,9 @@
+gunicorn
+psycopg2
+flask
+flask_bootstrap
+plotly
+sqlalchemy
+flask_sqlalchemy
+flask_wtf
+wtforms

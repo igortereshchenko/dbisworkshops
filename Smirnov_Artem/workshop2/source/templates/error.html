@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block body %}
+	<h1>404</h1>
+	<p>Names of existing tables</p>
+	{% for name in list_name_tables %}
+		<p>{{name}}</p>
+	{% endfor %}
+	<p>Your input action: {{action}}</p>
+{% endblock %}
