@@ -1,0 +1,7 @@
+flask
+gunicorn
+flask_wtf
+wtforms
+sqlalchemy
+flask_sqlalchemy
+psycopg2

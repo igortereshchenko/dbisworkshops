@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action = "/cafe" method = post>
+		<h2>Add new dish</h2>
+		{{ form.hidden_tag() }}
+		{{ form.csrf_token }}
+		<p>	
+			{{form.cafe_name.label}}
+			{{form.cafe_name}}
+		</p>
+		<p>
+			{{form.cafe_popularity.label}}
+			{{form.cafe_popularity}}
+		</p>
+		<p>
+			{{form.submit}}
+		</p>
+	</form>
+
+	
+</body>
+</html>

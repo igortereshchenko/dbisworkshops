@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action = "/dish" method = post>
+		<h2>Add new dish</h2>
+		{{ form_dish.hidden_tag() }}
+		{{ form_dish.csrf_token }}
+		<p>
+			{{form_dish.cafe_id.label}}
+			{{form_dish.cafe_id}}
+		</p>
+		<p>
+			{{form_dish.dish_name.label}}
+			{{form_dish.dish_name}}
+		</p>
+		<p>
+			{{form_dish.dish_price.label}}
+			{{form_dish.dish_price}}
+		</p>
+		<p>
+			{{form_dish.dish_describe.label}}
+			{{form_dish.dish_describe}}
+		</p>
+		<p>
+			{{form_dish.dish_avg_time.label}}
+			{{form_dish.dish_avg_time}}
+		</p>
+		<p>
+			{{form_dish.submit}}
+		</p>
+	</form>
+
+	
+</body>
+</html>

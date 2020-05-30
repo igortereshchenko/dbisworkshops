@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %} Заказать кушать {% endblock %}
+
+{% block content %}
+
+<div class="row" style="margin-bot:10px">
+
+    {% for cafe in cafes %}
+        <div class="col-12 card " style=" margin: 5px; width:16rem; background-color:#e6ffff; ">
+            <div class="row">
+                <div class="col">
+                    <img src="{{ url_for('static', filename='pics/cafes/cafe_id_{}.jpg'.format(cafe[0])) }}" class="card-img-top" style="margin: 0.5rem; height: 15rem; width:15rem; border-radius: 5px;">
+                    <h4 class="card-title text-center"> {{cafe[1]}} </h4>
+                </div>
+                <div class="col">
+                    <h4 class="card-title text-center"> Очередь </h4>
+                    {% for q in queues%}
+                        {% if q[2] == cafe[0] %}
+                            {% if q[1] == queues[0][1]%}
+                                <h1 class="text-center">{{q[0]}}</h1>
+                            {% else %}
+                                <span>{{q[0]}}</span>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col">
+                    <h4 class="card-title text-center"> Пройдет до нового заказа </h4>
+                    <h5 class=" text-center">{{left[cafe[0] - 1]}} минут</h5>
+                </div>
+            </div>
+        </div>
+    {%endfor%}
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+Welcome!
+{% endblock %}
+
+{% block content %}
+<div class="alert alert-info w-25" role="alert">
+    <h3>Заказ принят </h3>
+    <h5>Номер вашего заказа: {{o_num}} </h5>
+    <h5>Заведение: {{cafe}} </h5>
+</div>
+<form action="/queues">
+    <button type="submit" class="btn btn-primary"> Перейти к очередям </button>
+</form>
+<br/>
+<form action="/order-food">
+    <button type="submit" class="btn btn-success">Сделать новый заказ</button>
+</form>
+{% endblock %}

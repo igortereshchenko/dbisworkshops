@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %} 
+Оплата
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <form method="post" action="/order_accepted">
+                {{push.submit(class="btn btn-success")}}
+            </form>
+        </div>
+        <div class="col">
+            <form action="/my_order">
+                {{canc.submit(class="btn btn-danger")}}
+            </form>
+        </div>
+    </div>
+{% endblock %}
