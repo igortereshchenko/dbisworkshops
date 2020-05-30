@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="login-container d-flex align-items-center justify-content-center">
+    <form class="login-form text-center" action='/rgs' method="POST" autocomplete="off">
+        <h1 class="mb-5 font-weight-llight text-uppercase">{{info['login'] }}</h1>
+        <div class='form-group'>
+            <label for="exampleInputEmail1">Your name</label>
+            <input type="text" class="form-control" placeholder="{{ info['user_name'] }}" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" required>
+        </div>
+        <div class='form-group'>
+            <label for="exampleInputEmail1">Your Last Name</label>
+            <input type="text" class="form-control"  placeholder="{{ info['user_lastname'] }}" id="exampleInputEmail1" aria-describedby="emailHelp" name="last_name" required>
+        </div>
+        <div class='form-group'>
+            <label for="exampleInputEmail1">Your Email address</label>
+            <input type="email" class="form-control"  placeholder="{{ info['email'] }}" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" required>
+        </div>
+        <div class='form-group'>
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" name="password"  placeholder="{{ info['password'] }}" class="form-control" id="exampleInputPassword1" required>
+        </div>
+        <div class="forgot-link d-flex align-items-center justify-content-between">
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+{% endblock %}

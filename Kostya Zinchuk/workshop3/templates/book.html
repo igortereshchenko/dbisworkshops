@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book</title>
+</head>
+<body>
+    <h1>Book info</h1>
+    <form action="/book" method = "POST" id = "book_d">
+    <p>Name
+    <input type="text" name="name" value="{{ book['name'] }}">
+    </p>
+    <p>URL
+    <input type="text" name="url" value="{{ book['url'] }}">
+    </p>
+    <p>Create time
+    <input type="text" name="create_time" value="{{ book['create_time'] }}">
+    </p>
+    <p>Author
+    <input type="text" name="author" value="{{ book['author'] }}">
+    </p>
+</form>
+    <button type="submit" form = "book_d" >Submit</button>
+</body>
+</html>
