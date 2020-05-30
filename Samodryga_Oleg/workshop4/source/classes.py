@@ -10,8 +10,8 @@ class Users(Base):
 
     __tablename__ = 'Users'
     id = Column(Integer, primary_key=True)
-    username = Column(String, unique=True)
-    password = Column(String, nullable=False)
+    username = Column(String(100), unique=True)
+    password = Column(String(100), nullable=False)
     country_id = Column(Integer, ForeignKey('Country.id'))
     user = relationship("Note", backref="Users")
     
@@ -33,7 +33,7 @@ class Country(Base):
 
     __tablename__ = 'Country'
     id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
+    name = Column(String(100), nullable=False)
     user = relationship("Users", backref="Country")
     numbersAid = relationship("NumbersAid", backref="Country")
     hospital = relationship("Hospital", backref="Country")
@@ -52,7 +52,7 @@ class NumbersAid(Base):
 
     __tablename__ = 'NumbersAid'
     id = Column(Integer, primary_key=True)
-    phone_number = Column(String, nullable=False)
+    phone_number = Column(String(20), nullable=False)
     country_id = Column(Integer, ForeignKey('Country.id'))
     
     @classmethod
@@ -72,8 +72,8 @@ class Hospital(Base):
 
     __tablename__ = 'Hospital'
     id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
-    adres = Column(String, nullable=False)
+    name = Column(String(100), nullable=False)
+    adres = Column(String(100), nullable=False)
     country_id = Column(Integer, ForeignKey('Country.id'))
     
     @classmethod
@@ -94,7 +94,7 @@ class Symptom(Base):
 
     __tablename__ = 'Symptom'
     id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
+    name = Column(String(100), nullable=False)
     Description = Column(String, nullable=False)
     
     @classmethod
@@ -112,8 +112,8 @@ class Note(Base):
 
     __tablename__ = 'Note'
     id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
-    Description = Column(String, nullable=False)
+    name = Column(String(100), nullable=False)
+    Description = Column(String(1000), nullable=False)
     user_id = Column(Integer, ForeignKey('Users.id'))
     
     @classmethod
