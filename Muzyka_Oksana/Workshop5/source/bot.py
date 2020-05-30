@@ -73,7 +73,7 @@ def process_age(message):
             msg = bot.reply_to(message, 'Введіть свій email:', process_email)
             bot.register_next_step_handler(msg, process_email)
     except Exception as e:
-        bot.reply_to(message, 'Якась помилка! ')
+        bot.reply_to(message, 'Якась помилка!')
 
 @bot.message_handler(commands=['text'])
 def process_email(message):
@@ -90,7 +90,7 @@ def process_email(message):
         bot.register_next_step_handler(msg, process_phone)
         return
     except Exception as e:
-        bot.reply_to(message, 'Якась помилка')
+        bot.reply_to(message, 'Якась помилка!')
 
 
 @bot.message_handler(commands=['text'])
@@ -112,7 +112,7 @@ def process_phone(message):
                 bot.register_next_step_handler(msg, process_phone)
                 return
     except Exception as e:
-        bot.reply_to(message, 'Якась помилка')
+        bot.reply_to(message, 'Якась помилка!')
 
 
 @bot.message_handler(commands=['text'])
@@ -133,7 +133,7 @@ def process_level(message):
             msg = bot.reply_to(message, 'Оберіть свій рівень знань англійської мови:', reply_markup=markup)
             bot.register_next_step_handler(msg, process_level)
     except Exception as e:
-        bot.reply_to(message, 'Якась помилка! 🗿')
+        bot.reply_to(message, 'Якась помилка!')
 
 @bot.message_handler(commands=['text'])
 def process_level(message):
@@ -153,7 +153,7 @@ def process_level(message):
             msg = bot.reply_to(message, 'Оберіть свій рівень знань англійської мови:', reply_markup=markup)
             bot.register_next_step_handler(msg, process_level)
     except Exception as e:
-        bot.reply_to(message, 'Якась помилка! 🗿')
+        bot.reply_to(message, 'Якась помилка!')
 
 
 @bot.message_handler(commands=['text'])
@@ -233,7 +233,7 @@ def final_control(message):
             msg = bot.send_message(message.chat.id, 'Оберіть один пункт меню:', reply_markup=markup)
             bot.register_next_step_handler(msg, before_main_block)
     except Exception as e:
-        bot.send_message(message.chat.id, 'Something gone wrong! 🗿')
+        bot.send_message(message.chat.id, 'Якась помилка!')
 
 
 #bot.enable_save_next_step_handlers(delay=2)
