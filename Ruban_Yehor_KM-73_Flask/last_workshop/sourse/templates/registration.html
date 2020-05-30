@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <br><br><br><br><br>
+        <form class="form-signin" action="/registration" method="POST">
+            <h1 class="h3 mb-3 font-weight-normal" align="center">Реєстрація користувача</h1><br>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input id="inputPassword" name="name" class="form-control" placeholder="Введіть ім'я"><br>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input id="inputPassword" name="surname" class="form-control" placeholder="Введіть фамілію"><br>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Введіть електронну пошту" autofocus=""><br>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Введіть пароль"><br>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Підтвердіть пароль"><br>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input id="inputPassword" name="phone" class="form-control" placeholder="Введіть номер телефону (зразок: +380 (50) 156 22 30)"><br>
+            <input class="btn btn-lg btn-primary btn-block" type="submit">Зареєструватися</input><br>
+            <p align="center"><a class="p-2 text-dark" href="/ ">На головну</a><a class="p-2 text-dark" href="authorization">Вже є аккаунт? Увійти</a></p>
+            <p class="mt-5 mb-3 text-muted" align="center">© 2020-2024</p>
+        </form>
+    </div>
+{% endblock %}

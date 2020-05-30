@@ -1,0 +1,23 @@
+{%extends 'main.html'%}
+
+{% block head %} 
+    <meta charset="UTF-8">
+    <title>client</title>
+{% endblock %}
+
+{% block header%}
+    <h2>Client information</h2>
+{% endblock %}
+
+{% block content%}
+
+    <form action = "/api" method = "POST" id="f_client">
+         <p>name<br><input type = "text" name = "name" value="{{client.get('name')}}"/></p>
+         <p>email<br><input type = "text" name = "email" value="{{client.get('email')}}" /></p>
+         <p>phone<br><input type = "text" name = "cl_phone" value="{{client.get('cl_phone')}}" /><br></p>
+
+     </form>
+
+    <button type="submit" form= "f_client" name="action" value="client_update">Submit</button>
+
+{% endblock %}

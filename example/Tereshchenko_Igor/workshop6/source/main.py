@@ -1,5 +1,5 @@
 import plotly
-import plotly.plotly as py
+import chart_studio.plotly as pl
 import plotly.graph_objs as go
 import numpy as np
 import json
