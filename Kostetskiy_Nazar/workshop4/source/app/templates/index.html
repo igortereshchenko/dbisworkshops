@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    People board
+{% endblock %}
+
+
+{% block content %}
+<main class="page landing-page">
+    <section class="clean-block clean-info dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Ми допоможемо знайти своїх людей</h2>
+                <p>Знайдіть робітника, або створіть вакансію.</p>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-6"><img class="img-thumbnail" src="{{ url_for('static', filename = 'img/scenery/filter.jpg') }}"></div>
+                <div class="col-md-6">
+                    <h3>Зручний пошук по фільтрам</h3>
+                    <div class="getting-started-info">
+                        <p>Шукаєте працівника? Потрібні студенти? Чи навпаки ви шукаєте когось з досвідом? Перейдіть у відділ "пошук робітника" та оберіть фільтри.&nbsp;</p>
+                    </div><button class="btn btn-outline-primary btn-lg" onclick="location.href='{{ url_for('posts')}}'" type="button">Find worker</button></div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-6"><img class="img-thumbnail" src="{{ url_for('static', filename = 'img/scenery/settings_icon.jpg') }}"></div>
+                <div class="col-md-6">
+                    <h3>Налаштуйте свої конфіденційні дані</h3>
+                    <div class="getting-started-info">
+                        <p>Створіть свій аккаунт, завантажте резюме та створіть пост. Тепер ви маєте усі шанси отримати запрошення на співбесіду. Останній крок - вказання своїх контактних даних. Ви можете вказати всі контактні дані в ваших налаштуваннях,
+                            а також приховати обрані.</p>
+            </div>
+        </div>
+            </div>
+    </section>
+    <section class="clean-block features">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Особливості</h2>
+                <p></p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-5 feature-box"><i class="icon-star icon"></i>
+                    <h4>Масштабність</h4>
+                    <h4></h4>
+                    <p>Велика база даних робітників, що постійно поповнюється</p>
+                </div>
+                <div class="col-md-5 feature-box"><i class="icon-pencil icon"></i>
+                    <h4>Гнучке налаштування постів та контактних даних</h4>
+                </div>
+                <div class="col-md-5 feature-box"><i class="icon-screen-smartphone icon"></i>
+                    <h4>Мобільний додаток</h4>
+                    <p>Зручний мобільний додаток наразі у стадії розробки. Слідкуйте за новинами.</p>
+                </div>
+                <div class="col-md-5 feature-box"><i class="icon-refresh icon"></i>
+                    <h4>Постійна підтримка</h4>
+                    <p>Ресурс постійно підтримується та поповнюється новими функціями</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="clean-block about-us">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Розділ для HR'ів</h2>
+                <p>Створіть свій аккаунт та вкажіть що ви HR. Люди що шукають роботу зможуть підписатися на вас.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="{{ url_for('static', filename='img/avatars/avatar1.jpg') }}">
+                        <div class="card-body info">
+                            <h4 class="card-title">John Smith</h4>
+                            <p class="card-text">Шукаю Senior Python Developer</p>
+                            <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="{{ url_for('static', filename='img/avatars/avatar2.jpg') }}">
+                        <div class="card-body info">
+                            <h4 class="card-title">Robert Downturn</h4>
+                            <p class="card-text">В пошуку DevOps</p>
+                            <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="{{ url_for('static', filename='img/avatars/avatar3.jpg') }}">
+                        <div class="card-body info">
+                            <h4 class="card-title">Ally Sanders</h4>
+                            <p class="card-text">В компанію Х шукаю дизайнера</p>
+                            <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
+{% block content_title %}
+    Content title
+{% endblock %}

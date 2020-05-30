@@ -1,0 +1,6 @@
+*.pyc
+.idea
+venv
+migrations
+.pytest_cache
+frontend

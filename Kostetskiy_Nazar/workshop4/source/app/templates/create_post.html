@@ -1,0 +1,243 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Create post
+{% endblock %}
+
+
+{% block content %}
+<main class="page contact-us-page">
+    <section class="clean-block clean-form dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Create post</h2>
+            </div>
+            <form id="ajaxForm" method="POST" action="/create_post">
+                <div class="form-group"><label>Position</label><input class="form-control" type="text" name="position"></div>
+                <div class="form-group"><label>Text</label><input class="form-control" type="text" name="text"></div>
+                <div class="form-group"><label>Price $</label><input class="form-control" type="number" name="price_usd"></div>
+                <div class="form-group"><button id="sendSerialized" class="btn btn-primary btn-block" type="submit">Send</button></div>
+            </form>
+    </div>
+    </section>
+    <script>
+        $(document).ready(function() {
+
+  function ajaxCallRequest(f_method, f_url, f_data) {
+    $("#dataSent").val(unescape(f_data));
+    var f_contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
+    $.ajax({
+      url: f_url,
+      type: f_method,
+      contentType: f_contentType,
+      dataType: 'json',
+      data: f_data,
+      success: function(data) {
+        var jsonResult = JSON.stringify(data);
+        $("#results").val(unescape(jsonResult));
+      }
+    });
+  }
+
+  $(document).on('click', '.btn-add', function(event) {
+    event.preventDefault();
+    var controlForm = $('.controls');
+    var currentEntry = $(this).parents('.entry:first');
+    var newEntry = $(currentEntry.clone()).appendTo(controlForm);
+    newEntry.find('input').val('');
+    controlForm.find('.entry:not(:last) .btn-add')
+            .removeClass('btn-add').addClass('btn-remove')
+            .removeClass('btn-success').addClass('btn-danger')
+            .html('<span class="glyphicon glyphicon-minus"></span>');
+
+    var inputs = $('.controls .form-control');
+    $.each(inputs, function(index, item) {
+      item.name = 'emails[' + index + ']';
+    });
+  });
+
+  $(document).on('click', '.btn-remove', function(event) {
+    event.preventDefault();
+    $(this).parents('.entry:first').remove();
+    var inputs = $('.controls .form-control');
+    $.each(inputs, function(index, item) {
+      item.name = 'emails[' + index + ']';
+    });
+  });
+
+  $(document).on('click', '.btn-remove', function(event) {
+    e.preventDefault();
+    alert('remove');
+  });
+
+  $("#sendQueryString").click(function(event) {
+    event.preventDefault();
+    var form = $('#ajaxForm');
+    var method = form.attr('method');
+    var url = form.attr('action') + 'queryString/';
+    var data = $(form).serialize();
+    console.log(data);
+    ajaxCallRequest(method, url, data);
+  });
+  $.mockjax({
+    url: '/ajaxRequest/queryString/',
+    type: 'POST',
+      datatype : "json",
+    contentType: 'text/json',
+    responseTime: 0,
+    response: function(settings) {
+      var data = settings.data;
+      var arrayData = data.split('&');
+      var jsonData = {}, paramvalue = '';
+      for (i = 0; i < arrayData.length; i++) {
+        paramvalue = arrayData[i].split('=');
+        jsonData[paramvalue[0]] = paramvalue[1];
+      }
+      this.responseText = jsonData;
+    }
+  });
+
+  $("#sendSerialized").click(function(event) {
+    event.preventDefault();
+    var form = $('#ajaxForm');
+    var method = form.attr('method');
+    var url = form.attr('action') + 'serialized/';
+    var arrayData = $(form).serializeArray();
+    var data = JSON.stringify(arrayData);
+
+    console.log(data);
+    ajaxCallRequest(method, url, data);
+  });
+  $.mockjax({
+    url: '/ajaxRequest/serialized/',
+    type: 'POST',
+    contentType: 'application/json',
+    dataType : 'json',
+    responseTime: 0,
+      data: JSON.stringify(data),
+    response: function(settings) {
+      var data = settings.data;
+      this.responseText = data;
+    }
+  });
+
+  $("#sendPlainJSon").click(function(event) {
+    event.preventDefault();
+    var form = $('#ajaxForm');
+    var method = form.attr('method');
+    var url = form.attr('action') + 'plainjson/';
+    var jsonData = {};
+    $.each($(form).serializeArray(), function() {
+      jsonData[this.name] = this.value;
+    });
+    var data = JSON.stringify(jsonData);
+    console.log(data);
+    ajaxCallRequest(method, url, data);
+  });
+  $.mockjax({
+    url: '/ajaxRequest/plainjson/',
+    type: 'POST',
+    contentType: 'text/json',
+    responseTime: 0,
+    response: function(settings) {
+      var data = settings.data;
+      this.responseText = data;
+    }
+  });
+
+  $("#sendTreeJSon").click(function(event) {
+    event.preventDefault();
+    var form = $('#ajaxForm');
+    var method = form.attr('method');
+    var url = form.attr('action') + 'treejson/';
+    var jsonData = $(form).serializeObject();
+    console.log(jsonData);
+    ajaxCallRequest(method, url, jsonData);
+  });
+
+  $.mockjax({
+    url: '/ajaxRequest/treejson/',
+    type: 'POST',
+    contentType: 'text/json',
+    responseTime: 0,
+    response: function(settings) {
+      var data = settings.data;
+      this.responseText = data;
+    }
+  });
+
+});
+(function($) {
+  $.fn.serializeObject = function() {
+
+    var self = this,
+      json = {},
+      push_counters = {},
+      patterns = {
+        "validate": /^[a-zA-Z][a-zA-Z0-9_]*(?:\[(?:\d*|[a-zA-Z0-9_]+)\])*$/,
+        "key": /[a-zA-Z0-9_]+|(?=\[\])/g,
+        "push": /^$/,
+        "fixed": /^\d+$/,
+        "named": /^[a-zA-Z0-9_]+$/
+      };
+
+    this.pair = function(base, key, value) {
+      base[key] = value;
+      return base;
+    };
+
+    this.push_counter = function(key) {
+      if (push_counters[key] === undefined) {
+        push_counters[key] = 0;
+      }
+      return push_counters[key]++;
+    };
+
+    $.each($(this).serializeArray(), function(index, item) {
+
+      // skip invalid keys
+      var name = item.name;
+      if (!patterns.validate.test(name)) {
+        return;
+      }
+
+      var key;
+      var keys = name.match(patterns.key);
+      var value = item.value;
+      var reverse_key = name;
+
+      while ((key = keys.pop()) !== undefined) {
+
+        // adjust reverse_key
+        reverse_key = reverse_key.replace(new RegExp("\\[" + key + "\\]$"), '');
+
+        // push
+        if (key.match(patterns.push)) {
+          value = self.pair([], self.push_counter(reverse_key), value);
+        }
+
+        // fixed
+        else if (key.match(patterns.fixed)) {
+          value = self.pair([], key, value);
+        }
+
+        // named
+        else if (key.match(patterns.named)) {
+          value = self.pair({}, key, value);
+        }
+      }
+
+      json = $.extend(true, json, value);
+    });
+
+    return json;
+  };
+})(jQuery);
+</script>
+
+</main>
+{% endblock %}
+
+{% block content_title %}
+    Content title
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    People board
+{% endblock %}
+
+
+{% block content %}
+   <main class="page faq-page">
+    <section class="clean-block clean-faq dark">
+        <div class="container">
+            <div class="block-heading">
+            <h1>Name: {{ user.username }}</h1>
+            </div>
+            <div class="block-content">
+            <p>
+                <div class="col-md-6"><img class="img-thumbnail" src="{{ url_for('static', filename = 'img/avatars/worker.png') }}"></div>
+            </p>
+                <p>May musical arrival beloved luckily adapted him. Shyness mention married son she his started now. Rose if as past near were. To graceful he elegance oh moderate attended entrance pleasure. Vulgar saw fat sudden edward way played either. Thoughts smallest at or peculiar relation breeding produced an. At depart spirit on stairs. She the either are wisdom praise things she before. Be mother itself vanity favour do me of. Begin sex was power joy after had walls miles.
+
+Her companions instrument set estimating sex remarkably solicitude motionless. Property men the why smallest graceful day insisted required. Inquiry justice country old placing sitting any ten age. Looking venture justice in evident in totally he do ability. Be is lose girl long of up give. Trifling wondered unpacked ye at he. In household certainty an on tolerably smallness difficult. Many no each like up be is next neat. Put not enjoyment behaviour her supposing. At he pulled object others. </p>
+            </div>
+        </div>
+    </section>
+    </main>
+{% endblock %}
+{% block content_title %}
+    Content title
+{% endblock %}
