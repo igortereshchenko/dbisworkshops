@@ -87,7 +87,10 @@ class Worker():
             result_query = self.db.session.query(Zno_Scores).filter_by(zno_score_student_id = student_id).all()
             subjects = {}
             for row in result_query:
-                  subjects[row.zno_score_name] = float(row.zno_score_value)
+                  if row.zno_score_name=='Середній бал документа про освіту':
+                        subjects[row.zno_score_name] = float(row.zno_score_value)*200/12
+                  else:
+                        subjects[row.zno_score_name] = float(row.zno_score_value)
            
             result_query = self.db.session.query(Recom_Base).filter_by(recom_specialty_id=int(form['search_specialty']),
                                                 recom_region_id=int(form['search_region'])).all()
@@ -99,9 +102,9 @@ class Worker():
                   return False,"Failed search, check pls your subjects and values"
 
             means = self.calculate_mean(rows,subjects)
-            sorted_means = sorted(means, key=lambda x: float(x[0].recom_average_score)-x[1],reverse=True)
+            sorted_means = sorted(means, key=lambda x: float(x[0].recom_average_score)-x[1])
             # print('mean',means)
-            return True,means
+            return True,means[:7]
 
       def calculate_mean(self,rows,subjects):
             rows_means = []
@@ -228,6 +231,9 @@ class Worker():
                         results[-1]['average_score'] = row.Recom_Base.recom_average_score
                         results[-1]['student_score'] = row.Recom_List.student_score
                         # print(row.Recom_Base.recom_subjects)
+                  results = sorted(results,key=lambda x: x['average_score']-x['student_score'])
+                  for i,row in enumerate(results):
+                        row['priority']=i+1
                   return results
             except Exception as e:
                   print('Error when get recom list:',e)
