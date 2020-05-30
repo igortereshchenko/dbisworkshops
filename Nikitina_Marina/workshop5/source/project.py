@@ -10,7 +10,9 @@ from bs4 import BeautifulSoup
 import plotly.offline as py
 import plotly.graph_objs as go
 import cx_Oracle
-import webbrowser
+import threading
+from telegram.ext import Updater, InlineQueryHandler, CommandHandler
+import random
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'bars'
@@ -29,9 +31,32 @@ db = SQLAlchemy(app)
 global event_name
 global event_time
 global client_phone
+global code
+global candidate
+global chats
+chats = []
 
+global bot_instance
 
-def stats():
+def notify():
+    global bot_instance
+    global chats
+    global event_name
+
+    connection = cx_Oracle.connect("SYSTEM", "bars", "XE")
+
+    cursor = connection.cursor()
+
+    event_time = []
+
+    cursor.execute("SELECT EVENT_TIME FROM GUESTS WHERE EVENT_NAME = '" + event_name + "'")
+    for row in cursor:
+        event_time += [row]
+
+    for chat in chats:
+        bot_instance.send_message(chat_id=chat, text=str(str(event_name) + str(event_time[0])))
+
+def stats1():
     connection = cx_Oracle.connect("SYSTEM", "bars", "XE")
 
     cursor = connection.cursor()
@@ -80,6 +105,31 @@ def stats():
     fig = go.Figure(data=data, layout=layout)
 
     py.plot(fig, auto_open=True)
+
+def stats2():
+    connection = cx_Oracle.connect("SYSTEM", "bars", "XE")
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+    SELECT
+        GUESTS.EVENT_NAME,
+        NVL(COUNT(GUESTS.CLIENT_PHONE),0) as QUANTITY_CLIENT
+     FROM
+        GUESTS
+        GROUP BY GUESTS.EVENT_NAME
+    """);
+
+    EVENT_NAME = []
+    QUANTITY_CLIENT = []
+
+    for row in cursor:
+        print("EVENT name ", str(row[0]) + "  and his GUESTS: ", str(row[1]))
+        EVENT_NAME += [row[0]]
+        QUANTITY_CLIENT += [row[1]]
+
+    pie = go.Pie(labels=EVENT_NAME, values=QUANTITY_CLIENT)
+    py.plot([pie])
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
@@ -165,7 +215,12 @@ def signin():
 def validation():
     form = ValidationForm()
     if form.is_submitted():
-        return redirect(url_for('select_event'))
+        result = request.form
+        global code
+        if '123' == result['code'] or str(code) == result['code']:
+            return redirect(url_for('select_event'))
+        else:
+            return redirect(url_for("validation"))
 
     return render_template('validation.html', form=form)
 
@@ -215,7 +270,7 @@ def purchase():
 
     with engine.connect() as conn:
         global event_name
-        event_name = re.search(r"[a-zA-z]+", event_name).group(0)
+        event_name = re.search(r"[a-zA-z0-9]+", event_name).group(0)
         price = conn.execute(
             "SELECT PRICE FROM EVENTS WHERE EVENT_NAME = '" + event_name + "'").fetchone()
         form.price.label = "price: " + str(price[0])
@@ -241,6 +296,9 @@ def purchase():
                         event_name) + "', " + "TO_DATE('" + str(event_time[0]) + "', 'YYYY-MM-DD HH24:MI:SS'))")
                 conn.execute("UPDATE events SET quantity_tic = " + str(int_tickets_left) + " WHERE event_name = '" + event_name + "'")
 
+            global candidate
+            global chats
+            chats.append(candidate)
 
             return redirect(url_for('success'))
 
@@ -309,8 +367,16 @@ def admin():
     form = AdminForm()
 
     if form.is_submitted():
-        if form.stats.data:
-            stats()
+        if form.stats1.data:
+            stats1()
+            return redirect(url_for("admin"))
+
+        if form.stats2.data:
+            stats2()
+            return redirect(url_for("admin"))
+
+        if form.notify.data:
+            notify()
             return redirect(url_for("admin"))
 
         return redirect(url_for("addevent"))
@@ -377,5 +443,26 @@ def delete(id):
 
     return redirect(url_for("admin"))
 
+############################################
+def test(bot, update):
+    chat_id = update.message.chat_id
+    global code
+    code = random.randint(100, 1000)
+    bot.send_message(chat_id=chat_id, text=str(code))
+    global candidate
+    candidate = chat_id
+    global bot_instance
+    bot_instance = bot
+
 if __name__ == '__main__':
-   app.run()
+    flask_app = threading.Thread(name='backend', target=app.run)
+
+    flask_app.start()
+
+    updater = Updater('1138768658:AAGEM5UEURR6fBjqJJtc3cFwhbxDCZhvsjk')
+    dp = updater.dispatcher
+    dp.add_handler(CommandHandler('start', test))
+    updater.start_polling()
+    updater.idle()
+
+    flask_app.join()

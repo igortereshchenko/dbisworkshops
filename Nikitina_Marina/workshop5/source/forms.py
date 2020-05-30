@@ -40,7 +40,9 @@ class EventForm(FlaskForm):
 class AdminForm(FlaskForm):
     events = FieldList(FormField(EventForm))
     submit = SubmitField("Add event")
-    stats = SubmitField("Stats")
+    stats1 = SubmitField("StatBar")
+    stats2 = SubmitField("StatPie")
+    notify = SubmitField("Notify")
 
 class AddEventForm(FlaskForm):
     event_id = IntegerField()
