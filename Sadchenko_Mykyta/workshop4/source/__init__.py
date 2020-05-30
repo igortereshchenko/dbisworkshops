@@ -8,3 +8,8 @@ db = OracleDb()
 
 from Sadchenko_Mykyta.workshop4.source import routes
 
+from notes import db
+from notes.models import User, Note
+nu = User('123','12@dsa.sd','123')
+db.session.add(nu)
+db.session.commit()
