@@ -1,0 +1,85 @@
+
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (52056,	'Будівництво та архітектура',	'Elle decor',	3653.04,	'Мова видання: (анг.). Періодичність виходу: 1 p. на 2 тижні. Мінімальний строк передплати: 1 міс.');
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (93248,	'Будівництво та архітектура',	'Architectural digest',	5875.62,	'Мінімальний строк передплати: 1 міс.');
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (87803,	'Будівництво та архітектура',	'Ландшафт і архітектура', 	64.09,	'Мова видання: (рос.). Періодичність виходу: 1 p. на 2 тижні. Мінімальний строк передплати: 1 міс.');
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (22055,	'Соціологія. Освіта. Педагогіка',	'English',	68.87, 	'Мова видання: (англ., укр.). Періодичність виходу: 1 р. на мic.. Мінімальний строк передплати: 1 міс.');
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (87762,	'Соціологія. Освіта. Педагогіка',	'English + Бібліотека', 	498.97, 	'г. «English. Бібліотека», (англ., укр.), 1 p. на пiвр.. Мінімальний строк передплати: 6 міс');
+
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (37799, 	'Популярні видання', '1000 секретов', 29.7,	'14	Мова видання: (рос.). Періодичність виходу: 1 p. на 2 тижні. Мінімальний строк передплати: 1 міс.');
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (46305,	'Iсторія',	'«Експрес» + «Історія плюс»', 	36, 	'Мова видання: (укр.). Періодичність виходу: 1 р. на тижд.. Мінімальний строк передплати: 1 міс.');
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (91887,	'Iсторія',	'Історія. Новий погляд',	44.54, 	'Мова видання: (укр.). Періодичність виходу: 1 р. на міс.. Мінімальний строк передплати: 1 міс.');
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (88659,	'Iсторія',	'Історичний калейдоскоп', 	53.78, 	'Мова видання: (укр.). Періодичність виходу: 4 р. на рік.. Мінімальний строк передплати: 3 міс.');
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (40528,	'Міжнародні відносини та політика',	'Kyiv Post', 	195, 	'Мова видання: (укр.). Періодичність виходу: 1 р. на тижд.. Мінімальний строк передплати: 1 міс.');
+
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (57185,	'Міжнародні відносини та політика',	'Актуальные проблемы Европы', 	539.8,	'Мінімальний строк передплати: 1 міс.');
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (51885,	'Економіка та менеджмент',	'Financial News', 	680.44, 	'Мінімальний строк передплати: 1 міс.');
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (94018,	'Економіка та менеджмент',	'Financial Times', 	29754.24,	'Мінімальний строк передплати: 1 міс.'
+);
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (20317,	'Дитячі видання', 	'National Geographic Little Kids',	'4245.78', 	'Передплата приймається з кожного місяця на повний річний комплект.' );
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (46299,	'Дитячі видання', 	'Polak maly',	11,	'Мова видання: (укр., польськ.). Періодичність виходу: 12 р. на рік. Мінімальний строк передплати: 1 міс.');
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (92581,	'Техніка та наука',	'Civil aviation training',	9852.72, 	'Передплата приймається з кожного місяця на повний річний комплект.');
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (77038,	'Техніка та наука',	 'Air international',	5437.74,	'Мінімальний строк передплати: 1 міс.');
+
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (52060,	'Культура та дозвілля',	'The New York', 	18074.46,	'Мінімальний строк передплати: 1 міс.');
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (20325,	'Культура та дозвілля','0lling ston',	8804.64,	'Мова видання: (анг.). Періодичність виходу: 1 р. на тижд.. Мінімальний строк передплати: 1 міс.');
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (8900,	'Здоров’я та спорт',	'ALMA MATER',	2.64, 	'Мова видання: (укр.). Періодичність виходу: 1 р. на мic.. Мінімальний строк передплати: 1 міс.');
+
+INSERT INTO editions (edit_id, category, edition_name, price, details)
+VALUES (21821,	'Здоров’я та спорт',	'Les Nouvelles Esthetiques, Україна',	203.99,	'Мова видання: (рос.). Періодичність виходу: 12 р. на рік. Мінімальний строк передплати: 1 міс.');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

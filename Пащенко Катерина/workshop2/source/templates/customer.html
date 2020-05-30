@@ -1,0 +1,11 @@
+<!doctype html>
+<html>
+	<body>
+		<form action = '/api', method = 'POST' id = 'customer'>
+			<p>ПІБ замовника<input type = 'text' name = 'Name' value ="{{customer.get('Name')}}" /></p>
+			<p>Email<input type = 'text' name = 'Email' value = "{{customer.get('Email')}}"/></p>
+			<p>Контактний телефон<input type = 'text' name = 'phone' value = "{{customer.get('Phone')}}"/></p>
+			<button type = 'submit' form='customer' name="action" value='submit'/>Submit</button>
+		</form>
+	</body>
+</html>

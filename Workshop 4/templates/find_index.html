@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+
+{% block footer %}
+	{{find_id}}
+
+	{% for edition in editions %}
+		<div class = "item_pop_edit">
+			<div class = "name_ed" >{{ edition.edition_name }}</div>
+			<div class = "desctipt">{{ edition.details}}</div>
+			<div class="item">Індекс видання {{edition.edit_id}}</div><div class = "item">{{ edition.price }} грн. </div>
+		</div >
+	{% endfor %}
+
+{% endblock %}

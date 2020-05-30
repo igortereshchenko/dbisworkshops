@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+	<body>
+		<form action = '/api' method = 'POST' id = 'edition'>
+			<p>Категорія видання <input type = 'text' name = 'Category' value = "{{edition.get('Category')}}"/></p>
+			<p>Назва видання <input type = 'text' name = 'Name' value = "{{edition.get('Name')}}"/></p>
+			<p>Вартість передплати <input type = 'text' name = 'Price' value = "{{edition.get('Price')}}"/></p>
+			<p>Індекс видання <input type = 'text' name = 'Index' value = "{{edition.get('Index')}}"/></p>
+		</form>
+		<button type = 'submit' form='edition' name="action" value='submit'>Submit</button>
+	
+	</body>
+</html>
