@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>event</title>
+</head>
+<body>
+    <form action = "/api" method = "POST" id="form_event">
+         <p>Event name<input type = "text" name = "name" value="Event Name"/></p>
+         <p>Event date<input type = "text" name = "date" value="31/05/2020"/></p>
+         <p>Event time start<input type = "text" name = "time_s" value="14:00"/></p>
+         <p>Event time end<input type = "text" name = "time_e" value="14:20"/></p>
+     </form>
+    <button type="submit" form= "form_event" name="action" value="event_update">Submit</button>
+    <form>
+        <input type="button" value="Go to event list" onclick="window.location.href='all'" />
+    </form>
+    
+</body>
+</html> 
