@@ -1,0 +1,7 @@
+username = 'tokensystem'
+password = '123456'
+host = 'localhost'
+port='1521'
+service = 'xe'
+databaseName = 'localhost/xe'
+#service = 'orcl'
