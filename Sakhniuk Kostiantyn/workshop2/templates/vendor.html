@@ -1,0 +1,29 @@
+{% extends "basis.html" %}
+
+{% block head %}
+    <meta charset="UTF-8">
+    <title>Vednor</title>
+{% endblock%}
+
+{% block header %}
+{% endblock%}
+
+{% block content %}
+<h2>Vendor form</h2>
+<form action="" method="post">
+    <p>
+        {{ form.vendor_name.label }} <br>
+        {{ form.vendor_name(size=30) }}
+    </p>
+    <p>
+        {{ form.products.label }} <br>
+        {{ form.products(size=30) }}
+    </p>
+    <p>
+        {{ form.link.label }} <br>
+        {{ form.link(size=30) }}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% endblock %}
