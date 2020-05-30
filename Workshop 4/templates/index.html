@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+	body{
+		margin: 0px;
+		background-color: #EDEDEF;
+
+	}
+	header{
+			margin-bottom: 100px;
+
+			width: 100%;
+		  	display: flex;
+		  	padding:15px;
+
+		  	background-color:#443E4A;
+		  	position: fixed;
+
+
+
+	}
+
+
+	.item_pop_edit{
+					
+
+					background-color: #FFFFFF;
+
+
+  					padding: 10px;
+  					height: 150px; 
+
+  					margin-left: 100px;
+  					margin-right: 100px;
+  					margin-top: 15px;
+
+  					box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+
+
+  				}
+  	.name_ed {
+  		  text-align: center;
+
+
+  		font-size: 45px;
+  		font-family: Arial, Helvetica, sans-serif;
+  	}
+  	.desctipt{
+  		  		font-size: 22px;
+  		  		font-family: Arial, Helvetica, sans-serif;
+  		  		margin-top: 5px;
+
+  	}
+  	.item{ 
+
+  		margin-top: 7px;
+  		margin-right: 50px;
+  		margin-left: 2px;
+  	}
+
+  	.find{
+  		margin-left: 30px;
+  		margin-right: 30px;
+  	}
+		
+	.select{
+		margin-left: 30px;
+		margin-right: 30px;
+
+	}
+
+	.middle{
+		height: 100px;
+	}
+
+	.name{
+		text-align: center;
+		font-size: 20px;
+
+
+	}
+	.order{
+		float: right;
+
+	}
+
+
+
+</style>
+
+<head>
+
+</head>
+<header>
+	<div><a href="http://127.0.0.1:5000/"><img src = "home_button2.png" alt = "home page" width="100"></a></div>
+	<div class = "find"><form action="http://127.0.0.1:5000/" method="GET">
+  		<input type="text" placeholder="За індексом/за назвою" name="gsearch" value = "{{ request.args.get('gsearch', '')}}">
+  		<input type="submit" value = "Пошук">
+	</form></div>
+	<a href="http://127.0.0.1:5000/plot">Подивитися статистику</a>
+	
+	<div class = "select"><form name="categories" action = "{{url_for('show_category')}}" method = "post">
+		Вибір категорії
+		<select name="select_categ" id = "select_categ">
+			<option>Всі категорії</option>
+			<option value="Будівництво та архітектура">Будівництво та архітектура</option>
+			<option value = "Дитячі видання">Дитячі видання</option>
+			<option value = "Економіка та менеджмент">Економіка та менеджмент</option>
+			<option value= "Здоров’я та спорт">Здоров’я та спорт</option>
+			<option value = "Iсторія">Iсторія</option>
+			<option value = "Міжнародні відносини та політика">Міжнародні відносини та політика</option>
+			<option value = "Культура та дозвілля">Культура та дозвілля</option>
+			<option value = "Техніка та наука">Техніка та наука</option>	
+			<option value="Соціологія. Освіта. Педагогіка">Соціологія. Освіта. Педагогіка</option>
+		</select>
+		Сорування
+		<select name="sort_categ" id = "sort_categ" style="{-webkit-appearance: none;-moz-appearance: none; appearance: none;}">
+			<option value="за замовчуванням">за замовчуванням</option>
+			<option value="назва(А-Я)">назва(А-Я)</option>
+			<option value = "назва(Я-А)">назва(Я-А)</option>
+			<option value="ціна(за зростанням)">ціна(за зростанням)</option>
+			<option value = "ціна(за зменшенням)">ціна(за зменшенням)</option>
+			<option value="індекс видання(А-Я)">індекс видання(А-Я)</option>
+			<option value = "індекс видання(Я-A)">індекс видання(Я-A)</option>
+		</select>
+		<button type="submit" name="submit" value="success" class="btn btn-default">Пошук</button></form>
+	</form></div>
+</header>
+<div class = "middle"></div>
+
+<body>
+	
+
+	{% block footer %}
+
+	
+		<div class = "name">
+
+		{{category}}
+
+		</div>
+
+		{% for edition in editions %}
+		<div class = "item_pop_edit">
+			<div class = "name_ed" >{{ edition.edition_name }}</div>
+			<div class = "desctipt">{{ edition.details}}</div>
+			<div class = "item">Ціна {{ edition.price }} грн. </div>
+
+			<form  action = "{{url_for('start_order')}}" method = "post" >
+				<div style = "float: right;"><button type="submit" name="submit" value="success">Оформити педерплату</button></div>
+				<div class = "order">   Індекс видання   <select  id = "id_new_order_edit" name="id_new_order_edit" style=" -webkit-appearance: none; -moz-appearance: none; appearance: none; border: none; padding-right: 10px;">
+					<option>{{edition.edit_id}}</option>
+				</select></div>
+				</form>
+			
+		</div >
+		{% endfor %}
+
+	{% endblock %}
+
+</body>
+</html>
