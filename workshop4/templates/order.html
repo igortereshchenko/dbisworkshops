@@ -1,0 +1,28 @@
+{% extends "basis.html" %}
+
+{% block head %}
+    <meta charset="UTF-8">
+    <title>Hike</title>
+{% endblock%}
+
+{% block header %}
+
+{% endblock%}
+
+{% block content %}
+
+<h2>Order form</h2>
+<form action="" method="post">
+    <p>
+        {{ form.fk_user_id.label }} <br>
+        {{ form.fk_user_id(size=30) }}
+    </p>
+    <p>
+        {{ form.fk_sentence_id.label }} <br>
+        {{ form.fk_sentence_id(size=30) }}
+    </p>
+
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% endblock %}
