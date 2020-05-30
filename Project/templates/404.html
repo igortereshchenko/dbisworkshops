@@ -1,0 +1,15 @@
+{% extends "basis.html" %}
+
+{% block head %}
+    <meta charset="UTF-8">
+    <title>404 page</title>
+{% endblock %}
+
+{% block header%}
+    <h1> Error 404</h1>
+{% endblock %}
+
+{% block content%}
+    <h3>Не правильное действие: {{action_value}}.</h3>
+    <h3>Правильние действия (complexity, feature, all_hike).</h3>
+{% endblock %} 

@@ -1,0 +1,39 @@
+{% extends "basis.html" %}
+
+{% block head %}
+    <meta charset="UTF-8">
+    <title>Hike</title>
+{% endblock%}
+
+{% block header %}
+
+{% endblock%}
+
+{% block content %}
+
+<h2>Hike form</h2>
+<form action="" method="post">
+    <p>
+        {{ form.hike_name.label }} <br>
+        {{ form.hike_name(size=30) }}
+    </p>
+    <p>
+        {{ form.duration.label }} <br>
+        {{ form.duration(size=30) }}
+    </p>
+    <p>
+        {{ form.length.label }} <br>
+        {{ form.length(size=30) }}
+    </p>
+    <p>
+        {{ form.complexity.label }} <br>
+        {{ form.complexity(size=30) }}
+    </p>
+    <p>
+        {{ form.price.label }} <br>
+        {{ form.price(size=30) }}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% endblock %}
