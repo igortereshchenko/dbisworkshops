@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+Welcome!
+{% endblock %}
+
+{% block content %}
+<div class="alert alert-info w-25" role="alert">
+    <h4>Добавлено: {{dish[0]}} x {{dish[1]}} </h4>
+</div>
+
+<form action="/cafe{{cafe[0]}}">
+    <button type="submit" class="btn btn-primary">Продолжить покупки в {{cafe[1]}} </button>
+</form>
+<br/>
+<form action="/my_order">
+    <button type="submit" class="btn btn-success">Перейти к заказу </button>
+</form>
+{% endblock %}

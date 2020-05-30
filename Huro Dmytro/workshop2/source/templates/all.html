@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>all</title>
+</head>
+<style>
+    table
+        {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+    td, th
+        {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+    tr:nth-child(even)
+        {
+          background-color: #dddddd;
+        }
+    a
+        {
+            color: #036;
+            text-decoration: none;
+        }
+    a:visited
+        {
+            color: #036;
+        }
+
+</style>
+</head>
+<body>
+
+    <h2>Cafe Dictionary(<a href = "http://127.0.0.1:5000/api/cafe"> edit </a>)</h2>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Rank</th>
+      </tr>
+      <tr>
+        <td>{{cafe.get('title')}}</td>
+        <td>{{cafe.get('rank')}}</td>
+      </tr>
+    </table>
+
+
+    <h2>Dish Dictionary(<a href = "http://127.0.0.1:5000/api/dish"> edit </a>)</h2>
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+          </tr>
+          <tr>
+            <td>{{dish.get('name')}}</td>
+            <td>{{dish.get('description')}}</td>
+            <td>{{dish.get('price')}}</td>
+          </tr>
+        </table>
+
+</body>
+</html>

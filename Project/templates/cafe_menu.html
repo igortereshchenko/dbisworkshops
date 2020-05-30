@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %} Выбор блюд {% endblock %}
+
+{% block content %}
+
+<!-- Modal -->
+{% for dish in menu %}
+    <div class="modal fade" id="modal{{dish[0]}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><h3>{{dish[1]}}</h3></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col"><img src="{{ url_for('static', filename='pics/dishes/dish_{}_{}.jpg'.format(cafe_id, dish[0])) }}" style="margin: 0.5rem; height: 15rem; width:15rem; border-radius: 5px;"></div>
+                    <div class="col">
+                        <br/>
+                        <h2>Цена: {{dish[2]}}грн.</h2>
+                        <br/>
+                        <form method="post" action="/temp">
+                            {{form.cafe_id(hidden=true, value=cafe_id)}}
+                            {{form.item_id(hidden=true, value=dish[0])}}
+                            {{form.item_amount(class_="form_control w-50", type="number", min="1", max="100", value="1")}}
+                            {{form.submit(class_="btn btn-success")}}
+                        </form>
+                    </div>
+                    <div class="modal-footer"><h2>{{dish[3]}}</h2></div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{%endfor%}
+
+
+<div class="row">
+    {% for dish in menu %}
+       <div class="col-3.5 card" style=" margin: 5px; width:16rem; background-color:#e6ffff; ">
+            <img src="{{ url_for('static', filename='pics/dishes/dish_{}_{}.jpg'.format(cafe_id, dish[0])) }}" class="card-img-top" style="margin: 0.5rem; height: 15rem; width:15rem; border-radius: 5px;">
+
+            <div class="card-body">
+               <h5 class="card-title text-center"> {{dish[1]}} </h5>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal{{dish[0]}}">
+                    Хочу
+                </button>
+           </div>
+        </div>
+    {%endfor%}
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %} 
+Ваш заказ
+{% endblock %}
+
+{% block content %}
+<div class="row w-100">
+    <div class="col-sm my-auto">
+        <div class="card" style="width: 30rem;">
+          <div class="card-body">
+              <h5 class="card-title">Ваш заказ</h5>
+              {% for ord in order %}
+                <div class="alert alert-info" role="alert">
+                    <h4>{{dishes[ord.dish_id-1].dish_name}} x {{ord.amount_dishes}} </h4>  Цена:  {{dishes[ord.dish_id-1].dish_price*ord.amount_dishes}} грн.
+                 </div>
+              {% endfor %}
+
+          </div>
+            <div class="card-footer">
+                    <h3> Стоимоть заказа: {{order_sum}} грн.</h3>
+                    <h5> Примерное ремя выполнения: {{left}} мин.</h5>
+                    <div class="row">
+                        <div class="col">
+                            {% if order_sum < min %}
+                                    <button class="btn btn-secondary">Оплата </button>
+                            <h6>Заказ на сумму < {{min}} грн.</h6>
+                             {% else %}
+                                    <form method="post" action="/payment">
+                                        {{pay.submit(class="btn btn-success")}}
+                                    </form>
+                             {% endif %}
+
+                        </div>
+                        <div class="col">
+                            <form method="post" action="/my_order">
+                                {{clean.submit(class="btn btn-danger")}}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

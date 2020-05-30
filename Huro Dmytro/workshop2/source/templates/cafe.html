@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user</title>
+</head>
+<body>
+
+
+    <form action = "/api" method = "POST" id="form_cafe">
+         <p>Name <input type = "text" name = "title" value="{{cafe.get('title')}}"/></p>
+         <p>Age <input type = "text" name = "rank" value="{{cafe.get('rank')}}" /></p>
+     </form>
+
+    <button type="submit" form="form_cafe" name="action" value="cafe_update">Submit</button>
+
+
+</body>
+</html>
+
+

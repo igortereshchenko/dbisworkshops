@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<form action = "/order" method = post>
+		<h2>Add new order</h2>
+		{{ form_order.hidden_tag() }}
+		{{ form_order.csrf_token }}
+		<p>	
+			{{ form_order.dish_id.label }}
+			{{ form_order.dish_id }}
+		</p>
+		<p>
+			{{ form_order.user_name.label }}
+			{{ form_order.user_name }}
+		</p>
+		<p>
+			{{ form_order.user_phone.label }}
+			{{ form_order.user_phone }}
+		</p>
+		<p>
+			{{ form_order.amount_dishes.label }}
+			{{ form_order.amount_dishes }}
+		</p>
+		{{ form_order.submit}}
+	</form>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>all</title>
+</head>
+<body>
+    <form action = "/api" method = "POST" id="form_dish">
+         <p>Name <input type = "text" name = "name" value="{{dish.get('name')}}"/></p>
+         <p>Descr <input type = "text" name = "description" value="{{dish.get('description')}}" /></p>
+         <p>Price <input type = "text" name = "price" value="{{dish.get('price')}}" /></p>
+     </form>
+
+    <button type="submit" form="form_dish" name="action" value="dish_update">Submit</button>
+</body>
+</html>

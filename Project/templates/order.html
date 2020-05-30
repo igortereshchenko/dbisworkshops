@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %} Заказать кушать {% endblock %}
+
+{% block content %}
+
+<div class="row">
+
+    {% for cafe in table %}
+        <div class="col-3.5 card" style=" margin: 5px; width:16rem; background-color:#e6ffff; ">
+            <img src="{{ url_for('static', filename='pics/cafes/cafe_id_{}.jpg'.format(cafe[0])) }}" class="card-img-top" style="margin: 0.5rem; height: 15rem; width:15rem; border-radius: 5px;">
+            <div class="card-body">
+                <h5 class="card-title text-center"> {{cafe[1]}} </h5>
+                {% if cafe[0] == cur_cafe or cur_cafe == 0 %}
+
+                    <a href="cafe{{cafe[0]}}" class="btn btn-primary text-center"> <span class="text-center">Кушаем тут!</span> </a>
+                {% else %}
+                    <button  class="btn btn-primary text-center" onclick="alert('Выделаете заказ в кафе {{cor_cafe}}. Очистите свой заказ, чтобы сменить кафе!')"> <span class="text-center">Кушаем тут!</span> </button>
+                {% endif %}
+
+            </div>
+        </div>
+    {%endfor%}
+
+</div>
+
+
+
+{% endblock %}
