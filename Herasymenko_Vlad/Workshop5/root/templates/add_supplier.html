@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Оновити запис</title>
+
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'styles_main.css') }}">
+
+	<style> 
+			
+		#List{
+
+		font-size: 17px;
+
+
+		padding-top: 9%;
+		padding-bottom: 2%; 
+
+
+		text-decoration: none;
+ 		display: inline-block;
+
+		}
+
+		#List:visited, #List:link{
+
+ 			text-decoration: none;
+ 			color: black;
+
+		}
+
+		#List:hover{
+
+ 			text-decoration: underline;
+ 			color: #ffff4d;
+
+		}
+
+		#search_field{
+
+			border-radius: 40px;
+
+		}
+
+		#BUT {
+
+			  border-radius: 3px;
+			  border-color: black;
+			  border-width: 1.2px;
+
+
+			  color: white;
+			  background-color: black;
+
+			  padding-left: 22%;
+			  padding-right: 22%;
+			  padding-top: 1.2%;
+			  padding-bottom: 1.2%;
+
+			  font-size: 24px;
+
+			  margin-top: 7%;
+			  margin-bottom: 7%;
+
+		}
+
+		#REG {
+
+
+			  margin-bottom: 8%;
+
+			  padding-left: 2%;
+			  padding-right: 28%;
+			  padding-top: 2%;
+			  padding-bottom: 2%;
+
+
+			  border-radius: 15px;
+			  border-color: black;
+			  border-width: 1.2px;
+
+		}
+
+	</style>
+
+</head>
+<body>
+
+<div id="Main_Head">
+
+	<a href="{{ url_for('Home') }}" class="Headings">Триград</a>
+	<a href="{{ url_for('Materials') }}" class="Headings">Матеріали</a>
+	<a href="{{ url_for('Suppliers') }}" style="color: yellow;" class="Headings">Постачальники</a>
+	<a href="{{ url_for('Dynamic') }}" class="Headings">Динаміка цін</a>
+
+	{% if user_logged == False %}
+
+	<a href="{{ url_for('Log') }}" id="LogIn">Увійти</a>
+	<a href="{{ url_for('Register') }}" id="Reg">Зареєструватися</a>
+
+	{% elif user_logged == True %}
+
+	<a href="" id="LogIn"> Вхід виконано як {{user_name}} </a>
+	<a href="{{ url_for('Logout') }}" style="color: white;"> Вийти </a>
+
+	{% endif %}
+
+</div>
+
+
+<div style="width: 25%; margin:auto; padding-top: 2.5%;">
+
+	
+
+	<form action = "http://127.0.0.1:5000/suppliers/add/submit" method = "post">
+		
+	  <b id="Sort_P" style="text-align: center;	font-family: Times New Roman; font-size: 20px;">Додати запис про постачальника </b>
+	  <br><br>
+
+	  <input id="REG" type="text" name="sup_name" placeholder="Назва фірми*"required>
+	  <input id="REG" type="text" name="city" placeholder="Місто*"required>
+	  <input id="REG" type="number" name="ed" placeholder="ЄДРПОУ*"required>
+	  <input id="REG" type="text" name="adr" placeholder="Адреса">
+	  <input id="REG" type="e-mail" name="email" placeholder="E-mail">
+	  <input id="REG" type="tel" name="tel" placeholder="Телефон">
+	  <input id="REG" type="text" name="m_name" placeholder="Ім'я менеджера">
+	  <input id="REG" type="number" name="rr" placeholder="Банківський рахунок*" required>
+	  <input id="REG" type="number" name="mfo" minlength="6" maxlength="6" placeholder="МФО банку*" required>
+	  <input id="REG" type="text" name="bank_name" placeholder="Банк (назва)*" required>
+
+
+	  <input id="BUT" type="submit" value="Додати">
+
+	</form>
+
+</div>
+
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+
+	    {% for message in messages %}
+	      <script type="text/javascript">
+	      	alert("{{ message }}");
+	      </script>
+
+	    {% endfor %}
+
+	  {% endif %}
+	{% endwith %}
+
+</body>
+</html>
