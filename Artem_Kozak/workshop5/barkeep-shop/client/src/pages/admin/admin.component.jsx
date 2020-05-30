@@ -10,6 +10,7 @@ import {Line} from "../profile/profile.styles";
 import AdminAllUsers from "../../components/admin-all-users/admin-all-users.component";
 import AdminAllNewOrdersPreview
     from "../../components/admin-all-new-orders-preview/admin-all-new-orders-preview.component";
+import AdminHome from "../../components/admin-home/admin-home.component";
 
 const AdminPage = () => {
     return (
@@ -18,7 +19,7 @@ const AdminPage = () => {
             <Line/>
             <Switch>
                 <Route exact path='/administrator_page_for_user_orders_and_other'
-                       component={AdminAllNewOrdersPreview}/>
+                       component={AdminHome}/>
                 <Route exact path='/administrator_page_for_user_orders_and_other/new-orders'
                        component={AdminAllNewOrdersPreview}/>
                 <Route exact path='/administrator_page_for_user_orders_and_other/completed-orders'

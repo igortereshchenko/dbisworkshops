@@ -27,6 +27,11 @@ const adminReducer = (state = INITIAL_STATE, action) => {
                 users: action.payload,
                 error: null,
             };
+        // case AdminActionTypes.ADMIN_GET_USERS_TO_ORDERS:
+        //     return {
+        //         ...state,
+        //         graphs:
+        //     }
         case AdminActionTypes.ADMIN_GET_ALL_USERS_ORDERS_SUCCESS:
             return {
                 ...state,

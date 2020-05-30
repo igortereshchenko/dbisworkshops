@@ -21,3 +21,14 @@ export const selectOrdersForPreview = createSelector(
     [selectAllOrders],
     orders => orders ? Object.keys(orders).map(key => orders[key]) : []
 );
+
+export const selectOrdersKeys = createSelector(
+    [selectAllOrders],
+    orders => orders ? Object.keys(orders).map(key => orders[key].currentUser.uid) : []
+);
+
+
+export const selectUsersKeys = createSelector(
+    [selectAllUsers],
+    users => users ? Object.keys(users).map(key => users[key].uid) : []
+);
