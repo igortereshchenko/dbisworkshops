@@ -1,0 +1,19 @@
+{%extends 'main.html'%}
+
+{% block title%}
+Diagnostic
+{% endblock %}
+
+{% block body%}
+
+
+    <form action = "/api" method = "POST" id="form_diagnostic">
+         <p>kind<input type = "text" name = "kind" value="{{diagnostic.get('kind')}}"/></p>
+         <p>doctor<input type = "text" name = "doctor" value="{{diagnostic.get('doctor')}}" /></p>
+         <p>diagnos<input type = "text" name = "diagnos" value="{{diagnostic.get('diagnostic')}}" /></p>
+
+     </form>
+
+    <button type="submit" form= "form_diagnostic" name="action" value="diagnostic_update">Submit</button>
+
+{% endblock %}
