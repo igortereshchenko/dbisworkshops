@@ -46,7 +46,7 @@ class RegistrationForm(FlaskForm):
     # Can't understand how to make theese validators work with declarative_base().
     # Return AttributeError: type object 'ormUser' has no attribute 'filter_by'
     # I will try to fix it until Tuesday or Sunday evening
-
+    """
     def validate_user_email(self, user_email):
         pass
         user = ormUser.filter_by(user_email = user_email.data).first()
@@ -63,7 +63,7 @@ class RegistrationForm(FlaskForm):
                 raise ValidationError('That phone number is taken. Please choose another one.')
         except (phonenumbers.phonenumberutil.NumberParseException, ValueError):
             raise ValidationError('Invalid phone number')
-
+    """
 
 
 
