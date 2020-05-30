@@ -1,5 +1,5 @@
 Нікітіна Марина КМ-71 Final Project(Workshop5)
-install:
+run(порядок запуска):
 1. setup.py
 2. constraint.sql
 3. add_data_events.sql
