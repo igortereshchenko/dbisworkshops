@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editor</title>
+</head>
+<body>
+     <form action = "/user_dict/add" method ="POST" id="user">
+         <p>Name <input type = "text" name = "name" value="{{user_dict.get('Name')}}"/></p>
+         <p>Id <input type = "text" name = "id" value="{{user_dict.get('Id')}}"/></p>
+     </form>
+
+    <button type="submit" form="user" name="action" value="new_user">Add</button>
+</body>
+</html>

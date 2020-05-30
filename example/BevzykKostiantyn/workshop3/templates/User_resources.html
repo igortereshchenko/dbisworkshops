@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>client</title>
+</head>
+<body>
+
+
+    <form action = "/user_resources/add" method ="POST" id="user">
+         <p>Category <input type = "text" name = "category" value="{{user_resources.get('Category')}}"/></p>
+         <p>Location <input type = "text" name = "location" value="{{user_resources.get('Location')}}"/></p>
+     </form>
+
+    <button type="submit" form="user" name="action" value="new_user">Add</button>
+
+
+</body>
+</html>
