@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="page-content-wrapper" style="width: 600px; height: 600px">
+    <p>hello</p>
+                <div id="pie">
+                  <script>
+                    var data = {{ graph_values|safe }};
+                    layout = {{ layout|safe }};
+                    Plotly.newPlot('pie', data, layout);
+                  </script>
+                </div>
+
+            </div>
+{% endblock %}
