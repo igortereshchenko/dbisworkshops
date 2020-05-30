@@ -1,0 +1,17 @@
+{%extends 'main.html'%}
+
+{% block title%}
+Note
+{% endblock %}
+
+{% block body%}
+    <form action = "/api" method = "POST" id="form_note">
+         <p>id<input type = "text" name = "id" value="{{note.get('id')}}"/></p>
+         <p>title <input type = "text" name = "title" value="{{note.get('title')}}" /></p>
+         <p>text <input type = "text" name = "text" value="{{note.get('text')}}" /></p>
+
+     </form>
+
+    <button type="submit" form= "form_note" name="action" value="note_update">Submit</button>
+
+{% endblock %}

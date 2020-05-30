@@ -1,0 +1,20 @@
+{%extends 'main.html'%}
+
+{% block title%}
+Ваши заметки
+{% endblock %}
+
+{% block body%}
+<div class ="container mt-5">
+	<h1> Все ваши заметки </h1>
+	{% for el in notes %}
+	<div class= "alert alert-info">
+		<h2>{{ el.name }}</h2>
+		<p>{{ el.Description }}</p>
+		<a href="/notes/{{el.id}}/delete" class ="btn btn-danger">Удалить заметку</a>
+		<a href="/notes/{{el.id}}/update" class ="btn btn-success">Редактировать</a>
+	</div>
+	{% endfor %}
+	<a class="p-2 text-dark" href="/create_note">Создать заметку</a>
+</div>
+{% endblock %}
