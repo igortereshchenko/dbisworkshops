@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Charts about orders</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body style="background-color: #1886E6">
+<nav style="background-color: #38AFF7">
+    <a><b>Статистика за замовленнями</b></a>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="chart" id="bargraph" >
+                <script>
+                    var graphs = {{plot | safe}};
+                    layout = {{ title|safe }};
+                    Plotly.plot('bargraph',graphs, layout);
+                </script>
+            </div>
+            <div id="pie" d3pie="0.2.1">
+              <script>
+                var data = {{ graph_values|safe }};
+                layout = {{ layout|safe }};
+                Plotly.newPlot('pie', data, layout);
+              </script>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
