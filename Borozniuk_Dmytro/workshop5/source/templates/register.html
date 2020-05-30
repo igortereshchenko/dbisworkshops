@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block title %}Sign up{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Registration</h1>
+        {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                      <ul class=flashes>
+                        {% for message in messages %}
+                            <li style="color: #9C1A1C">{{ message }}</li>
+                        {% endfor %}
+                      </ul>
+              {% endif %}
+        {% endwith %}
+        <form action="http://127.0.0.1:5003/register/submit" method="POST">
+            <div class="form-group">
+                <input type="email" name="email" class="form-control", placeholder="email" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="first_name" class="form-control", placeholder="first_name" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="second_name" class="form-control", placeholder="second_name">
+            </div>
+            <div class="form-group">
+                <input type="text" name="user_login" class="form-control", placeholder="user login">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control", placeholder="password" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="confirm" class="form-control", placeholder="confirm password" required>
+            </div>
+            <div class="form-group">
+                <input type="date" name="birthday" class="form-control", placeholder="birthday">
+            </div>
+            <div class="form-group">
+                <input type="tel" name="telephone" class="form-control", placeholder="telephone" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="car_license_plate" class="form-control", placeholder="car license plate" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="car_name" class="form-control", placeholder="car name" required>
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="sel1" name="car_type" required>
+                    <option>sedan</option>
+                    <option>crossover</option>
+                    <option>truck</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" name="car_color" class="form-control", placeholder="car color">
+            </div>
+
+            <button class="btn btn-success" type="submit">Submit</button>
+
+            <a id="btn btn-warning" href="{{ url_for('login') }}"> Already registred ?</a>
+        </form>
+    </div>
+
+
+{% endblock %}

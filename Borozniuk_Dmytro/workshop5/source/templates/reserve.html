@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block title %}Reserve{% endblock %}
+{% block content %}
+    <div>Order</div>
+    <form action="http://127.0.0.1:5003/reserve/make" method="POST">
+    <p>Choose service:</p>
+    <div class="form-group">
+        <select class="form-control" id="sel1" name="service_name" required>
+            {% for i in result %}
+                <option>{{i[0]}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <p>Choose the date and time when you want to visit us:</p>
+    <input type="datetime-local" name="datetime" required><br/><br/>
+    <p>Choose type of your car:</p>
+    <div class="form-group">
+        <select class="form-control" id="sel1" name="car_type" required>
+            <option>sedan</option>
+            <option>crossover</option>
+            <option>truck</option>
+        </select>
+    </div>
+    <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                      <ul class=flashes>
+                        {% for message in messages %}
+                            <li style="color: #9C1A1C">{{ message }}</li>
+                        {% endfor %}
+                      </ul>
+              {% endif %}
+    {% endwith %}
+{% endblock %}
