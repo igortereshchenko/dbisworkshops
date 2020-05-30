@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">End date</th>>
+            </tr>
+        </thead>
+        <tr>
+            <td> {{ personal_data.user_name }} </td>
+            <td> {{ personal_data.user_surname }} </td>
+            <td> {{ personal_data.user_email }} </td>
+            <td> {{ personal_data.user_phone }} </td>
+            <td> {{ personal_data.end_date }} </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+{% endblock content%}

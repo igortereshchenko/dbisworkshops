@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Token ID</th>
+            </tr>
+        </thead>
+        <tr>
+        {% for usertoken in usertokens %}
+
+            <td> {{ usertoken.user_table_user_id }} </td>
+            <td> {{ usertoken.token_token_id }} </td>
+
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+{% endblock content%}

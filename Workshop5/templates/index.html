@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Workshop</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+  <div class="navbar-header">
+        <a class="navbar-brand" href="#">Artemii Likhachov</a>  <!-- Посилання на репозиторій з кодом !-->
+  </div>
+
+  <ul class="navbar-nav">
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Project</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('user_table') }}">User Table</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('token_table') }}">Token</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ url_for('usertoken_table') }}">User has a token</a></li>
+    <li class="nav-item"><a class="nav-link disabled" href="{{ url_for('search') }}">Search</a></li>
+    <li class="nav-item"><a class="nav-link disabled" href="{{ url_for('graph') }}">Dashboard</a></li>
+  </ul>
+
+</nav>
+  <div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% block content %}
+
+    {% endblock %}
+  </div>
+
+  <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>
