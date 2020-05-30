@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Матеріали</title>
+
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'styles_main.css') }}">
+
+	<style> 
+			
+		#List{
+
+		font-size: 17px;
+
+
+		padding-top: 9%;
+		padding-bottom: 2%; 
+
+
+		text-decoration: none;
+ 		display: inline-block;
+
+		}
+
+		#List:visited, #List:link{
+
+ 			text-decoration: none;
+ 			color: black;
+
+		}
+
+		#List:hover{
+
+ 			text-decoration: underline;
+ 			color: #ffff4d;
+
+		}
+
+		#search_field{
+
+			border-radius: 40px;
+
+		}
+
+		#BUT {
+
+			  border-radius: 3px;
+			  border-color: black;
+			  border-width: 1.2px;
+
+
+			  color: white;
+			  background-color: black;
+
+			  padding-left: 3.2%;
+			  padding-right: 3%;
+			  padding-top: 1%;
+			  padding-bottom: 1%;
+
+			  margin-top: 7%;
+
+		}
+
+	</style>
+
+	<script>
+	function SortFunction(val) {
+	  window.location.href = "http://127.0.0.1:5000/materials/?search={{name_pattern}}&sort="+val;
+	}
+	</script>
+</head>
+<body>
+
+<div id="Main_Head">
+
+	<a href="{{ url_for('Home') }}" class="Headings">Триград</a>
+	<a href="{{ url_for('Materials') }}" style="color: yellow;" class="Headings">Матеріали</a>
+	<a href="{{ url_for('Suppliers') }}" class="Headings">Постачальники</a>
+	<a href="{{ url_for('Dynamic') }}" class="Headings">Динаміка цін</a>
+
+	{% if user_logged == False %}
+
+	<a href="{{ url_for('Log') }}" id="LogIn">Увійти</a>
+	<a href="{{ url_for('Register') }}" id="Reg">Зареєструватися</a>
+
+	{% elif user_logged == True %}
+
+	<a href="" id="LogIn"> Вхід виконано як {{user_name}} </a>
+	<a href="{{ url_for('Logout') }}" style="color: white;"> Вийти </a>
+
+	{% endif %}
+
+</div>
+
+
+
+<!--<h1 id = "NonExistent"> Робота над цим розділом ще ведеться, тому на жаль, ніяких даних поки що немає.</h1>-->
+
+<div id = "sorting" style="border-width: 2px; margin-left: 5% ;margin-top: 3%; float: left; width: 20%; display: inline-block;">
+
+	<p id="Sort_P" style="margin-left: 9%;	font-family: Times New Roman; font-size: 18px;">Сортувати</p>
+
+	<select name="sort" onchange="SortFunction(this.value)">
+	  <option value="Choose"selected>Обрати</option>
+	  <option value="Name" >За назвою</option>
+	  <option value="Sup">За постачальником</option>
+	</select>
+	{% if user_logged == True %}
+	{% if user_name == 'admin' %}
+		<form action = "http://127.0.0.1:5000/materials/add/" method = "GET">
+		  <input id="BUT" style="float: left; display: inline-block;" type="submit" value="Додати новий матеріал">
+		</form>
+	{% endif %}
+	{% endif %}
+
+</div>
+
+<div style="width: 25%; margin:auto; padding-top: 2.5%;">
+
+	<p id="Sort_P" style="margin-left: 8%;	font-family: Times New Roman; font-size: 20px;" >Знайти матеріали</p>
+	<form action="http://127.0.0.1:5000/materials/" method="GET">
+  		<input id="search_field"  type="text" placeholder="Бетон..." name="search">
+ 		<button type="submit"> Пошук </button>
+	</form>
+	
+	{% for material_tuple in material_list %}
+		<br><br> 
+		<div>
+			<a id="List" href="http://127.0.0.1:5000/materials/prod/{{material_tuple[2]}}"> {{ material_tuple[0] }} </a>
+			<br>
+			<br>
+			<b> &emsp; &emsp;Постачальники:</b>
+
+			{% for supplier in material_tuple[1] %}
+			<p> &emsp; &emsp;&emsp;{{ supplier }} </p>
+			{% endfor %}
+			<p><b> &emsp; &emsp;Середня Ціна:</b> {{ material_tuple[3] }} </p>
+		</div>
+	{% endfor %}
+
+</div>
+
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+
+	    {% for message in messages %}
+	      <script type="text/javascript">
+	      	alert("{{ message }}");
+	      </script>
+
+	    {% endfor %}
+
+	  {% endif %}
+	{% endwith %}
+
+</body>
+</html>

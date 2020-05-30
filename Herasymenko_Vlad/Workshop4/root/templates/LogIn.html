@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Вхід</title>
+
+
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'styles_login.css') }}">
+
+</head>
+<body>
+
+
+
+<div>
+	
+
+	<h1> Увійти </h1>
+
+
+	<a href="{{ url_for('Home') }}">
+	<img id="BACK" src="{{ url_for('static', filename = 'back.png') }}" width = "5%" height="3%"></img>
+	</a>
+
+
+	<img ID= "Av" src="{{ url_for('static', filename = 'icon.png') }}" width="15%" height="12%"></img>
+
+
+	<form action = "http://127.0.0.1:5000/login/submit" method = "post">
+		
+
+	  <input id="LOG" type="text" name="name" placeholder="Ім'я користувача або e-mail" required><br>
+	  <input id="LOG" type="password" name="pass" placeholder="Пароль" required>
+	  <input id="BUT" type="submit" value="Вхід">
+
+	</form>
+
+
+	<a href="{{ url_for('Register') }}"> Ще не маєте облікового запису ? </a>
+
+
+
+</div>
+
+
+
+</body>
+</html>

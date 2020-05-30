@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Динаміка цін</title>
+
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'styles_main.css') }}">
+
+	<style> 
+
+		#BUT {
+
+			  border-radius: 3px;
+			  border-color: black;
+			  border-width: 1.2px;
+
+
+			  color: white;
+			  background-color: black;
+
+			  padding-left: 22%;
+			  padding-right: 22%;
+			  padding-top: 2%;
+			  padding-bottom: 2%;
+
+			  font-size: 22px;
+
+			  margin-top: 7%;
+
+		}
+
+		#REG {
+
+			  margin-bottom: 8%;
+
+			  padding-left: 2%;
+			  padding-right: 28%;
+			  padding-top: 2%;
+			  padding-bottom: 10%;
+
+
+			  border-radius: 5px;
+			  border-color: black;
+			  border-width: 1.2px;
+
+		}
+
+	</style>
+
+	<script>
+	function reload_page() {
+
+
+	  var supplier = document.getElementById("supplier").value;
+	  var material = document.getElementById("products").value;
+	  var year = document.getElementById("year").value;
+
+	  window.location.href = "http://127.0.0.1:5000/dynamic/?supp="+supplier+"&material="+material+"&year="+year;
+	}
+	</script>
+
+
+</head>
+<body>
+
+<div id="Main_Head">
+
+	<a href="{{ url_for('Home') }}" class="Headings">Триград</a>
+	<a href="{{ url_for('Materials') }}" class="Headings">Матеріали</a>
+	<a href="{{ url_for('Suppliers') }}" class="Headings">Постачальники</a>
+	<a href="{{ url_for('Dynamic') }}" style="color: yellow;" class="Headings">Динаміка цін</a>
+
+	{% if user_logged == False %}
+
+	<a href="{{ url_for('Log') }}" id="LogIn">Увійти</a>
+	<a href="{{ url_for('Register') }}" id="Reg">Зареєструватися</a>
+
+	{% elif user_logged == True %}
+
+	<a href="" id="LogIn"> Вхід виконано як {{user_name}} </a>
+	<a href="{{ url_for('Logout') }}" style="color: white;"> Вийти </a>
+
+	{% endif %}
+
+</div>
+
+<h1 style="font-size: 22px; margin-top: 5%;">Відслідковування ціни</h1>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+<div class="chart" id="bargraph" style="margin-left: 10%; border-width: 5px; margin-top: 10%; width: 40%; display: inline-block;">
+    <script>
+        var graphs = {{ plot | safe }};
+        Plotly.plot('bargraph',graphs,{});
+    </script>
+</div>
+
+
+<div id = "filtering" style="border-width: 2px; margin-left: 5% ;margin-top: 10%; float: right; width: 20%; display: inline-block;">
+
+	<p id="Sort_P" style="margin-left: 9%;	font-family: Times New Roman; font-size: 18px;">Фільтр</p>
+
+	<form>
+		<label for="year"> Рік: </label>
+		<select name="year">
+		  <option value="2019" >2019</option>
+		  <option value="2020" >2020</option>
+		</select>
+
+		<br>
+		<label for="supplier" > Постачальник: </label>
+		<input name="supplier" style="width: 35.5%;">
+
+		<br>
+		<label for="products"> Матеріал: </label>
+		<input name="products">
+		<input id="BUT" type="submit"  value="Знайти" onclick="reload_page()">
+		<br>
+
+	</form>
+
+</div>
+
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+
+	    {% for message in messages %}
+	      <script type="text/javascript">
+	      	alert("{{ message }}");
+	      </script>
+
+	    {% endfor %}
+
+	  {% endif %}
+	{% endwith %}
+
+</body>
+</html>

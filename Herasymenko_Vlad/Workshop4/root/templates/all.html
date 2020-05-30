@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Усі сутності</title>
+
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'styles_main.css') }}">
+
+</head>
+<body>
+
+<div id="Main_Head">
+
+	<a href="{{ url_for('Home') }}" class="Headings">Триград</a>
+	<a href="{{ url_for('Materials') }}" class="Headings">Матеріали</a>
+	<a href="{{ url_for('Suppliers') }}" class="Headings">Постачальники</a>
+	<a href="{{ url_for('Dynamic') }}" class="Headings">Динаміка цін</a>
+
+	{% if user_logged == False %}
+
+	<a href="{{ url_for('Log') }}" id="LogIn">Увійти</a>
+	<a href="{{ url_for('Register') }}" id="Reg">Зареєструватися</a>
+
+	{% elif user_logged == True %}
+
+	<a href="" id="LogIn"> Вхід виконано як {{user_name}} </a>
+	<a href="{{ url_for('Logout') }}" style="color: white;"> Вийти </a>
+
+	{% endif %}
+
+</div>
+
+
+
+<div style="margin-right: 7%; margin-left: 7%; ">
+
+<h1>Інформація про постачальника</h1>
+<table border="2" align="center">
+
+  {% for key, value in vendor.items() %}
+  <tr>
+    <td>{{ key }}</td>
+    <td>{{ value }}</td>
+ </tr>
+  {% endfor %}
+
+
+</table>
+
+<br>
+<br>
+
+<h1>Інформація про банк</h1>
+<table border="2" align="center">
+
+  {% for key, value in bank.items() %}
+  <tr>
+    <td>{{ key }}</td>
+    <td>{{ value }}</td>
+  </tr>
+  {% endfor %}
+
+
+</table>
+
+</div>
+
+
+
+</body>
+</html>

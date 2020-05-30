@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Запис постачальника</title>
+
+
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'styles_main.css') }}">
+
+	<style type="text/css">
+		
+		#BUT {
+
+			  border-radius: 8px;
+			  border-color: black;
+			  border-width: 1.2px;
+
+
+			  color: white;
+			  background-color: black;
+
+			  padding-left: 2%;
+			  padding-right: 2%;
+			  padding-top: 0.5%;
+			  padding-bottom: 0.5%;
+
+		}
+
+		#BUT_MAIN {
+
+			  border-radius: 4px;
+			  border-color: black;
+			  border-width: 1.2px;
+
+
+			  color: white;
+			  background-color: black;
+
+			  padding-left: 8%;
+			  padding-right: 8%;
+			  padding-top: 1%;
+			  padding-bottom: 1%;
+
+			  margin: auto;
+
+		}
+
+		#REG {
+
+			  margin-left: 2.8%;
+
+			  padding-left: 1%;
+			  padding-right: 3%;
+			  padding-top: 0.7%;
+			  padding-bottom: 0.7%;
+
+
+			  border-radius: 15px;
+			  border-color: black;
+			  border-width: 1.2px;
+
+			  display: inline-block;
+
+		}
+
+	</style>
+
+</head>
+<body>
+
+<div id="Main_Head">
+
+	<a href="{{ url_for('Home') }}" class="Headings">Триград</a>
+	<a href="{{ url_for('Materials') }}"  class="Headings">Матеріали</a>
+	<a href="{{ url_for('Suppliers') }}" style="color: yellow;" class="Headings">Постачальники</a>
+	<a href="{{ url_for('Dynamic') }}" class="Headings">Динаміка цін</a>
+
+	{% if user_logged == False %}
+
+	<a href="{{ url_for('Log') }}" id="LogIn">Увійти</a>
+	<a href="{{ url_for('Register') }}" id="Reg">Зареєструватися</a>
+
+	{% elif user_logged == True %}
+
+	<a href="" id="LogIn"> Вхід виконано як {{user_name}} </a>
+	<a href="{{ url_for('Logout') }}" style="color: white;"> Вийти </a>
+
+	{% endif %}
+
+</div>
+
+<div style = "border-width: 2px; width: 35%; margin:auto; margin-top: 5%">
+	<p style="font-family: Times New Roman; font-size: 26px;"><b> {{ sup_name }} </b></p>
+
+	<br>
+
+	<b>Матеріали цього постачальника:</b>
+
+	{% for material in materials %}
+	
+
+	<form action = "http://127.0.0.1:5000/suppliers/delete_vend_mat/{{ material[0][1] }}" method = "post">
+	  <p>  &emsp; {{ material[0][0] }} &emsp; <span> <b>Ціна:</b> {{material[1]}} </span> <span>  &emsp;  
+
+	  	{% if user_logged == True %}
+	  	{% if user_name == 'admin' %}
+	  	{% if material[0][1] != -1 %}
+	  	<input id="BUT" style=" display: inline-block;" type="submit" value="Видалити"></span>	</p>
+	  	{% endif %}
+	  	{% endif %}
+	  	{% endif %}
+	</form>
+
+
+
+	{% endfor %}
+
+
+	{% if user_logged == True %}
+  	{% if user_name == 'admin' %}
+	<form action = "http://127.0.0.1:5000/suppliers/add_vend_mat" method = "post">
+	  <input id="REG" type="text" name="mat_name" placeholder="Назва матеріалу" required>
+	  <input id="REG" type="number" name="price" placeholder="Ціна">
+	  <input id="BUT" style=" display: inline-block;" type="submit" value="Додати матеріал">
+	</form>
+  	{% endif %}
+  	{% endif %}
+
+	<br><br>
+	<p><b>Адреса:</b> {{ details[0] }} <b>,</b> {{ details[1] }}  </p>
+	<br>
+	<p><b>E-mail:</b> {{ details[2] }} <b> </p>
+	<br>
+	<p><b>Телефон:</b> {{ details[3] }} <b> </p>
+
+	<p><b>Ім'я менеджера:</b> {{ details[4] }} <b> </p>
+	<br>
+	<p><b>ЄДРПОУ:</b> {{ details[5] }} <b> </p>
+	<p><b>Банківський рахунок:</b> {{ details[6] }} <b> </p>
+	<p><b>Назва банку:</b> {{ details[7] }} <b> </p>
+	<p><b>МФО банку:</b> {{ details[8] }} <b> </p>
+
+	{% if user_logged == True %}
+	{% if user_name == 'admin' %}
+	  <br>
+	  <br>
+	  <br>
+
+		<form style=" display: inline-block;" action = "http://127.0.0.1:5000/suppliers/delete" method = "post">
+		  <input id="BUT" style="float: right; display: inline-block;" type="submit" value="Видалити цей запис">
+		</form>
+
+		<form style=" display: inline-block;"  action = "http://127.0.0.1:5000/suppliers/update" method = "post">
+		  <input id="BUT" style="float: left; display: inline-block;" type="submit" value="Редагувати цей запис">
+		</form>
+
+	{% endif %}
+	{% endif %}
+
+</div>
+
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+
+	    {% for message in messages %}
+	      <script type="text/javascript">
+	      	alert("{{ message }}");
+	      </script>
+
+	    {% endfor %}
+
+	  {% endif %}
+	{% endwith %}
+
+
+</body>
+</html>
