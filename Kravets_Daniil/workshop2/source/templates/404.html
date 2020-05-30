@@ -1,0 +1,14 @@
+{% extends "main_site.html" %}
+
+{% block head %}
+    <title>Not found</title>
+{% endblock %}
+
+{% block header %}
+    <h1>404 - Page not found</h1>
+{% endblock %}
+
+{% block content %}
+    <h3>You might have entered wrong action value.</h3>
+    <h4>Your input: {{ action_value }}. Correct inputs: all, songs, orders.<br> Please, try again.</h4>
+{% endblock %}
