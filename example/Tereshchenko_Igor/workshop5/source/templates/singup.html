@@ -1,0 +1,28 @@
+{% extends 'layouts/loginlayout.html' %}
+
+{% block title %}
+Sing Up
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <br><br><br><br><br>
+    <form class="form-signin text-center" method="post">
+        <img class="mb-4" src="{{ url_for('static', filename='img/login.png') }}" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+        <label for="inputLogin" class="sr-only">Login</label>
+        <input id="inputLogin" class="form-control" placeholder="Login" required="" autofocus="" name="login">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" name="password">
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+        <a class="btn btn-lg btn-primary btn-block" href="/">Sing in</a>
+    </form>
+    {% if usr_error %}
+    <div class="container text-center">
+        <p style="color:red">{{ usr_error }}</p>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

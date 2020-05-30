@@ -1,0 +1,41 @@
+{% extends 'layouts/mainlayout.html' %}
+
+{% block title %}
+Payments
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center">Payments</h1>
+    <form class="form-signin text-center settings" method="POST">
+        <div class="container">
+            <div class="form-span">
+                <span>Balance</span>
+            </div>
+            <input id="balance" class="form-control" autofocus="" name="balance" value="{{ balance }}" disabled>
+        </div>
+        <div class="container">
+            <div class="form-span">
+                <span>Paypal</span>
+            </div>
+            <input id="paypal" class="form-control" autofocus="" name="paypal">
+        </div>
+        <div class="container">
+            <div class="form-span">
+                <span>Summary to withdraw</span>
+            </div>
+            <input id="summary" class="form-control" required="" autofocus="" name="summary">
+        </div>
+        <br><br>
+        <div class="buttons">
+            <button class="btn btn-lg btn-primary" type="submit">Withdraw</button>
+        </div>
+    </form>
+    {% if payment_error %}
+    <div class="container text-center">
+        <p style="color:red">{{ payment_error }}</p>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

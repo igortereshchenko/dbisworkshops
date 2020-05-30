@@ -1,0 +1,59 @@
+{% extends 'layouts/mainlayout.html' %}
+
+{% block title %}
+Settings
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center">Config</h1>
+    <form class="form-signin text-center settings" method="POST">
+        <div class="container">
+            <div class="form-span">
+                <span>Profit Percent</span>
+            </div>
+            <input id="profit_percent" class="form-control" required="" autofocus="" name="profit_percent" value="{{ config['profit_percent'] }}">
+        </div>
+        <div class="container">
+            <div class="form-span">
+                <span>Min price</span>
+            </div>
+            <input id="min_price" class="form-control" required="" autofocus="" name="min_price" value="{{ config['min_price'] }}">
+        </div>
+        <div class="container">
+            <div class="form-span">
+                <span>Max price</span>
+            </div>
+            <input id="max_price" class="form-control" required="" autofocus="" name="max_price" value="{{ config['max_price'] }}">
+        </div>
+        <div class="container">
+            <div class="form-span">
+                <span>Sales per day</span>
+            </div>
+            <input id="sls_per_day" class="form-control" required="" autofocus="" name="sls_per_day" value="{{ config['daily_sales'] }}">
+        </div>
+        <div class="container">
+            <div class="form-span">
+                <span>Balance to stop</span>
+            </div>
+            <input id="balance_to_stop" class="form-control" required="" autofocus="" name="balance_to_stop" value="{{ config['balance_to_stop'] }}">
+        </div>
+        <div class="container">
+            <div class="form-span">
+                <span>Max items in inventory</span>
+            </div>
+            <input id="max_items_in_inventory" class="form-control" required="" autofocus="" name="max_items_in_inventory" value="{{ config['max_items_in_inventory'] }}">
+        </div>
+        <br><br>
+        <div class="buttons">
+            <button class="btn btn-lg btn-primary" type="submit">Save config</button>
+        </div>
+    </form>
+    {% if config_error %}
+    <div class="container text-center">
+        <p style="color:red">{{ config_error }}</p>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}
