@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>all</title>
+</head>
+<body>
+
+	<h1>Series</h1>
+	<table>
+		<tr>
+			<td>Title</td><td>{{series.get('series_title')}}</td>
+		</tr>
+		<tr>
+			<td>Genre</td><td>{{series.get('series_genre')}}</td>
+		</tr>
+		<tr>
+			<td>Year</td><td>{{series.get('series_year')}}</td>
+		</tr>
+		<tr>
+			<td>Country</td><td>{{series.get('series_country')}}</td>
+		</tr>
+	</table>
+
+    <h1>User</h1>
+	<table>
+		<tr>
+			<td>Name</td><td>{{user.get('user_name')}}</td>
+		</tr>
+		<tr>
+			<td>Surname</td><td>{{user.get('user_surname')}}</td>
+		</tr>
+		<tr>
+			<td>Age</td><td>{{user.get('user_age')}}</td>
+		</tr>
+	</table>
+
+</body>
+</html>
