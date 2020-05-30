@@ -1,0 +1,44 @@
+create table doctor (
+    doc_id INTEGER NOT NULL,
+    doc_name VARCHAR2(50) NOT NULL,
+    doc_special VARCHAR2(50) NOT NULL,
+    hosp_name VARCHAR2(50) NOT NULL,
+    cabinet INTEGER NOT NULL,
+    
+    constraint doctor primary key (doc_id)
+);
+
+create table hospital (
+    hosp_name VARCHAR2(50) NOT NULL,
+    hosp_address VARCHAR2(50) NOT NULL,
+    hosp_dist VARCHAR2(50) NOT NULL,
+    
+    constraint hospital primary key (hosp_name)
+);
+
+create table timetable (
+    doc_id INTEGER NOT NULL,
+    hosp_name VARCHAR2(50) NOT NULL,
+    pat_name VARCHAR2(50) NOT NULL,
+    pat_age INTEGER NOT NULL,
+    pat_street VARCHAR2(50) NOT NULL,
+    pat_dist VARCHAR2(50) NOT NULL,
+    time_date VARCHAR2(50) NOT NULL,
+    
+    constraint timetable primary key (doc_id, time_date)
+);
+
+alter table doctor
+add constraint doctor_fk foreign key (hosp_name) references hospital(hosp_name);
+
+alter table timetable
+add constraint timetable_fk_doc foreign key (doc_id) references doctor(doc_id);
+
+alter table timetable
+add constraint timetable_fk_hosp foreign key (hosp_name) references hospital(hosp_name);
+
+alter table doctor
+add constraint check_cabinet CHECK ((cabinet > 0));
+
+alter table timetable
+add constraint check_age CHECK ((pat_age >= 18));
