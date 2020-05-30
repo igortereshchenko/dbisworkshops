@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block title %}Services{% endblock %}
+{% block content %}
+
+        <p class="important">Our services:</p>
+        <p class="danger"><b style="color: #9C1A1C">NOTE</b> that for crossover cars price = price + 50</p>
+        <p class="danger"><b style="color: #9C1A1C">NOTE</b> that for crossover cars price = price + 100</p>
+        <form action="http://127.0.0.1:5003/services/find" method="POST">
+            <div class="form-group">
+                <input type="text" name="namee" class="form-control", placeholder=" Search by service name">
+            </div>
+            <button class="btn btn-success" type="submit">Search</button>
+            <br>
+        </form>
+        {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                      <ul class=flashes>
+                        {% for message in messages %}
+                            <li style="color: #9C1A1C">{{ message }}</li>
+                        {% endfor %}
+                      </ul>
+              {% endif %}
+        {% endwith %}
+        <table class="table table-bordered">
+                       <tr>
+                            <th>Service name</th>
+                            <th>Price</th>
+                       </tr>
+                       {% for i in result %}
+                       <tr>
+                            <td>{{ i[0] }}</td>
+                            <td>{{ i[1] }}</td>
+                       </tr>
+                       {% endfor %}
+        </table>
+
+{% endblock %}
