@@ -8,5 +8,9 @@ session = Session()
 new_book = Book.add_book(1, "For whom the Bell Tolls", "Ernest",
 "Hemingway",
 "https://briefly.ru/heminguej/po_kom_zvonit_kolokol/")
-
+session.commit()
+session = Session()
+new_book_2 = Book.add_book(2, "Hotel", "Arthur",
+"Heiley",
+"https://www.goodreads.com/book/show/124920.Hotel")
 session.commit()
