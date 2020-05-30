@@ -2,11 +2,28 @@ from flask import Flask, request, jsonify, redirect, url_for, render_template
 from sqlalchemy.orm import sessionmaker
 import cx_Oracle
 from sqlalchemy import create_engine
-from tables_db import menu, Meal, menu_meal, risk, meal_risk
+from tables_db import Meal, Meal, MenuMeal, Risk, MealRisk
 from forms import *
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+
+
+oracle_connection_string = 'oracle+cx_oracle://{username}:{password}@{host}:{port}/{database}'
+engine = create_engine(
+    oracle_connection_string.format(
+
+        username="SYS as sysdba",
+        password="dbpass",
+        sid="XE",
+        host="laptop",
+        port="1521",
+        database="workshopDB"
+
+    )
+    , echo=True
+)
+
 
 
 meal_example = {
@@ -21,11 +38,9 @@ menu_example = {
 
 db = SQLAlchemy(app)
 
-
 @app.route("/",  methods=['GET', 'POST'])
 def hello():
     return render_template('index.html')
-
 
 
 @app.route('/meal', methods=['GET', 'POST'])
@@ -51,6 +66,7 @@ def meal():
             return str(e)
 
     return render_template('meal.html', form=meal_form)
+
 
 
 

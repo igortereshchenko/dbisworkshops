@@ -22,7 +22,7 @@ engine = create_engine(
 
 Base = declarative_base()
 
-class menu(Base):
+class Menu(Base):
     __tablename__ = 'menu'
 
     id = Column(Integer, Sequence('id_seq'), primary_key=True)
@@ -35,29 +35,43 @@ class menu(Base):
         self.price = price
 
 
+
+class Risk(Base):
+    __tablename__ = 'risk'
+
+    name = Column(String(25), primary_key=True)
+    description = Column(String(100), nullable=False)
+
+    def __init__(self, name, description):
+        self.name = name
+        self.description = description
+
+
+
+
 class Meal(Base):
     __tablename__ = 'meal'
 
-    id = Column(Integer, Sequence('id_seq'), primary_key=True)
+    meal_id = Column(Integer, Sequence('id_seq'), primary_key=True)
     name = Column(String(15), nullable=False)
     price = Column(Float, nullable=False)
     taste = Column(String(15), nullable=False)                  # key word to be searched
     risk_name = Column(String(25), ForeignKey('risk.name'))        # any risks like allergic etc
 
-    def __init__(self, id, name, price, meal_id, taste, risk_name):
-        self.id = id
+    def __init__(self, meal_id, name, price, taste, risk_name):
+        self.meal_id = meal_id
         self.name = name
         self.price = price
-        self.meal_id = meal_id
         self.taste = taste
         self.risk_name = risk_name
 
 
-class menu_meal(Base):
+
+class MenuMeal(Base):
     __tablename__ = 'menu_meal'
 
     menu_id = Column(Integer, ForeignKey('menu.id'), primary_key=True)
-    meal_id = Column(Integer, ForeignKey('meal.id'), primary_key=True)
+    meal_id = Column(Integer, ForeignKey('meal.meal_id'), primary_key=True)
 
     def __init__(self, menu_id, meal_id):
         self.menu_id = menu_id
@@ -65,22 +79,11 @@ class menu_meal(Base):
 
 
 
-class risk(Base):
-    __tablename__ = 'risk'
 
-    name = Column(String(25), primary_key=True)
-    description = Column(String(100), nullable=False)
-
-
-    def __init__(self, name, description):
-        self.name = name
-        self.description = description
-
-
-class meal_risk(Base):
+class MealRisk(Base):
     __tablename__ = 'meal_risk'
 
-    meal_id = Column(Integer, ForeignKey('meal.id'), primary_key=True)
+    meal_id = Column(Integer, ForeignKey('meal.meal_id'), primary_key=True)
     risk_name = Column(String(25), ForeignKey('risk.name'), primary_key=True)
 
     def __init__(self, menu_id, meal_id):
@@ -88,6 +91,13 @@ class meal_risk(Base):
         self.meal_id = meal_id
 
 
+
+
+class Test(Base):
+    __tablename__ = 'test'
+
+    col1 = Column(Integer, primary_key=True, nullable=False)
+    col2 = Column(Integer, nullable=False)
 
 
 Base.metadata.create_all(engine)
