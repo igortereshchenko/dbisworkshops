@@ -1,0 +1,48 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ title }}{% endblock title%}
+
+{% block content %}
+<div>
+    <h2>{{ title }}</h2>
+    <hr>
+    <div>
+        <img src="/media/{{ post.image }}" width="30%" align="left" style="margin-right: 50px">
+        <h3>Lot - {{ post.title }}</h3>
+        <h5>
+            <p>Author: {{ post.user }}</p>
+            Started: {{ post.place_date }}
+            <p>Expires: {{ post.finish_date }} </p>
+        </h5>
+        {% if bigb %}
+            <p>CURRENT BET : {{ bigb.amount }}</p>
+            <p>Current Winner: {{bigb.user}}</p>
+        {% else %}
+            <p>Starting Price: {{ post.min_price }} </p>
+        {% endif %}
+        Description:
+        <h4>{{ post.description }}</h4>
+        <form action="/lots/check/{{ post.id }}"  method="post">
+            {% csrf_token %}
+        <label>
+            <p><strong>Сделать ставку</strong>:</p>
+            <input type="text" name="bid" value="" required>
+        </label>
+        <label>
+            <button class="button" type="submit" name="place_bet" style="color:#fefefe;
+            height:34px;
+            padding:0 12px;
+            line-height:31px;
+            cursor:pointer;
+            background:linear-gradient(#99B1B6, #AE6AE9) #AE6AE9;
+            border-radius: 10px;">Place Bet
+	        </button>
+        </label>
+        </form>
+        <div style="clear: left"></div>
+        <a href="/lots">Вернуться к ленте новостей</a>
+    </div>
+    <hr>
+</div>
+
+{% endblock content %}
