@@ -17,9 +17,9 @@ app = Flask(__name__)
 
 # for local run
 os.environ['APP_SETTINGS'] = 'config.DevelopmentConfig'
-os.environ['DATABASE_URL'] = 'postgresql://postgres:alim1234@localhost/postgres'
+os.environ['DATABASE_URL'] = 'oracle+cx_oracle://WORKSHOPS:WORKSHOPS@DESKTOP-MTUVCRU:1521/?service_name=XE'
 
-
+# 'oracle+cx_oracle://WORKSHOPS:WORKSHOPS@DESKTOP-MTUVCRU:1521/?service_name=XE'
 # for HEROKU
 app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -31,15 +31,18 @@ import models
 
 
 def search(film_features,page=1):
-    request = requests.get(f"https://api.themoviedb.org/3/discover/movie?api_key=my_key&language=en-US&sort_by=vote_average.desc&include_adult=false&include_video=false&page={page}&primary_release_year={int(film_features['year'][0])}&vote_count.gte=1000&vote_average.gte={int(film_features['rating'][0][0])}&vote_average.lte={int(film_features['rating'][0][2])}&with_genres={int(film_features['genre'][0])}")
-    request = json.loads(request.text)
-    request = json_normalize(request['results'])
-    return request
+    try:
+        request = requests.get(f"https://api.themoviedb.org/3/discover/movie?api_key=2385b872601af4eade33aeaf2d44a9cb&language=en-US&sort_by=vote_average.desc&include_adult=false&include_video=false&page={page}&primary_release_year={int(film_features['year'][0])}&vote_count.gte=1000&vote_average.gte={int(film_features['rating'][0][0])}&vote_average.lte={int(film_features['rating'][0][2])}&with_genres={int(film_features['genre'][0])}")
+        request = json.loads(request.text)
+        request = json_normalize(request['results'])
+        return request
+    except:
+        raise IndexError
 
 def check_search_id(movie_id):
     if movie_id.data[-1]=='s':
         try:
-            request = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id.data[0:-1]}?api_key=my_key&language=en-US')
+            request = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id.data[0:-1]}?api_key=2385b872601af4eade33aeaf2d44a9cb&language=en-US')
             return True
         except:
             return False
@@ -49,7 +52,7 @@ def check_search_id(movie_id):
 def check_liked_id(movie_id):
     if movie_id.data[-1]=='l':
         try:
-            request = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id.data[0:-1]}?api_key=my_key&language=en-US')
+            request = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id.data[0:-1]}?api_key=2385b872601af4eade33aeaf2d44a9cb&language=en-US')
             return True
         except:
             return False
@@ -59,14 +62,14 @@ def check_liked_id(movie_id):
 df_of_param = pd.DataFrame([[1,2,3,4]],columns=['id','genre','year','rating'])
 
 
-bot = telebot.TeleBot('token')
+bot = telebot.TeleBot('1240479598:AAFa87oq_hfSjcxFrJ2XvXuYLh5DUAvA0p8')
 
-secret = 'token'
+secret = '1240479598:AAFa87oq_hfSjcxFrJ2XvXuYLh5DUAvA0p8'
 # bot.remove_webhook()
 # time.sleep(1)
 # bot.set_webhook(url="mycinematelegrambot.herokuapp.com/{}".format(secret))
 
-request = requests.get('https://api.themoviedb.org/3/movie/top_rated?api_key=my_key&language=RU&page=1')
+request = requests.get('https://api.themoviedb.org/3/movie/top_rated?api_key=2385b872601af4eade33aeaf2d44a9cb&language=RU&page=1')
 request = json.loads(request.text)
 request = json_normalize(request['results'])
 a = pd.DataFrame({'a':request['original_language']=='en' ,'b':request['vote_count']>5000})
@@ -90,7 +93,7 @@ del_film_id = 0
 
 ratings = [f'{i}-{i+1}' for i in range(10)]
 
-genres = requests.get('https://api.themoviedb.org/3/genre/movie/list?api_key=my_key&language=RU')
+genres = requests.get('https://api.themoviedb.org/3/genre/movie/list?api_key=2385b872601af4eade33aeaf2d44a9cb&language=RU')
 genres = json.loads(genres.text)
 genres = json_normalize(genres['genres'])
 iterr = 0
@@ -128,8 +131,12 @@ def send_text(message):
         try:
             if (int(message.text)>1960 and int(message.text)<now.year):
                 user_year = int(message.text)
-                bot.send_message(message.from_user.id, text='Окей, {}, записали. Может быть ещё что-то?'.format(user_year),reply_markup=keyboard_film_param)
                 df_of_param['year'][df_of_param['id'] == message.from_user.id] = user_year
+                print(pd.isna(df_of_param[df_of_param['id']==message.from_user.id]['genre'])[0])
+                if (pd.isna(df_of_param[df_of_param['id']==message.from_user.id]['genre'])[0]) or (pd.isna(df_of_param[df_of_param['id']==message.from_user.id]['year'])[0]) or (pd.isna(df_of_param[df_of_param['id']==message.from_user.id]['rating'])[0]):
+                    bot.send_message(message.from_user.id, text='Окей, {}, записали. Укажите оставшиеся параметры.'.format(user_year),reply_markup=keyboard_film_param)
+                else:
+                    bot.send_message(message.from_user.id,text='Окей, {}, записали. Можете найти фильм по заданным параметрам, или изменить параметры.'.format(user_year),reply_markup=keyboard_film_param)
                 print(df_of_param)
         except:
             pass
@@ -152,7 +159,7 @@ def send_text(message):
                 bot.send_message(message.from_user.id, text='Фильмы:',reply_markup=keyboard_films)
             except KeyError:
                 bot.send_message(message.from_user.id, text='К сожалению, по таким параметрам не было найдено фильма((',reply_markup=keyboard_film_param)
-        except IndexError:
+        except IndexError or KeyError or ValueError:
             bot.send_message(message.from_user.id, text='Вы не ввели все необходимые параметры для фильма!',reply_markup=keyboard_film_param)
     elif message.text.lower() == 'добавить фильм в список понравившихся':
         # добавление записи в базу данных
@@ -183,16 +190,22 @@ def send_text(message):
 def genre_wrote(call):
     global user_genre
     user_genre = call.data
-    bot.send_message(call.from_user.id, text='Окей, {}, записали. Может быть ещё что-то?'.format(call.data))
-    df_of_param['genre'][df_of_param['id']==call.from_user.id] = int(genres[genres['name']==call.data]['id'])
-    param_of_choosed_film['genre'] = int(genres[genres['name']==call.data]['id'])
+    param_of_choosed_film['genre'] = int(genres[genres['name'] == call.data]['id'])
+    df_of_param['genre'][df_of_param['id'] == call.from_user.id] = int(genres[genres['name'] == call.data]['id'])
+    if (pd.isna(df_of_param[df_of_param['id'] == call.from_user.id]['genre'])[0]) or (pd.isna(df_of_param[df_of_param['id'] == call.from_user.id]['year'])[0]) or (pd.isna(df_of_param[df_of_param['id'] == call.from_user.id]['rating'])[0]):
+        bot.send_message(call.from_user.id, text='Окей, {}, записали. Укажите оставшиеся параметры.'.format(call.data))
+    else:
+        bot.send_message(call.from_user.id, text='Окей, {}, записали. Можете найти фильм по заданным параметрам, или изменить параметры.'.format(call.data))
     print(df_of_param)
 
 @bot.callback_query_handler(func=lambda call: call.data in ratings)
 def rating_wrote(call):
     user_rating = call.data
-    bot.send_message(call.from_user.id, text=f'Окей, рейтинг: {user_rating}, записали. Может быть ещё что-то?')
-    df_of_param['rating'][df_of_param['id']==call.from_user.id] = user_rating
+    df_of_param['rating'][df_of_param['id'] == call.from_user.id] = user_rating
+    if (pd.isna(df_of_param[df_of_param['id'] == call.from_user.id]['genre'])[0]) or (pd.isna(df_of_param[df_of_param['id'] == call.from_user.id]['year'])[0]) or (pd.isna(df_of_param[df_of_param['id'] == call.from_user.id]['rating'])[0]):
+        bot.send_message(call.from_user.id, text='Окей, {}, записали. Укажите оставшиеся параметры.'.format(call.data))
+    else:
+        bot.send_message(call.from_user.id, text='Окей, {}, записали. Можете найти фильм по заданным параметрам, или изменить параметры.'.format(call.data))
 
 @bot.callback_query_handler(func=check_search_id)
 def print_film(call):
@@ -200,7 +213,7 @@ def print_film(call):
     keyboard_add_to_liked = telebot.types.ReplyKeyboardMarkup(True, None, True)
     keyboard_add_to_liked.row('Добавить фильм в список понравившихся')
     keyboard_add_to_liked.row('Назад')
-    film = requests.get(f'https://api.themoviedb.org/3/movie/{call.data}?api_key=my_key&language=en-US')
+    film = requests.get(f'https://api.themoviedb.org/3/movie/{call.data}?api_key=2385b872601af4eade33aeaf2d44a9cb&language=en-US')
     film = json.loads(film.text)
     param_of_choosed_film['user_id'] = call.from_user.id
     param_of_choosed_film['film_id'] = film['id']
