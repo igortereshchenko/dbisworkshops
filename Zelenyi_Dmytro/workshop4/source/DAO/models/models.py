@@ -26,6 +26,47 @@ class photographers(Base):
 
     CheckConstraint('experience > 0', name='check_experience')
 
+    def __check_valid(self, email, user_password, photographer_name, photographer_surname, gender, about_photographer,
+            birthday, experience, region, city, is_premium):
+        if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
+            return False
+        if not photographer_name.isalpha() or not photographer_surname.isalpha() or not region.isalpha() \
+            or not city.isalpha():
+            return False
+        if gender != "Male" or gender != "Famale":
+            return False
+        if is_premium != "N" or is_premium != "Y":
+            return False
+
+        return True
+
+
+    @classmethod
+    def add(cls, email, user_password, photographer_name, photographer_surname, gender, about_photographer,
+            birthday, experience, region, city, is_premium):
+        if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
+            return -1
+        elif not photographer_name.isalpha() or not photographer_surname.isalpha() or not region.isalpha() \
+                or not city.isalpha():
+            return -1
+        elif gender != "Male" or gender != "Famale":
+            return -1
+        elif is_premium != "N" or is_premium != "Y":
+            return -1
+
+        Session = sessionmaker(bind=engine)
+        session = Session()
+
+        print("Added")
+
+        photographer = photographers(email=email, user_password=user_password, photographer_name=photographer_name,
+                                         photographer_surname=photographer_surname, gender=gender,
+                                         about_photographer=about_photographer, birthday=birthday, experience=experience,
+                                         region=region, city=city, is_premium=is_premium)
+
+        session.add(photographer)
+        session.commit()
+
 
 class contacts(Base):
     __tablename__ = 'contacts'
@@ -113,3 +154,6 @@ class history(Base):
     history_photographer_fk = relationship("photographers", foreign_keys=[photographer])
 
 Base.metadata.create_all(engine)
+
+
+photographers.add("fasfas@gsaf.com", "qwerty", "Admin", "Adminov", "Male", "I'm cool", "04-05-1950", 3, "Soup", "Soup", "Y")
