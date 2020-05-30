@@ -26,20 +26,6 @@ class photographers(Base):
 
     CheckConstraint('experience > 0', name='check_experience')
 
-    def __check_valid(self, email, user_password, photographer_name, photographer_surname, gender, about_photographer,
-            birthday, experience, region, city, is_premium):
-        if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-            return False
-        if not photographer_name.isalpha() or not photographer_surname.isalpha() or not region.isalpha() \
-            or not city.isalpha():
-            return False
-        if gender != "Male" or gender != "Famale":
-            return False
-        if is_premium != "N" or is_premium != "Y":
-            return False
-
-        return True
-
 
     @classmethod
     def add(cls, email, user_password, photographer_name, photographer_surname, gender, about_photographer,
@@ -81,6 +67,20 @@ class contacts(Base):
     contact_fk = relationship("photographers", foreign_keys=[email])
 
 
+    @classmethod
+    def add(cls, email, phone_number, instagram, facebook, skype, telegram):
+        Session = sessionmaker(bind=engine)
+        session = Session()
+
+        print("Added")
+
+        contact = contacts(email=email, phone_number=phone_number, instagram=instagram, facebook=facebook,
+                           skype=skype, telegram=telegram)
+
+        session.add(contact)
+        session.commit()
+
+
 class serveces(Base):
     __tablename__ = 'services'
 
@@ -111,6 +111,25 @@ class serveces(Base):
 
     serveces_fk = relationship("photographers", foreign_keys=[email])
 
+    @classmethod
+    def add(cls, email, object_shooting, portrait_shooting, wedding_photo_shoot, family_photo_shot,
+            event_photography, reportage_shooting, childrens_photo_shoot, interior_shooting,
+            photosession_love_story, pregnant_photoshoot, neither):
+        Session = sessionmaker(bind=engine)
+        session = Session()
+
+        print("Added")
+
+        servece = serveces(email=email, object_shooting=object_shooting, portrait_shooting=portrait_shooting,
+                           wedding_photo_shoot=wedding_photo_shoot, family_photo_shot=family_photo_shot,
+                           event_photography=event_photography, reportage_shooting=reportage_shooting,
+                           childrens_photo_shoot=childrens_photo_shoot, interior_shooting=interior_shooting,
+                           photosession_love_story=photosession_love_story,pregnant_photoshoot=pregnant_photoshoot,
+                           neither=neither)
+
+        session.add(servece)
+        session.commit()
+
 
 class comments(Base):
     __tablename__ = 'comments'
@@ -123,6 +142,19 @@ class comments(Base):
     comments_customer_fk = relationship("customers", foreign_keys=[email_customer])
     comments_photographer_fk = relationship("photographers", foreign_keys=[email_photographer])
 
+    @classmethod
+    def add(cls, comment_id, email_customer, email_photographer, comment_text):
+        Session = sessionmaker(bind=engine)
+        session = Session()
+
+        print("Added")
+
+        comment = comments(comment_id=comment_id, email_customer=email_customer, email_photographer=email_photographer,
+                           comment_text=comment_text)
+
+        session.add(comment)
+        session.commit()
+
 
 class portfolios(Base):
     __tablename__ = 'portfolios'
@@ -133,6 +165,18 @@ class portfolios(Base):
 
     portfolios_fk = relationship("photographers", foreign_keys=[author_email])
 
+    @classmethod
+    def add(cls, portfolio_id, author_email, img_src):
+        Session = sessionmaker(bind=engine)
+        session = Session()
+
+        print("Added")
+
+        portfolio = portfolios(portfolio_id=portfolio_id, author_email=author_email, img_src=img_src)
+
+        session.add(portfolio)
+        session.commit()
+
 
 class customers(Base):
     __tablename__ = 'customers'
@@ -141,6 +185,19 @@ class customers(Base):
     user_password = Column(String(30), nullable=False)
     customer_name = Column(String(30), nullable=False)
     customer_surname = Column(String(30))
+
+    @classmethod
+    def add(cls, email, user_password, customer_name, customer_surname):
+        Session = sessionmaker(bind=engine)
+        session = Session()
+
+        print("Added")
+
+        customer = customers(email=email, user_password=user_password, customer_name=customer_name,
+                               customer_surname=customer_surname)
+
+        session.add(customer)
+        session.commit()
 
 
 class history(Base):
@@ -153,7 +210,19 @@ class history(Base):
     history_customer_fk = relationship("customers", foreign_keys=[customer])
     history_photographer_fk = relationship("photographers", foreign_keys=[photographer])
 
+    @classmethod
+    def add(cls, history_id, customer, photographer):
+        Session = sessionmaker(bind=engine)
+        session = Session()
+
+        print("Added")
+
+        histor = history(history_id=history_id, customer=customer, photographer=photographer)
+
+        session.add(histor)
+        session.commit()
+
 Base.metadata.create_all(engine)
 
 
-photographers.add("fasfas@gsaf.com", "qwerty", "Admin", "Adminov", "Male", "I'm cool", "04-05-1950", 3, "Soup", "Soup", "Y")
+# photographers.add("fasfas@gmail.com", "qwerty", "Admin", "Adminov", "Male", "I'm cool", "04-05-1950", 3, "Soup", "Soup", "Y")
