@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/membership.css') }}"/>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/user.css') }}"/>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="{{url_for('static', filename='all.js')}}"></script>
+</head>
+
+
+<body class = "body"  id = 'pagebody'>
+    <div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title"> Усі користувачі: </h3>
+            </div>
+        </div>
+        {% for user_key in u_list %}
+        <script src="{{url_for('static', filename='user.js')}}"></script>
+            <div class="container">
+              <div>
+
+                <div >
+
+
+                  <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Користувач: </h3>
+                        <h3 class="panel-title">  {{user[user_key]["user_name"]}}</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center"> <img  width="100%" alt="Фото" src = {{user[user_key]["user_photo"]}} class="img-circle img-responsive"> </div>
+
+                        <div class=" col-md-9 col-lg-9 ">
+                          <table class="table table-user-information" id="visualtb">
+                            <tbody>
+                              <tr>
+                                <td>Повне ім'я:</td>
+                                <td>{{user[user_key]["user_fullname"]}}</td>
+                              </tr>
+                              <tr>
+                                <td>Вік:</td>
+                                <td>{{user[user_key]["user_age"]}}</td>
+                              </tr>
+                              <tr>
+                                <td>Стать:</td>
+                                <td>{{user[user_key]["user_sex"]}}</td>
+                              </tr>
+                              <tr>
+                                <td>Статус:</td>
+                                <td>{{user[user_key]["status"]}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        {% endfor %}
+        <div class="panel panel-info">
+            <div class="panel-footer ">
+                     <div align="center">
+                         <button  name="cancel" class="btn btn-primary" onClick="ppup_content('show')" >Додати користувача</button>
+                     </div>
+            </div>
+        </div>
+
+        <center class="container"  id="show_add_u_bar" style='display:none'>
+            <div class="container popup_content_wrap"  >
+                <div  class="panel-body popup_content" >
+                  <div class="row"  >
+                    <form id="tab" action = "/api/all" method="POST" enctype="multipart/form-data">
+                        <table class="table table-user-information">
+                            <tbody align="center">
+
+                                <tr>
+                                    <td><label>Ім'я користувача</label></td>
+                                    <td><input name = "user_name" type="text"  ></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Повне Ім'я</label></td>
+                                    <td><input type="text" name = "user_fullname"  ></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Вік</label></td>
+                                    <td><input type="text" name = "user_age"  ></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Посилання на картинку</label></td>
+                                    <td><input type="text" name = "user_photo"  ></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Стать</label></td>
+                                    <td>
+                                        <select name = "user_sex" id="DropDownSex" class="input-xlarge">
+                                            <option  value="Чоловік">Чоловік</option>
+                                            <option  value="Жінка">Жінка</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label>Статус</label></td>
+                                    <td>
+                                        <select name = "status" id="DropDownStatus" class="input-xlarge" >
+                                            <option value="Є абонемент">Є абонемент</option>
+                                            <option value="Без абонементу">Без абонементу</option>
+                                            <option value="Бан">Забанений(на)</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                      <button type="submit" form="tab" name="check_update_user" class="btn btn-primary" value="user_update_user">Оновити</button>
+                      <button  name="cancel" class="btn btn-primary" onClick="ppup_content('hide')" >Відмінити</button>
+                  </div>
+
+              </div>
+            </div>
+        </center>
+
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title"> Дійсні Абонементи: </h3>
+            </div>
+        </div>
+        {% for memb_key in m_list %}
+            <div class="container">
+
+              <div>
+
+                <div>
+                  <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Абонемент користувача: </h3>
+                        <h3 class="panel-title">  {{membership[memb_key]["user_name"]}}</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center"> <img  width="100%" alt="QR-Code" src = {{membership[memb_key]["qr_code"]}} class="img-circle img-responsive"> </div>
+
+                        <div class=" col-md-9 col-lg-9 ">
+                          <table class="table table-user-information" id="msh_visualtb">
+                            <tbody>
+                              <tr>
+                                  <td><label>Дата та час замовлення абонементу:</label></td>
+                                  <td><label>{{membership[memb_key]["time"]}}</label></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+
+        <div class="panel panel-info">
+            <div class="panel-footer">
+                     <div align="center">
+
+                         <button  name="cancel" class="btn btn-primary" onClick="h_popup('show')" >Додати Абонемент</button>
+                     </div>
+            </div>
+        </div>
+
+
+        <center class="container " id="show_add_m_bar" style='display:none'>
+            <div class="container popup_content_wrap"   >
+                <div class="panel-body popup_content" >
+                      <div class="row" >
+                          <form id="mtab" action = "/api/all" method="POST" enctype="multipart/form-data">
+                                <table class="table table-user-information">
+                                    <tbody align="center">
+                                        <tr>
+                                            <td><label>Дата та час замовлення абонементу:</label></td>
+                                            <td><input name = "time" type="text"  ></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label>Ім'я користувача</label></td>
+                                            <td><input name = "m_user_name" type="text"  ></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label>qr-code</label></td>
+                                            <td><input type="text" name = "qr_code"  ></td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                          </form>
+                          <button type="submit" form="mtab" name="check_update_user" class="btn btn-primary" value="membership_update_membership">Оновити</button>
+                          <button  name="cancel" class="btn btn-primary" onClick="h_popup('hide')" >Відмінити</button>
+                      </div>
+                </div>
+            </div>
+        </center>
+        <script>
+             function h_popup(hideOrshow) {
+                                if (hideOrshow == 'hide') {
+                                    document.getElementById('show_add_m_bar').style.display = "none";
+                                }
+                                else {
+                                    document.getElementById('show_add_m_bar').removeAttribute('style');
+                                }
+             }
+        </script>
+    </div>
+
+</body>
+</html>

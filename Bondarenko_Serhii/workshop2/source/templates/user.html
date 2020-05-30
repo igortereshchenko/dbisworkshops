@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/user.css') }}"/>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="{{url_for('static', filename='user.js')}}"></script>
+</head>
+
+
+<body class = "body"  id = 'pagebody'>
+    <div class="container">
+      <div>
+
+        <div >
+
+
+          <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Користувач: </h3>
+                <h3 class="panel-title">  {{user["user_name"]}}</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img  width="100%" alt="Фото" src = {{user["user_photo"]}} class="img-circle img-responsive"> </div>
+
+                <div class=" col-md-9 col-lg-9 ">
+                  <table class="table table-user-information" id="visualtb">
+                    <tbody>
+                      <tr>
+                        <td>Повне ім'я:</td>
+                        <td>{{user["user_fullname"]}}</td>
+                      </tr>
+                      <tr>
+                        <td>Вік:</td>
+                        <td>{{user["user_age"]}}</td>
+                      </tr>
+                      <tr>
+                        <td>Стать:</td>
+                        <td>{{user["user_sex"]}}</td>
+                      </tr>
+                      <tr>
+                        <td>Статус:</td>
+                        <td>{{user["status"]}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+                 <div class="panel-footer">
+                     <div align="right">
+                         <a data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" onClick="popup_content('show')" ><i class="glyphicon glyphicon-edit" >Змінити</i></a>
+                         <form id="remove_user" action = "{{user.get('user_link')}}" method="POST" enctype="multipart/form-data" >
+                            <button data-original-title="Remove this user" data-toggle="tooltip" type="submit" form="remove_user" class="btn btn-sm btn-danger" name="check_update" value="user_delete" >Видалити</button>
+                         </form>
+                     </div>
+                 </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <center class="container" id="show_edit_bar" style='display:none'>
+    <div class="container" id="popup_content_wrap" >
+        <div id="popup_content" class="panel-body">
+          <div class="row" >
+            <form id="tab" action = "{{user.get('user_link')}}" method="POST" enctype="multipart/form-data">
+                <table class="table table-user-information">
+                    <tbody align="center">
+                        <tr>
+                            <td><label>Ім'я користувача</label></td>
+                            <td><input name = "user_name" type="text" value="{{user.get('user_name')}}" ></td>
+                        </tr>
+                        <tr>
+                            <td><label>Повне Ім'я</label></td>
+                            <td><input type="text" name = "user_fullname" value={{user.get('user_fullname')}} ></td>
+                        </tr>
+                        <tr>
+                            <td><label>Вік</label></td>
+                            <td><input type="text" name = "user_age" value="{{user.get('user_age')}}" ></td>
+                        </tr>
+                        <tr>
+                            <td><label>Посилання на картинку</label></td>
+                            <td><input type="text" name = "user_photo" value="{{user.get('user_photo')}}" ></td>
+                        </tr>
+                        <tr>
+                            <td><label>Стать</label></td>
+                            <td>
+                                <select name = "user_sex" id="DropDownSex" class="input-xlarge">
+                                    <option  value="Чоловік">Чоловік</option>
+                                    <option  value="Жінка">Жінка</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>Статус</label></td>
+                            <td>
+                                <select name = "status" id="DropDownStatus" class="input-xlarge" >
+                                    <option value="Є абонемент">Є абонемент</option>
+                                    <option value="Без абонементу">Без абонементу</option>
+                                    <option value="Бан">Забанений(на)</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+              <button type="submit" form="tab" name="check_update" class="btn btn-primary" value="user_update">Оновити</button>
+              <button  name="cancel" class="btn btn-primary" onClick="popup_content('hide')" >Відмінити</button>
+          </div>
+
+      </div>
+    </div>
+    </center>
+
+
+
+</body>
+</html>
