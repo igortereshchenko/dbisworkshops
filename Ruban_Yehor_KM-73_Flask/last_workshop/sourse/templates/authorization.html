@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <br><br><br><br><br><br><br>
+        <form class="form-signin">
+            <h1 class="h3 mb-3 font-weight-normal" align="center">Увійдіть до аккаунту</h1><br>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Введіть електронну пошту" required="" autofocus=""><br>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Введіть пароль" required=""><br>
+            <div class="checkbox mb-3">
+                <label>
+                <input type="checkbox" value="remember-me"> Запам'ятати мене
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Увійти</button><br>
+            <p align="center"><a class="p-2 text-dark" href="/ ">На головну</a><a class="p-2 text-dark" href="registration">Реєстрація</a></p><br><br>
+            <p class="mt-5 mb-3 text-muted" align="center">© 2020-2024</p>
+        </form>
+    </div>
+{% endblock %}

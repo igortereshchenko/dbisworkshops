@@ -495,3 +495,4 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
+!/Ruban_Yehor_KM-73_Flask/last_workshop/sourse/app.py
