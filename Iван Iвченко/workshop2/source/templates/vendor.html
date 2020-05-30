@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>customer</title>
+</head>
+<body>
+
+
+    <form action = "/api" method = "POST" id="form_vendor">
+         <p>Name <input type = "text" name = "name" value="{{vendor.get('vendor_name')}}"/></p>
+         <p>Email <input type = "text" name = "email" value="{{vendor.get('vendor_email')}}" /></p>
+     </form>
+
+    <button type="submit" form="form_vendor" name="action" value="vendor_update">Submit</button>
+
+
+</body>
+</html>

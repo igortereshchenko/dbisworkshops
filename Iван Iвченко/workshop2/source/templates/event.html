@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>customer</title>
+</head>
+<body>
+
+
+    <form action = "/api" method = "POST" id="form_event">
+         <p>Event Id <input type = "text" name = "id" value="{{event.get('event_id')}}"/></p>
+         <p>Event name <input type = "text" name = "name" value="{{event.get('event_name')}}" /></p>
+         <p>Event category <input type = "text" name = "category" value="{{event.get('event_category')}}" /></p>
+
+     </form>
+
+    <button type="submit" form= "form_event" name="action" value="event_update">Submit</button>
+
+
+</body>
+</html> 
