@@ -1,0 +1,28 @@
+{% extends "layout.jinja2" %}
+
+{% block content %}
+<head>
+</head>
+
+<body>
+
+
+<div>
+<script type="text/javascript">
+    {{plot | safe}}
+</script>
+</div>
+
+<div>
+<script type="text/javascript">
+    {{bar | safe}}
+</script>
+</div>
+
+
+
+
+</body>
+
+
+{% endblock %}

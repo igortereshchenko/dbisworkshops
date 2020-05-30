@@ -1,0 +1,39 @@
+{% extends "layout.jinja2" %}
+
+{% block content %}
+    <div class="container">
+        <h1>Search for products here</h1>
+        <h2>Products which fit your criteria:</h2>
+        <ul id="products">
+            {% for product in products %}
+                <li>
+
+                    <span class="field-name">Product name:</span>
+                    <span class="field-value">{{ product.name }}</span>
+                    <br/>
+		                <span class="field-name">Product price:</span>
+                    <span class="field-value">{{ product.price }}</span>
+              		  <br/>
+                    <span class="field-name">Added:</span>
+                    <span class="field-value">{{ product.created }}</span>
+
+
+
+                </li>
+            {% endfor %}
+        </ul>
+        <p>Enter the name of a product and max. price:</p>
+            <form action="" method="post">
+                <p>
+                    {{ form.name.label }} <br>
+                    {{ form.name(size=32) }}
+                </p>
+                <p>
+                    {{ form.price.label }} <br>
+                    {{ form.price(size=32) }}
+                </p>
+                <p>{{ form.search() }}</p>
+            </form>
+    </div>
+
+{% endblock %}
