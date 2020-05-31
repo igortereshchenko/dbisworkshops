@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Запис на прийом</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/design.css') }}">
+</head>
+<body style="text-align: center">
+
+<ul class="menu-main">
+  <li><a href="http://127.0.0.1:5000/home">Головна</a></li>
+  <li><a href="http://127.0.0.1:5000/registration" class="current">Запис на пройом</a></li>
+  <li><a href="http://127.0.0.1:5000/list">Всі записи</a></li>
+</ul>
+
+<h2>Введите ваши данные</h2>
+
+<form class="regist_form" action ="" method ="post">
+  <p>
+    {{form.doc_id.label}}<br>
+    {{form.doc_id(size=30)}}
+  </p>
+  <p>
+    {{form.hosp_name.label}}<br>
+    {{form.hosp_name(size=30)}}
+  </p>
+  <p>
+    {{form.pat_name.label}}<br>
+    {{form.pat_name(size=30)}}
+  </p>
+  <p>
+    {{form.pat_age.label}}<br>
+    {{form.pat_age(size=30)}}
+  </p>
+  <p>
+    {{form.pat_street.label}}<br>
+    {{form.pat_street(size=30)}}
+  </p>
+  <p>
+    {{form.pat_dist.label}}<br>
+    {{form.pat_dist(size=30)}}
+  </p>
+  <p>
+    {{form.time_date.label}}<br>
+    {{form.time_date(size=30)}}
+  </p>
+  <p>{{form.submit()}}</p>
+</form>
+</body>
+</html>
