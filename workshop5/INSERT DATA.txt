@@ -1,0 +1,28 @@
+/* INSERT HOSPITAL DATA */ 
+INSERT INTO HOSPITAL (hosp_name, hosp_address, hosp_dist)
+VALUES ('Hospital named Andrey', 'lenina 2', 'soloma');
+
+INSERT INTO HOSPITAL (hosp_name, hosp_address, hosp_dist)
+VALUES ('Hospital 5', 'Geroev Dnepra 8', 'desnyanskiy');
+
+
+/* INSERT DOCTOR DATA */    
+INSERT INTO DOCTOR (DOC_ID, DOC_NAME, DOC_SPECIAL, HOSP_NAME, CABINET) 
+VALUES (1, 'Sveta', 'pediatr', 'Hospital named Andrey',	10);
+
+INSERT INTO DOCTOR (DOC_ID, DOC_NAME, DOC_SPECIAL, HOSP_NAME, CABINET) 
+VALUES (2, 'Ira', 'hirurg', 'Hospital named Andrey', 15);
+
+INSERT INTO DOCTOR (DOC_ID, DOC_NAME, DOC_SPECIAL, HOSP_NAME, CABINET) 
+VALUES (3, 'Stepa', 'okulist', 'Hospital 5',  60);
+
+
+/* INSERT TIMETABLE DATA */  
+INSERT INTO TIMETABLE (DOC_ID, HOSP_NAME, PAT_NAME, PAT_AGE, PAT_STREET, PAT_DIST, TIME_DATE)
+VALUES (1, 'Hospital named Andrey',	'Alexis', 24, 'Shevchenko 23', 'soloma', '02/07/2019 14:30:00');
+
+INSERT INTO TIMETABLE (DOC_ID, HOSP_NAME, PAT_NAME, PAT_AGE, PAT_STREET, PAT_DIST, TIME_DATE)
+VALUES (1, 'Hospital named Andrey',	'Alex', 24, 'Pyshlina 23', 'soloma', '02/07/2019 15:30:00');
+
+INSERT INTO TIMETABLE (DOC_ID, HOSP_NAME, PAT_NAME, PAT_AGE, PAT_STREET, PAT_DIST, TIME_DATE)
+VALUES (2, 'Hospital named Andrey',	'Alex', 24, 'Pyshlina 23', 'soloma', '02/07/2019 16:00:00');
