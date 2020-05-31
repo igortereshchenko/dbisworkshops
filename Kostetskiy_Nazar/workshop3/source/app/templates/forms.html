@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // TODO: move script to static; compile js
+    function serialize(form) {
+
+	// Setup our serialized data
+	var serialized = {};
+
+	// Loop through each field in the form
+	for (var i = 0; i < form.elements.length; i++) {
+
+		var field = form.elements[i];
+
+		// Don't serialize fields without a name, submits, buttons, file and reset inputs, and disabled fields
+		if (!field.name || field.disabled || field.type === 'file' || field.type === 'reset' || field.type === 'submit' || field.type === 'button') continue;
+
+		// If a multi-select, get all selections
+		if (field.type === 'select-multiple') {
+			for (var n = 0; n < field.options.length; n++) {
+				if (!field.options[n].selected) continue;
+				serialized[field.name] = field.options[n].value;
+			}
+		}
+
+		// Convert field data to key: value
+		else if ((field.type !== 'checkbox' && field.type !== 'radio') || field.checked) {
+			serialized[field.name] = field.value;
+		}
+	}
+
+	return serialized
+
+}
+    function register() {
+        let form = document.getElementsByClassName('register-form')[0];
+        // Todo: validate
+        const formData = serialize(form);
+        var xhr = new XMLHttpRequest();
+        xhr.open('post', "{{ url_for('register') }}", true);
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        xhr.send(JSON.stringify(formData));
+    }
+    function login() {
+        let form = document.getElementsByClassName('login-form')[0];
+        console.log('form:', form);
+        // Todo: validate
+        const formData = serialize(form);
+        var xhr = new XMLHttpRequest();
+        xhr.open('post', "{{ url_for('login') }}", true);
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        xhr.send(JSON.stringify(formData));
+    }
+</script>
+
+<form name="Sign in" class="login-form" method="post" action={{url_for("login")}}>
+    <p>Email:
+        <label>
+            <input maxlength="25" size="40" type="email" name="email">
+        </label></p>
+   <p>Password
+       <label>
+           <input type="password" maxlength="25" size="40" name="password">
+       </label>
+   </p>
+    <p class="submit">
+         <button type="button" name="submit" value="submit"  onclick="login()">submit</button></p>
+</form>
+
+
+<form name="Sign up" method="post"  class="register-form" action={{url_for('register')}}>
+    <p>Login
+        <label>
+        <input maxlength="25" size="40" name="username" placeholder="username">
+        </label></p>
+    <p>Email
+        <label>
+        <input type="email" maxlength="25" size="40" name="email" placeholder="email">
+    </label></p>
+    <p>Password<label>
+        <input type="password" maxlength="25" size="40" name="password" placeholder="password">
+    </label></p>
+         <p class="submit">
+         <button type="button" name="submit" value="submit"  onclick="register()">submit</button>
+         </p>
+</form>
+</body>
+</html>
