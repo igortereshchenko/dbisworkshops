@@ -1,0 +1,43 @@
+{% extends 'layouts/mainlayout.html' %}
+
+{% block title %}
+Statistic
+{% endblock %}
+
+{% block body %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<div class="container">
+    <h2 class="text-center">Dependence of purchases</h2>
+    <br>
+    <h3 class="text-center">Similarity percentage of others configs - {{ similarity }}%</h3>
+    <h4 class="text-center">Count users - {{ count_users }}</h4>
+    <canvas id="myChart"></canvas>
+</div>
+
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+data = {
+    datasets: [{
+        data: [{{ user_purchases }}, {{ other_purchases }}],
+        backgroundColor: ['rgb(255, 99, 132)', 'rgb(67, 130, 224)'],
+    }],
+
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [
+        'You bought',
+        'Others bought',
+    ]
+};
+
+options = {
+    cutoutPercentage: 20
+}
+var myPieChart = new Chart(ctx, {
+    type: 'pie',
+    data: data,
+    options: options
+});
+
+
+</script>
+{% endblock %}

@@ -3,7 +3,7 @@ from root.source.ORM_relations import *
 from root.source.items_model import items_model
 from root.source.payments_model import payments_model
 from root.source.user_model import *
-
+from root.source.user_statistic import user_statistic
 
 app = Flask(__name__)
 app.secret_key = "s_key"
@@ -128,9 +128,19 @@ def singup(page):
 
         return render_template("statistic.html", items=items, time=datetime.now().strftime("%Y-%m-%d"))
 
+    elif page == 'graphics':
+        # redirect if user are logged
+        if not session or not session['user']:
+            return redirect("/singin", code=302)
 
+        user_purchases = user_statistic.getUserPurchases(session['user'])
+        all_purchases = user_statistic.getAllPurchases()
+        other_purchases = int(all_purchases) - int(user_purchases)
 
+        similarity = user_statistic.percentOfSimilarityConfigs(session['user'])
+        count_users = user_statistic.getUserCount()
 
+        return render_template("graphics.html", user_purchases=user_purchases, all_purchases=all_purchases, other_purchases=other_purchases, similarity=similarity, count_users=count_users)
 
     elif page == 'logout':
         # redirect if user are logged
