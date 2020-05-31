@@ -1,0 +1,37 @@
+CREATE TABLE dishes(
+    id NUMBER(2) NOT NULL,
+    dish_name VARCHAR2(50) NOT NULL,
+    id_category NUMBER(3) NOT NULL,
+    text_recipe VARCHAR2(3000) NOT NULL,
+    video_recept VARCHAR2(100) NOT NULL,
+    ingridients VARCHAR2(800) NOT NULL,
+    CONSTRAINT pk_id_dish PRIMARY KEY (id),
+    CONSTRAINT fk_id_category FOREIGN KEY(id_category) REFERENCES dish_categories(id)   
+);
+
+CREATE TABLE dish_categories(
+    id NUMBER(2) NOT NULL,
+    category_name VARCHAR2(50) NOT NULL,
+    CONSTRAINT pk_id_category PRIMARY KEY (id)
+
+);
+
+CREATE TABLE clients(
+    id NUMBER(2) NOT NULL,
+    client_username VARCHAR2(50) NOT NULL,
+    CONSTRAINT pk_id_client PRIMARY KEY (id),
+    CONSTRAINT username_unique UNIQUE (client_username)
+);
+
+CREATE TABLE marks(
+    id NUMBER(2) NOT NULL,
+    mark_value NUMBER(2),
+    client_id NUMBER(2) NOT NULL,
+    dish_id NUMBER(2) NOT NULL,
+    text_reviw VARCHAR2(200) NOT NULL,
+    CONSTRAINT pk_id_mark PRIMARY KEY (id),
+    CONSTRAINT fk_id_client FOREIGN KEY(client_id) REFERENCES clients(id),
+    CONSTRAINT fk_id_dish FOREIGN KEY(dish_id) REFERENCES dishes(id),
+    CONSTRAINT check_mark_value CHECK(mark_value<=5)
+);
+
