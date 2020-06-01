@@ -1,0 +1,28 @@
+{% block content %}
+
+<h2> Sign up </h2>
+<form action ="" method ="post">
+  <p>
+    {{form.user_name.label}}<br>
+    {{form.user_name(size=30)}}
+  </p>
+  <p>
+    {{form.user_mail.label}}<br>
+    {{form.user_mail(size=30)}}
+  </p>
+  <p>
+    {{form.user_age.label}}<br>
+    {{form.user_age(size=30)}}
+  </p>
+  <p>
+    {{form.edrpou.label}}<br>
+    {{form.edrpou(size=30)}}
+  </p>
+  <p>
+    {{form.user_pass.label}}<br>
+    {{form.user_pass(size=30)}}
+  </p>
+  <p>{{form.submit()}}</p>
+</form>
+
+{%endblock %}
