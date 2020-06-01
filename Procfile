@@ -1,0 +1,1 @@
+web: gunicorn --chdir Kostetskiy_Nazar/workshop4/source run:app

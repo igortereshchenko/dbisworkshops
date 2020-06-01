@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    People board
+{% endblock %}
+
+
+{% block content %}
+    <main class="page landing-page">
+
+        <section class="clean-block clean-pricing dark">
+            <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Posts</h2>
+                <p>Доступні кандидатури</p>
+            </div>
+                    <div class="row justify-content-center">
+                        {% for item in all_posts %}
+                        <div class="col-md-5 col-lg-4">
+                            <div class="clean-pricing-item">
+                                <div class="heading">
+                                    <h3>Usename</h3>
+                                </div>
+                                <p>{{ item.position }}</p>
+                                <p>{{ item.body }}</p>
+                                <div class="features">
+                                    <h4><span class="feature">UserId:&nbsp;</span><span>{{ item.user_id }}</span></h4>
+                                    <h4><span class="feature">Created:&nbsp;</span><span>{{ item.created_at}}</span></h4>
+                                </div>
+                                <div class="price">
+                                    <h4>{{ item.price_usd }} $</h4>
+                                </div><button onclick="location.href='{{ url_for('get_user_info', user_id=item.user_id)}}'" class="btn btn-outline-primary btn-block" type="button">Profile</button></div>
+                        </div>
+                        {{ item.value }}
+                        {% endfor %}
+
+                    </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+{% block content_title %}
+    Content title
+{% endblock %}
