@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div style="text-align: center; padding-top: 50px">
+      {% if 'username' in session %}
+        <p>
+            {% if 'user_type' in session %}
+                {{ session['user_type'] }}
+            {% endif %} 
+            <b>{{ session['username'] }}</b>, maybe you wanna <a href="logout">log out</a> of the system.</p>
+      {% else %}
+        <p>Come with me, <a href="login">log in</a> to the system.</p>
+      {% endif %}
+    </div>
+
+{% endblock %}

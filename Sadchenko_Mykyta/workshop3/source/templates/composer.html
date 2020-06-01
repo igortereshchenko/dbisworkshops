@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action = "/api/composer/submit" method = "POST" id="form_composer" style="padding: 30px 5%">
+         <p>First name <input type = "text" name = "first_name" value="{{ composer['first_name'] }}"/></p>
+         <p>Last name <input type = "text" name = "last_name" value="{{ composer['last_name'] }}" /></p>
+         <p>Country <input type = "text" name = "country" value="{{ composer['country'] }}" /></p>
+         <p>City <input type = "text" name = "city" value="{{ composer['city'] }}" /></p>
+         <p>Born at <input type = "text" name = "born_at" value="{{ composer['born_at'] }}" /></p>
+         <button type="submit" form="form_composer" name="action" value="composer_update">Submit</button>
+     </form>
+{% endblock content %}
+

@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block title %} <title>Chart</title> {% endblock %}
+
+{% block css_links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/authorization.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+{% endblock %}
+    
+
+{% block content %}
+    <div class="content-section">
+        <h1>Pie Chart</h1>
+        <canvas id="chart" width="600" height="400"></canvas>
+        
+        <h1>Line Chart</h1>
+        <canvas id="chart2" width="600" height="400"></canvas>
+        
+    </div>
+
+{% endblock %}
+
+
+{% block js_code %}
+
+    <script>
+        var chartData = {
+          labels : [{% for item in pie_labels %}
+                     "{{item}}",
+                    {% endfor %}],
+          datasets : [{
+              label: '{{ pie_legend }}',
+              fill: true,
+              lineTension: 0.1,
+              backgroundColor: "rgba(75,192,192,0.4)",
+              borderColor: "rgba(75,192,192,1)",
+              borderCapStyle: 'butt',
+              borderDash: [],
+              borderDashOffset: 0.0,
+              borderJoinStyle: 'miter',
+              pointBorderColor: "rgba(75,192,192,1)",
+              pointBackgroundColor: "#fff",
+              pointBorderWidth: 1,
+              pointHoverRadius: 5,
+              pointHoverBackgroundColor: "rgba(75,192,192,1)",
+              pointHoverBorderColor: "rgba(220,220,220,1)",
+              pointHoverBorderWidth: 2,
+              pointRadius: 1,
+              pointHitRadius: 10,
+              data : [{% for item in pie_values %}
+                        {{item}},
+                      {% endfor %}],
+              spanGaps: false
+          }]
+        }
+
+            var ctx = document.getElementById("chart").getContext("2d");
+                 
+            // create the chart using the chart canvas
+            var myChart = new Chart(ctx, {
+              type: 'pie',
+              data: chartData,
+            });
+
+            var chartData2 = {
+          labels : [{% for item in line_labels %}
+                     "{{item}}",
+                    {% endfor %}],
+          datasets : [{
+              label: '{{ line_legend }}',
+              fill: true,
+              lineTension: 0.1,
+              backgroundColor: "rgba(75,192,192,0.4)",
+              borderColor: "rgba(75,192,192,1)",
+              borderCapStyle: 'butt',
+              borderDash: [],
+              borderDashOffset: 0.0,
+              borderJoinStyle: 'miter',
+              pointBorderColor: "rgba(75,192,192,1)",
+              pointBackgroundColor: "#fff",
+              pointBorderWidth: 1,
+              pointHoverRadius: 5,
+              pointHoverBackgroundColor: "rgba(75,192,192,1)",
+              pointHoverBorderColor: "rgba(220,220,220,1)",
+              pointHoverBorderWidth: 2,
+              pointRadius: 1,
+              pointHitRadius: 10,
+              data : [{% for item in line_values %}
+                        {{item}},
+                      {% endfor %}],
+              spanGaps: false
+          }]
+        }
+
+            var ctx2 = document.getElementById("chart2").getContext("2d");
+                 
+            // create the chart using the chart canvas
+            var myChart2 = new Chart(ctx2, {
+              type: 'line',
+              data: chartData2,
+            });
+
+    </script>
+
+
+<script>
+    // Global parameters:
+    // do not resize the chart canvas when its container does (keep at 600x400px)
+    // Chart.defaults.global.responsive = false;
+     
+    // // define the chart data
+    // var chartData = {
+    //   labels : [{% for item in labels %}
+    //              "{{item}}",
+    //             {% endfor %}],
+    //   datasets : [{
+    //       label: '{{ legend }}',
+    //       fill: true,
+    //       lineTension: 0.1,
+    //       backgroundColor: "rgba(75,192,192,0.4)",
+    //       borderColor: "rgba(75,192,192,1)",
+    //       borderCapStyle: 'butt',
+    //       borderDash: [],
+    //       borderDashOffset: 0.0,
+    //       borderJoinStyle: 'miter',
+    //       pointBorderColor: "rgba(75,192,192,1)",
+    //       pointBackgroundColor: "#fff",
+    //       pointBorderWidth: 1,
+    //       pointHoverRadius: 5,
+    //       pointHoverBackgroundColor: "rgba(75,192,192,1)",
+    //       pointHoverBorderColor: "rgba(220,220,220,1)",
+    //       pointHoverBorderWidth: 2,
+    //       pointRadius: 1,
+    //       pointHitRadius: 10,
+    //       data : [{% for item in values %}
+    //                 {{item}},
+    //               {% endfor %}],
+    //       spanGaps: false
+    //   }]
+    // }
+     
+    // // get chart canvas
+    // var ctx = document.getElementById("myChart").getContext("2d");
+     
+    // // create the chart using the chart canvas
+    // var myChart = new Chart(ctx, {
+    //   type: 'line',
+    //   data: chartData,
+    // });
+</script>
+
+{% endblock %}

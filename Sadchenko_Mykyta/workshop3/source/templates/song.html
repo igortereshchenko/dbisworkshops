@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action = "/api/song/submit" method = "POST" id="form_song" style="padding: 30px 5%">
+         <p>Title <input type = "text" name = "title" value="{{ song['title'] }}"/></p>
+         <p>Lyrics part <input type = "text" name = "lyrics" value="{{ song['lyrics'] }}" /></p>
+         <p>Author <input type = "text" name = "author" value="{{ song['author'] }}" /></p>
+         <p>Genre <input type = "text" name = "genre" value="{{ song['genre'] }}" /></p>
+         <p>Year <input type = "text" name = "year" value="{{ song['year'] }}" /></p>
+         <button type="submit" form="form_song" name="action" value="song_update">Submit</button>
+    </form>
+{% endblock content %}
