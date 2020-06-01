@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}All{% endblock %}
+
+{% block content %}
+
+<div style="margin-right: 7%; margin-left: 7%; ">
+    <h1>Information about photographer</h1>
+    <table border="2" align="center">
+        {% for key, value in photographers.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <br>
+
+    <h1>Information about comment</h1>
+    <table border="2" align="center">
+        {% for key, value in comments.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,1 @@
+web: gunicorn --chdir Zelenyi_Dmytro/workshop2/source main:app
