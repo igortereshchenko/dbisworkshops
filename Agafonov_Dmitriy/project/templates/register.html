@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% from "register_.html" import render_field %}
+{% block content %}
+
+  <div class="container theme-showcase" role="main">
+
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="well bs-component">
+                <form class="form-horizontal", method="POST" action="/registration">
+                  {{ form.csrf_token }}
+                  <fieldset>
+                    <legend>Registration</legend>
+                    {{ render_field(form.user_name, placeholder=form.user_name.label.text) }}
+                    {{ render_field(form.user_mail, placeholder=form.user_mail.label.text) }}
+                    
+                    {{ render_field(form.user_age, placeholder=form.user_age.label.text) }}
+                    {{ render_field(form.edrpou, placeholder=form.edrpou.label.text) }}
+                    {{ render_field(form.user_pass, placeholder=form.user_pass.label.text) }}
+                    
+                    <div class="form-group">
+                      <div class="col-lg-10 col-lg-offset-2">
+                        <button type="reset" class="btn btn-default">Reset</button>
+                        <button  type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          
+          </div>
+  </div> <!-- /container -->
+  
+   <div class="border-top pt-3">
+        <small class="text-muted" >
+            Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+        </small>
+    </div>
+<div class="jumbotron text-center" style="margin-bottom:0" >
+  <p>Footer</p>
+</div>
+
+
+{% endblock content %}

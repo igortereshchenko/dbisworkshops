@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% from "register_.html" import render_field %}
+{% block content %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+
+
+<div class="container theme-showcase" role="main">
+
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="well bs-component">
+                <form class="form-horizontal", method="POST" action="/registration">
+                  
+                  <fieldset>
+                    <legend merge>Age statistics</legend>
+                      <div class="container row col-md-6 chart" id="piee">
+                        <script>
+                                var graphs = {{plot1 | safe}};
+                                Plotly.plot('piee',graphs,{});
+                         </script>
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                    
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          
+          </div>
+  </div> <!-- /container -->
+
+
+
+<div class="jumbotron text-center" style="margin-bottom:0" >
+  <p>Footer</p>
+</div>
+
+{% endblock content %}
