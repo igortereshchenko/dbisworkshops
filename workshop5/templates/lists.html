@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Всі записи</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/design.css') }}">
+</head>
+<body style="text-align: center">
+<ul class="menu-main">
+  <li><a href="http://127.0.0.1:5000/home">Головна</a></li>
+  <li><a href="http://127.0.0.1:5000/registration">Запис на пройом</a></li>
+  <li><a href="http://127.0.0.1:5000/list" class="current">Всі записи</a></li>
+</ul>
+
+<h2>Щоб подивитись ваші записи введіть в форму дані</h2>
+
+<form class="regist_form" action ="" method ="post">
+  <p>
+    {{form.pat_name.label}}<br>
+    {{form.pat_name(size=30)}}
+  </p>
+  <p>
+    {{form.pat_street.label}}<br>
+    {{form.pat_street(size=30)}}
+  </p>
+  <p>{{form.submit()}}</p>
+</form>
+
+</body>
+</html>

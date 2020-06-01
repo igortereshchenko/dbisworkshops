@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor</title>
+</head>
+
+<body>
+    <form action = "/api/doctor/submit" method = "POST" id="form_doctor">
+         <p>ID<input type = "text" name = "doc_id" value="{{doctor.get('doc_id')}}"/></p>
+         <p>First Name<input type = "text" name = "first_name" value="{{doctor.get('first_name')}}" /></p>
+         <p>Last Name<input type = "text" name = "last_name" value="{{doctor.get('last_name')}}"/></p>
+         <p>Specialization<input type = "text" name = "spec" value="{{doctor.get('spec')}}" /></p>
+    </form>
+
+    <button type="submit" form="form_doctor" name="action">Submit</button>
+</body>
+</html>

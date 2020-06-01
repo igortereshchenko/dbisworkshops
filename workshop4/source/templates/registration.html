@@ -1,0 +1,37 @@
+
+{% block content %}
+
+<h2> Реєстрація </h2>
+<form action ="" method ="post">
+  <p>
+    {{form.doc_id.label}}<br>
+    {{form.doc_id(size=30)}}
+  </p>
+  <p>
+    {{form.hosp_name.label}}<br>
+    {{form.hosp_name(size=30)}}
+  </p>
+  <p>
+    {{form.pat_name.label}}<br>
+    {{form.pat_name(size=30)}}
+  </p>
+  <p>
+    {{form.pat_age.label}}<br>
+    {{form.pat_age(size=30)}}
+  </p>
+  <p>
+    {{form.pat_street.label}}<br>
+    {{form.pat_street(size=30)}}
+  </p>
+  <p>
+    {{form.pat_dist.label}}<br>
+    {{form.pat_dist(size=30)}}
+  </p>
+  <p>
+    {{form.time_date.label}}<br>
+    {{form.time_date(size=30)}}
+  </p>
+  <p>{{form.submit()}}</p>
+</form>
+
+{%endblock %}
