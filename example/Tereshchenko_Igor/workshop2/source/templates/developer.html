@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <br>
+        <form action = "/api" method = "POST" id="form_user">
+            <p>Name <input type = "text" name = "first_name" value="{{developer.get('developer_name')}}"/></p>
+            <p>Age <input type = "text" name = "age" value="{{developer.get('developer_age')}}" /></p>
+        </form>
+
+        <button type="submit" form="form_user" name="action" value="user_update">Submit</button>
+    </div>
+</body>
+</html>
+
+

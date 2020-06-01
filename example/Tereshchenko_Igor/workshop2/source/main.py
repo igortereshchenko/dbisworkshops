@@ -2,22 +2,24 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-
+@app.route('/')
+def index():
+    return 'The main page. Be calm!'
 
 @app.route('/api/<action>', methods = [ 'GET'])
 def apiget(action):
 
-   if action == "user":
-      return render_template("user.html",user=user_dictionary)
+   if action == "program":
+      return render_template("program.html", program=program_dictionaty)
 
-   elif action == "car":
-      return render_template("car.html", car=car_dictionary)
+   elif action == "developer":
+      return render_template("developer.html", developer=developer_dictionary)
 
    elif action == "all":
-      return render_template("all.html", user=user_dictionary, car=car_dictionary)
+      return render_template("all.html", program=program_dictionaty, developer=developer_dictionary)
 
    else:
-      return render_template("404.html", action_value=action)
+      return render_template("404.html", action_value=action, correct_pages=correct_pages, correct_pages_len=len(correct_pages))
 
 
 @app.route('/api', methods=['POST'])
@@ -29,8 +31,8 @@ def apipost():
 
    if request.form["action"] == "user_update":
 
-      user_dictionary["user_name"] = request.form["first_name"]
-      user_dictionary["user_age"] = request.form["age"]
+      developer_dictionary["developer_name"] = request.form["first_name"]
+      developer_dictionary["developer_age"] = request.form["age"]
 
       return redirect(url_for('apiget', action="all"))
 
@@ -38,15 +40,18 @@ def apipost():
 
 if __name__ == '__main__':
 
-   user_dictionary = {
-            "user_name":"Bob",
-            "user_age": 20,
+   correct_pages = ['car', 'developer']
+
+   program_dictionaty = {
+            "program_name":"Skype",
+            "program_language": "C++",
           }
 
-   car_dictionary = {
-           "car_brand": "Ford",
-           "car_model": "Mustang",
-           "car_year": 1964
+   developer_dictionary = {
+           "developer_name": "Mike",
+           "developer_age": 20,
+           "developer_stage": "Junior"
          }
 
+   # app.run(debug=True)
    app.run()

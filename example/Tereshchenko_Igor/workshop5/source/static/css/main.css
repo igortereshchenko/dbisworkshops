@@ -1,0 +1,30 @@
+.form-signin {
+width: 100%;
+max-width: 330px;
+padding: 15px;
+margin: auto;
+}
+
+.buttons > .btn{
+    width: 40% !important;
+    display: inline-block;
+}
+
+.settings{
+    max-width: 700px !important;
+}
+
+.settings > .container{
+    padding: 5px;
+}
+
+.settings > .container > input {
+    display: inline-block !important;
+    width: auto;
+}
+
+.settings > .container > .form-span{
+    display: inline-block;
+    width: 200px;
+    text-align: left;
+}

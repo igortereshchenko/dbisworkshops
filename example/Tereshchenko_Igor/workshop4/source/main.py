@@ -1,36 +1,53 @@
-from flask import Flask, render_template, request
-from example.Tereshchenko_Igor.workshop4.source.forms.user import UserForm
+from flask import Flask, render_template, request, redirect, url_for
 
-from example.Tereshchenko_Igor.workshop4.source.dao.userhelper import *
 app = Flask(__name__)
-app.secret_key = 'development key'
+
+@app.route('/')
+def index():
+    return 'The main page. Be calm!'
+
+@app.route('/api/<action>', methods = [ 'GET'])
+def apiget(action):
+
+   if action == "program":
+      return render_template("program.html", program=program_dictionaty)
+
+   elif action == "developer":
+      return render_template("developer.html", developer=developer_dictionary)
+
+   elif action == "all":
+      return render_template("all.html", program=program_dictionaty, developer=developer_dictionary)
+
+   else:
+      return render_template("404.html", action_value=action, correct_pages=correct_pages, correct_pages_len=len(correct_pages))
 
 
-@app.route('/', methods=['GET', 'POST'])
-def user():
-    form = UserForm()
+@app.route('/api', methods=['POST'])
+def apipost():
 
+   if request.form["action"] == "user_update":
 
-    allUsers = getUsers()
+      developer_dictionary["developer_name"] = request.form["first_name"]
+      developer_dictionary["developer_age"] = request.form["age"]
 
-    if request.method == 'POST':
-        if form.validate() == False:
-            return render_template('user.html', form=form, users = allUsers)
-        else:
-            user_id , status = newUser(
-                                            USER_STUDYBOOK=request.form["studybook"],
-                                            USER_BIRTHDAY=request.form["birthday"],
-                                            USER_EMAIL=request.form["email"],
-                                            USER_NAME=request.form["name"],
-                                            USER_PASSWORD=request.form["password"],
-                                            USER_YEAR=request.form["study_year"]
-                                       )
+      return redirect(url_for('apiget', action="all"))
 
-            return render_template('user.html', form=form, users=allUsers)
-
-
-    return render_template('user.html', form=form, users = allUsers)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+
+   correct_pages = ['car', 'developer']
+
+   program_dictionaty = {
+            "program_name":"Skype",
+            "program_language": "C++",
+          }
+
+   developer_dictionary = {
+           "developer_name": "Mike",
+           "developer_age": 20,
+           "developer_stage": "Junior"
+         }
+
+   # app.run(debug=True)
+   app.run()
