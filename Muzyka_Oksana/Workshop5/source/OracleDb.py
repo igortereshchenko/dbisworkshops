@@ -22,7 +22,7 @@ class OracleDb(object):
                 db_version = cursor.fetchone()
                 print("New connection to {} created".format(db_version[0]))
                 oracle_connection_string = 'oracle+cx_oracle://{username}:{password}@{host}:{port}/{sid}'
-                engine = create_engine(oracle_connection_string.format(username="PMA_KM_20", password="oracle_2", sid="XE", host="localhost", port="1521", database="PMA_KM_20"))
+                engine = create_engine(oracle_connection_string.format(username="PMA_KM_14", password="oracle_2", sid="XE", host="localhost", port="1521", database="PMA_KM_14"))
 
                 Session = sessionmaker(bind=engine)
                 session = Session()
