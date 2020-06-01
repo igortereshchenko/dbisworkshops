@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Reading App</title>
+    </head>
+    <body>
+        <h3>This series has name: {{series_comic}} and it has {{number_of_series}} numbers</h3>
+        <h3>Numbers</h3>
+        <ul>
+            {% for numbers in series_values %}
+            <li><a href="/{{series_comic}}/{{numbers}}">{{numbers}}</a></li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

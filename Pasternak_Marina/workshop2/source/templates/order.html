@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>order</title>
+</head>
+<body>
+    <form action = "/api" method = "POST" id="form_order">
+            <label>First Name and Last Name
+                <input type = "text" name = "person_name" value="{{order.get('order_name')}}"/>
+            </label>
+            <label>
+                Date
+                <input type = "text" name = "date" value="{{order.get('order_date')}}" />
+            </label>
+            <label>
+                Time
+                <input type = "text" name = "time" value="{{order.get('order_time')}}" />
+            </label>
+            <label>
+                Number of Person
+                <input type = "text" name = "number_of_person" value="{{order.get('num_person')}}" />
+            </label>
+        </form>
+
+        <button type="submit" form="form_order" name="action" value="order_update">Submit</button>
+        <style>
+            form{
+                    margin: 10px;
+                    display: grid;
+                    grid-gap: 10px;
+                }
+        </style>
+</body>
+</html>
