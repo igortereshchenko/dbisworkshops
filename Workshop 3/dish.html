@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dish</title>
+</head>
+<body>
+    <h1>Dish info</h1>
+    <form action="/dish" method = "POST" id = "dish_d">
+    <p>Name
+    <input type="text" name="name" value="{{ dish['name'] }}">
+    </p>
+    <p>URL
+    <input type="text" name="ingridients" value="{{ dishk['ingridients'] }}">
+    </p>
+    <p>Create time
+    <input type="text" name="create_time" value="{{ dish['create_time'] }}">
+    </p>
+</form>
+    <button type="submit" form = "book_d" >Submit</button>
+</body>
+</html>
