@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>404 page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 100px 300px 0 300px;
+        }
+
+        .alert {
+            box-shadow: 0 10px 24px 0 rgba(0, 0, 0, 0.5);
+            padding: 20px 20px 10px 20px;
+            border-radius: 10px !important;
+        }
+
+        button {
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Hello World!</h4>
+    <p>Choose what you want to do:</p>
+    <hr>
+    <form action="/api" method="POST" id="form_user" class="d-flex bd-highlight bd-highlight">
+        <button type="submit" class="btn btn-primary p-2 flex-fill bd-highlight" form="form_user" name="action"
+                value="redirect_all">All
+        </button>
+        <button type="submit" class="btn btn-primary p-2 flex-fill bd-highlight" form="form_user" name="action"
+                value="redirect_customer">Customer
+        </button>
+        <button type="submit" class="btn btn-primary p-2 flex-fill bd-highlight" form="form_user" name="action"
+                value="redirect_product">Product
+        </button>
+    </form>
+</div>
+</body>
+</html>
