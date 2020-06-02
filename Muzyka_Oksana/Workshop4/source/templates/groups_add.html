@@ -1,0 +1,23 @@
+  
+<!doctype html>
+<html>
+	<body>
+		<form action = "{{ request.path }}" method = "post">
+			<p>Шифр групи <input type = "text" name = "GroupName"/></p>
+			<p>Рівень <input type = "text" name = "Level"/></p>
+			<p>Розклад <input type = "text" name = "Timetable" /></p>
+			<p>Викладачі <input type = "text" name = "Teachers"/></p>
+			<p>Ціна <input type = "number" name = "Price"/></p>
+			<p>Кількість студентів в групі <input type = "number" name = "CountStudent"/></p>
+			<input type = 'submit' value = 'Submit'/>
+
+		</form>
+
+		{%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+      
+	</body>
+</html>
