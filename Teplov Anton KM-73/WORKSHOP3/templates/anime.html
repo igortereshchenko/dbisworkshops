@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Anime</title>
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <h2>Enter information about Anime</h2>
+    <form action="" method="post">
+        <p>
+            {{ form.anime_name.label }} <br>
+            {{ form.anime_name(size=30) }}
+        </p>
+        <p>
+            {{ form.date.label }} <br>
+            {{ form.date(size=30) }}
+        </p>
+        <p>
+            {{ form.No_series.label }} <br>
+            {{ form.No_series(size=30) }}
+        </p>
+        <p>
+            {{ form.genre.label }} <br>
+            {{ form.genre(size=30)}}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
