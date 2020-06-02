@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Manga</title>
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <h2>Enter information about Manga</h2>
+    <form action="" method="post">
+        <p>
+            {{ form.manga_name.label }} <br>
+            {{ form.manga_name(size=30) }}
+        </p>
+        <p>
+            {{ form.author.label }} <br>
+            {{ form.author(size=30) }}
+        </p>
+        <p>
+            {{ form.year.label }} <br>
+            {{ form.year(size=30) }}
+        </p>
+        <p>
+            {{ form.No_Toms.label }} <br>
+            {{ form.No_Toms(size=30)}}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
