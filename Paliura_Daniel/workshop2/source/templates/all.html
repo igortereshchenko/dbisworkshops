@@ -1,0 +1,28 @@
+{%extends 'extention.html'%}
+
+{% block title%}
+All
+{% endblock %}
+
+{% block body%}
+<table border="2">
+   <caption>Users</caption>
+    {% for key, value in user.items() %}
+    <tr>
+        <th>{{ key }}</th>
+        <td>{{ value }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<table border="2">
+   <caption>Message</caption>
+    {% for key, value in message.items() %}
+    <tr>
+        <th>{{ key }}</th>
+        <td>{{ value }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
