@@ -60,9 +60,9 @@ BEGIN
         raise_application_error(-20140,'Username must be specified');
     END IF;
 
-    IF :new."username" < 5 OR :new."username" > 25
+    IF :new."username" < 5 OR :new."username" > 45
     THEN
-        raise_application_error(-20141,'username field must contain between 5 and 25 characters');
+        raise_application_error(-20141,'username field must contain between 5 and 45 characters');
     END IF;
 
     IF :new."username" LIKE '%[!ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_]%'
