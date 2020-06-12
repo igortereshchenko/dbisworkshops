@@ -1,0 +1,17 @@
+{%extends 'extention.html'%}
+
+{% block title%}
+Message
+{% endblock %}
+
+{% block body%}
+    <form action = "/api" method = "POST" id="form_message">
+		<p>id of message<input type = "text" name = "id" value="{{message.get('id')}}" /></p>
+        <p>sender user id <input type = "text" name = "sender_id" value="{{message.get('sender_id')}}"/></p>
+        <p>receiver user id <input type = "text" name = "receiver_id" value="{{message.get('receiver_id')}}"/></p>
+        <p>message text <input type = "text" name = "text" value="{{message.get('text')}}" /></p>
+     </form>
+
+    <button type="submit" form="form_message" name="action" value="message_update">Submit</button>
+
+{% endblock %}

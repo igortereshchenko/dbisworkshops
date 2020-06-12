@@ -1,0 +1,16 @@
+{%extends 'extention.html'%}
+
+{% block title%}
+User
+{% endblock %}
+
+{% block body%}
+    <form action = "/api" method = "POST" id="form_user">
+		<p>id <input type = "text" name = "id" value="{{user.get('id')}}" /></p>
+        <p>username <input type = "text" name = "username" value="{{user.get('username')}}"/></p>
+        <p>language code <input type = "text" name = "lang_code" value="{{user.get('lang_code')}}" /></p>
+     </form>
+
+    <button type="submit" form="form_user" name="action" value="user_update">Submit</button>
+
+{% endblock %}

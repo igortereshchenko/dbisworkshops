@@ -1,0 +1,57 @@
+CREATE TABLE "USERS"
+(
+"id" NUMBER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1),
+"name" NVARCHAR2(40) NOT NULL,
+"last_name" NVARCHAR(55),
+"lang_code" NVARCHAR(5) NOT NULL,
+"username" NVARCHAR2(45) UNIQUE NOT NULL,
+"password" NVARCHAR2(140) NOT NULL,
+"reg_date" DATETIME NOT NULL
+);
+
+CREATE TABLE "DIALOGS"
+(
+"id" NUMBER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1),
+"initiator_id" NUMBER NOT NULL,
+"target_id" NUMBER NOT NULL
+);
+
+CREATE TABLE "MESSAGES"
+(
+"date" DATETIME NOT NULL,
+"dialog_id" NUMBER NOT NULL,
+"sender_id" NUMBER NOT NULL,
+"receiver_id" NUMBER NOT NULL,
+"s_l" NVARCHAR2(5) NOT NULL,
+"t_l" NVARCHAR2(5) NOT NULL,
+"text" NVARCHAR2(65536) NOT NULL,
+"translation" NVARCHAR2(131072)
+);
+
+
+
+ALTER TABLE "USER"
+ADD CONSTRAINT pk_users PRIMARY KEY("id");
+
+
+ALTER TABLE "DIALOGS"
+ADD CONSTRAINT pk_dialogs PRIMARY KEY("id");
+
+ALTER TABLE "DIALOGS"
+ADD CONSTRAINT fk_dialogs_users_initiator FOREIGN KEY("initiator_id") REFERENCES "USERS"("id");
+
+ALTER TABLE "DIALOGS"
+ADD CONSTRAINT fk_dialogs_users_target FOREIGN KEY("target_id") REFERENCES "USERS"("id");
+
+
+ALTER TABLE "MESSAGES"
+ADD CONSTRAINT pk_messages PRIMARY KEY("date", "sender_id", "receiver_id");
+
+ALTER TABLE "MESSAGES"
+ADD CONSTRAINT fk_messages_dialogs FOREIGN KEY("dialog_id") REFERENCES "DIALOGS"("id");
+
+ALTER TABLE "MESSAGES"
+ADD CONSTRAINT fk_messages_users_sender FOREIGN KEY("sender_id") REFERENCES "USERS"("id");
+
+ALTER TABLE "MESSAGES"
+ADD CONSTRAINT fk_messages_users_receiver FOREIGN KEY("receiver_id") REFERENCES "USERS"("id");
