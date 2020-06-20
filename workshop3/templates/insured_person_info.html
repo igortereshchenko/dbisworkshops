@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal information</title>
+</head>
+<body>
+     <form action="/api" method="Post" id="person_id">
+         <p>Firstname: <input type = "text" name = "firstname" value="{{info.get('person_firstname')}}"/> </p>
+         <p>Lastname: <input type = "text" name = "lastname" value="{{info.get('person_lastname')}}"/> </p>
+         <p>Date of birth: <input type = "text" name = "d_birth" value="{{info.get('person_d_birth')}}"/> </p>
+         <p>Passport id: <input type = "text" name = "passport" value="{{info.get('person_passport')}}"/> </p>
+         <p>ITIN: <input type = "text" name = "itin" value="{{info.get('person_itin')}}"/> </p>
+         <p>Cityzenship: <input type = "text" name = "cityzenship" value="{{info.get('person_cityzenship')}}"/> </p>
+     <button type="submit" form="personal_info" name="action" value="user_update">Submit</button>
+</body>
+</html>
