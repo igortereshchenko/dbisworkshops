@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>all</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>person_id</th>
+        <th>person_firstname</th>
+        <th>person_person_lastname</th>
+        <th>person_d_birth</th>
+        <th>person_passport</th>
+        <th>person_itin</th>
+        <th>person_cityzenship</th>
+
+
+    </tr>
+    <tr>
+        <td>{{info.get("person_id")}}</td>
+        <td>{{info.get("person_firstname")}}</td>
+        <td>{{info.get("person_lastname")}}</td>
+        <td>{{info.get("person_d_birth")}}</td>
+        <td>{{info.get("person_passport")}}</td>
+        <td>{{info.get("person_itin")}}</td>
+        <td>{{info.get("person_cityzenship")}}</td>
+    </tr>
+</table>
+<br/>
+<table>
+    <tr>
+        <th>insurer_id</th>
+        <th>insurer_name</th>
+        <th>insurer_password</th>
+        <th>insurer_email</th>
+    </tr>
+    <tr>
+        <td>{{insurer.get("insurer_id")}}</td>
+        <td>{{insurer.get("insurer_name")}}</td>
+        <td>{{insurer.get("insurer_password")}}</td>
+        <td>{{insurer.get("insurer_email")}}</td>
+
+    </tr>
+</table>
+</body>
+</html>

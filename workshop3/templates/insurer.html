@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login form</title>
+</head>
+<body>
+     <form action="/api" method="Post" id="insurer_id">
+         <p>Name: <input type = "text" name = "name" value="{{insurer.get('insurer_name')}}"/> </p>
+         <p>Password: <input type = "text" name = "password" value="{{insurer.get('isurer_password')}}"/> </p>
+         <p>Email: <input type = "text" name = "email" value="{{insurer.get('isurer_email')}}"/> </p>
+
+     </form>
+     <button type="submit" form="insurer_form" name="action" value="insurer_update">Submit</button>
+</body>
+</html>
